@@ -1,0 +1,21 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 003-local-context-first.mdc
+---
+description: "Prefer local context over web search"
+globs: "**/*"
+tags: [context, security]
+priority: 1  # Highest priority
+version: 1.0.1
+---
+## Context
+All queries unless explicitly requesting external data
+
+## Requirements
+1. Check project files first
+2. Use MCP servers if needed
+3. Only suggest web search after 2 failed attempts
+4. NEVER use Brave/DDG

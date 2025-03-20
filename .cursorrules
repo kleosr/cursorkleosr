@@ -1,0 +1,10 @@
+# PROJECT-WIDE DIRECTIVES
+1. All .mdc rules in .cursor/rules take precedence
+2. Default to TypeScript unless specified otherwise
+3. Use AWS SDK v3 patterns for cloud integrations
+4. Prefer named exports over default exports
+5. Document all @todo comments in JIRA format
+
+# MCP CONFIGURATION
+- Primary servers: Sequential Thinking, OpenRouter
+- Fallback strategy: Local context → MCP → Manual

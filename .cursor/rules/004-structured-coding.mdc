@@ -1,0 +1,21 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 004-structured-coding.mdc
+---
+description: "Enforce stepwise code explanations"
+globs: "src/**/*"
+tags: [style, best-practices]
+priority: 4
+version: 1.0.0
+---
+## Context
+Code generation or explanation scenarios
+
+## Requirements
+1. Break complex logic into numbered steps
+2. Use analogy-based explanations
+3. Include error handling variants
+4. Mark experimental code with ⚗️ emoji

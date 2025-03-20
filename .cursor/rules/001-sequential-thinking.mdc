@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 001-sequential-thinking.mdc
+---
+description: "Use Sequential Thinking MCP for task decomposition"
+globs: "**/*"
+tags: [mcp, planning]
+priority: 3
+version: 1.1.0
+---
+## Context
+When user requests involve project planning, task breakdown, or dependency analysis
+
+## Requirements
+1. Always invoke "server-sequential-thinking" MCP first
+2. Present outcomes as numbered steps with dependency mapping
+3. Include time estimates for complex tasks

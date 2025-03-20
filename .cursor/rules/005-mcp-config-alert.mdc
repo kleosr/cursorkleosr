@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 005-mcp-config-alert.mdc
+---
+description: "Notify on MCP config changes"
+globs: "**/mcp.json"
+tags: [mcp, config]
+priority: 1
+version: 1.0.2
+---
+## Context
+After mcp.json modifications
+
+## Requirements
+1. Detect added/updated servers
+2. If changes not reflected:
+   a. Instruct to drag mcp.json into chat
+   b. Provide merge conflict resolution steps
+   c. Emphasize manual saving requirement

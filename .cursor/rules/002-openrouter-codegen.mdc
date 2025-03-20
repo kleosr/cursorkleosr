@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 002-openrouter-codegen.mdc
+---
+description: "Use OpenRouter for code generation with olympiccoder-32b"
+globs: "src/**/*.{js,ts,py}"
+tags: [mcp, openrouter, codegen]
+priority: 2
+version: 1.1.0
+---
+## Context
+When generating or refining code in JavaScript, TypeScript, or Python
+
+## Requirements
+1. Always use olympiccoder-32b:free model
+2. Present 3 code variants with complexity ratings
+3. Include model confidence score (0-100)
+4. Add performance optimization suggestions
+5. Mark experimental code with ⚗️ emoji

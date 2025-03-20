@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 005-mcp-coordination.mdc
+---
+description: "Coordinate multiple MCP servers for complex tasks"
+globs: "**/*"
+tags: [mcp, orchestration]
+priority: 1
+version: 1.0.3
+---
+## Context
+When handling complex multi-faceted tasks
+
+## Requirements
+1. Use Sequential Thinking for planning
+2. Use OpenRouter for code generation
+3. Use DeepLucid3D for deep analyzing
+4. Use Codex Keeper for documentation
+5. Present unified output with clear server contributions
