@@ -64,16 +64,6 @@ The rules system implements several key features:
 4. **Priority Management**: Rule precedence and application order
 5. **Version Control**: Rule versioning and compatibility
 
-## Welcome Output
-```bash
-Welcome to kleosr/cursorkleosr v1.0.0
-----------------------------------
-Required Information:
-• Cursor IDE
-• Git
-• Basic understanding of Markdown and MDC files
-```
-
 ## Contributing
 We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) before submitting pull requests.
 
