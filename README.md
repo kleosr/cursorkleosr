@@ -1,12 +1,12 @@
 # Project Rules and Configuration
 
 <div align="center">
-  <img src="https://via.placeholder.com/150" alt="Project Rules Logo" />
+  <img src="https://i.ibb.co/tMy2cRkC/image-fx.png" alt="Project Rules Logo" />
   <p><em>Project Rules and Configuration Management System</em></p>
 </div>
 
 ## Introduction
-This project implements a structured rules and configuration system using `.cursorrules` and `.cursor/rules` to ensure consistent development practices and maintainable code quality.
+This project implements a structured rules and configuration system using `.cursorrules` and `.cursor/rules` to ensure consistent development practices and maintainable code quality. Part of the kleosr/cursorkleosr ecosystem.
 
 ## Project Description
 The project uses two main configuration systems:
@@ -16,16 +16,11 @@ The project uses two main configuration systems:
 ## Installation Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/project-rules.git
-   cd project-rules
+   git clone https://github.com/kleosr/cursorkleosr.git
+   cd cursorkleosr
    ```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Configure rules:
+2. Configure rules:
    ```bash
    cp .cursorrules.example .cursorrules
    ```
@@ -59,6 +54,7 @@ The project uses two main configuration systems:
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 - [AWS SDK v3 Documentation](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html)
 - [OWASP Security Guidelines](https://owasp.org/www-project-top-ten/)
+- [kleosr/cursorkleosr](https://github.com/kleosr/cursorkleosr) - Main repository
 
 ## How It Works
 The rules system implements several key features:
@@ -70,14 +66,12 @@ The rules system implements several key features:
 
 ## Welcome Output
 ```bash
-Welcome to Project Rules v1.0.0
+Welcome to kleosr/cursorkleosr v1.0.0
 ----------------------------------
 Required Information:
-• Node.js v14 or higher
-• TypeScript v4.5 or higher
-• npm v6 or higher
-• AWS SDK v3 (for cloud integrations)
-• Cursor IDE (recommended)
+• Cursor IDE
+• Git
+• Basic understanding of Markdown and MDC files
 ```
 
 ## Contributing
@@ -87,4 +81,4 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Security
-For security concerns, please email security@project-rules.com or open a security advisory on GitHub. 
+For security concerns, please email security@kleosr.com or open a security advisory on GitHub. 
