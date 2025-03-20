@@ -1,4 +1,4 @@
-# Project Rules and Configuration
+# Cursor AI Project Rules and Configuration
 
 <div align="center">
   <img src="https://i.ibb.co/tMy2cRkC/image-fx.png" alt="Project Rules Logo" />
