@@ -1,0 +1,52 @@
+---
+description: "AI Integration and Workflow Management"
+globs: "**/*"
+tags: [ai, workflow, automation]
+priority: 1
+version: 2.0.0
+---
+## Context
+AI integration, workflow automation, and process management
+
+## Requirements
+1. AI Integration:
+   - DeepLucid methodology
+   - OpenRouter validation
+   - MCP server coordination
+   - Automated planning
+   - Self-evolution
+
+2. Workflow Automation:
+   - Task decomposition
+   - Solution validation
+   - Documentation generation
+   - Testing automation
+   - Deployment pipelines
+
+3. Process Management:
+   - Track task progress
+   - Monitor dependencies
+   - Handle conflicts
+   - Manage resources
+   - Optimize workflows
+
+4. Quality Assurance:
+   - Automated testing
+   - Code review
+   - Security scanning
+   - Performance testing
+   - Documentation checks
+
+5. Metrics and Analytics:
+   - Success rates
+   - Performance metrics
+   - Resource usage
+   - Error patterns
+   - Learning rates
+
+## Implementation
+1. Configure AI services
+2. Set up automation
+3. Implement monitoring
+4. Enable analytics
+5. Track progress

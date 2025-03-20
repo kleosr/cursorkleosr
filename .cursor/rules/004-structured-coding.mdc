@@ -1,21 +1,52 @@
 ---
-description: 
-globs: 
-alwaysApply: true
----
-# 004-structured-coding.mdc
----
-description: "Enforce stepwise code explanations"
-globs: "src/**/*"
-tags: [style, best-practices]
-priority: 4
-version: 1.0.0
+description: "Code Structure and Analysis Standards"
+globs: "**/*.{js,ts,py,java,go,rs}"
+tags: [code, analysis, standards]
+priority: 2
+version: 2.0.0
 ---
 ## Context
-Code generation or explanation scenarios
+Code organization, analysis, and quality standards
 
 ## Requirements
-1. Break complex logic into numbered steps
-2. Use analogy-based explanations
-3. Include error handling variants
-4. Mark experimental code with ⚗️ emoji
+1. Code Organization:
+   - Use consistent file structure
+   - Follow naming conventions
+   - Implement modular design
+   - Maintain clean architecture
+   - Document dependencies
+
+2. Analysis Standards:
+   - Static code analysis
+   - Security scanning
+   - Performance profiling
+   - Type checking
+   - Linting enforcement
+
+3. Quality Gates:
+   - Test coverage requirements
+   - Security compliance
+   - Performance thresholds
+   - Documentation standards
+   - Code review criteria
+
+4. Automation:
+   - Automated testing
+   - CI/CD integration
+   - Code quality checks
+   - Documentation generation
+   - Dependency updates
+
+5. Monitoring:
+   - Performance metrics
+   - Error tracking
+   - Usage analytics
+   - Security alerts
+   - Technical debt
+
+## Implementation
+1. Set up analysis tools
+2. Configure quality gates
+3. Implement automation
+4. Enable monitoring
+5. Track metrics

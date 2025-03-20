@@ -1,21 +1,47 @@
 ---
-description: 
-globs: 
-alwaysApply: true
----
-# 003-local-context-first.mdc
----
-description: "Prefer local context over web search"
+description: "Local Context Management and Caching"
 globs: "**/*"
-tags: [context, security]
-priority: 1  # Highest priority
-version: 1.0.1
+tags: [context, caching, performance]
+priority: 1
+version: 2.0.0
 ---
 ## Context
-All queries unless explicitly requesting external data
+Managing local context, caching, and performance optimization
 
 ## Requirements
-1. Check project files first
-2. Use MCP servers if needed
-3. Only suggest web search after 2 failed attempts
-4. NEVER use Brave/DDG
+1. Context Management:
+   - Prioritize local context over external sources
+   - Implement context window optimization
+   - Handle context switching efficiently
+   - Maintain context history
+
+2. Caching Strategy:
+   - Cache frequently accessed data
+   - Implement versioned caching
+   - Clear cache every 24 hours
+   - Track cache hit/miss rates
+
+3. Performance Optimization:
+   - Minimize context switches
+   - Optimize memory usage
+   - Reduce API calls
+   - Monitor resource utilization
+
+4. Security Considerations:
+   - Validate context sources
+   - Secure cache storage
+   - Implement access controls
+   - Log context operations
+
+5. Integration:
+   - Coordinate with MCP servers
+   - Sync with OpenRouter
+   - Update DeepLucid context
+   - Handle fallbacks
+
+## Implementation
+1. Set up context manager
+2. Configure caching system
+3. Implement security checks
+4. Enable monitoring
+5. Track performance metrics

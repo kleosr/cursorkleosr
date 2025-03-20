@@ -4,7 +4,57 @@
 3. Use AWS SDK v3 patterns for cloud integrations
 4. Prefer named exports over default exports
 5. Document all @todo comments in JIRA format
+6. Follow security-first development practices
+7. Implement automated testing for all changes
+8. Use context-aware documentation generation
 
 # MCP CONFIGURATION
-- Primary servers: Sequential Thinking, OpenRouter
+- Primary servers: Sequential Thinking, OpenRouter, DeepLucid
 - Fallback strategy: Local context → MCP → Manual
+- Context window: 32768 tokens
+- Concurrent agents: 3-4 maximum
+- Learning rate: Adaptive based on performance
+- Confidence threshold: 80% for high-risk changes
+
+# AI INTEGRATION RULES
+1. Sequential Thinking:
+   - Use DeepLucid methodology for all complex tasks
+   - Break down problems into numbered steps
+   - Include dependency mapping
+   - Validate solutions through OpenRouter
+
+2. Code Analysis:
+   - Implement multi-phase directory scanning
+   - Use gitignore-aware file filtering
+   - Cache results for performance
+   - Clear cache every 24 hours
+
+3. Documentation:
+   - Generate context-aware markdown files
+   - Use intelligent naming conventions
+   - Include clear descriptions and boundaries
+   - Track changes via Linear
+
+4. Security:
+   - Validate all file paths
+   - Prevent access to sensitive directories
+   - Log all operations
+   - Implement security checks
+
+5. Performance:
+   - Use efficient glob patterns
+   - Implement caching with versioning
+   - Optimize API calls
+   - Monitor resource usage
+
+# ERROR HANDLING
+1. Implement comprehensive error logging
+2. Use descriptive error messages
+3. Include debugging context
+4. Provide recovery steps
+
+# VERSION CONTROL
+1. Use separate branches per domain
+2. Implement automated conflict resolution
+3. Track changes via Linear
+4. Maintain detailed commit messages

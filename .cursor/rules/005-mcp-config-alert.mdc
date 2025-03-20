@@ -1,22 +1,52 @@
 ---
-description: 
-globs: 
-alwaysApply: true
----
-# 005-mcp-config-alert.mdc
----
-description: "Notify on MCP config changes"
-globs: "**/mcp.json"
-tags: [mcp, config]
+description: "MCP Server Configuration and Management"
+globs: "**/mcp.{json,yaml,yml}"
+tags: [mcp, configuration, monitoring]
 priority: 1
-version: 1.0.2
+version: 2.0.0
 ---
 ## Context
-After mcp.json modifications
+MCP server configuration, monitoring, and management
 
 ## Requirements
-1. Detect added/updated servers
-2. If changes not reflected:
-   a. Instruct to drag mcp.json into chat
-   b. Provide merge conflict resolution steps
-   c. Emphasize manual saving requirement
+1. Server Configuration:
+   - Configure for advanced reasoning
+   - Enable dynamic adaptation
+   - Optimize context windows
+   - Set up fallback strategies
+   - Limit concurrent agents (3-4)
+
+2. Performance Monitoring:
+   - Track server health
+   - Monitor resource usage
+   - Measure response times
+   - Log error rates
+   - Analyze throughput
+
+3. Integration Management:
+   - Coordinate with DeepLucid
+   - Sync with OpenRouter
+   - Handle cross-validation
+   - Manage conflicts
+   - Track dependencies
+
+4. Security Controls:
+   - Access management
+   - Request validation
+   - Rate limiting
+   - Audit logging
+   - Vulnerability scanning
+
+5. Alerts and Notifications:
+   - Configuration changes
+   - Performance issues
+   - Security incidents
+   - Integration failures
+   - Resource constraints
+
+## Implementation
+1. Set up monitoring
+2. Configure alerts
+3. Implement security
+4. Enable logging
+5. Track metrics

@@ -1,0 +1,52 @@
+---
+description: "Directory Scanning and File Management"
+globs: "**/*"
+tags: [filesystem, scanning, management]
+priority: 2
+version: 2.0.0
+---
+## Context
+Multi-phase directory scanning, file filtering, and path management
+
+## Requirements
+1. Directory Scanning:
+   - Phase 1: Standard code directories
+   - Phase 2: Project-specific paths
+   - Phase 3: Fallback directories
+   - Cache scan results
+   - Clear cache daily
+
+2. File Filtering:
+   - Respect .gitignore
+   - Filter by significance
+   - Handle nested directories
+   - Track file changes
+   - Monitor file access
+
+3. Path Management:
+   - Use .resolve() for absolute paths
+   - Handle relative paths
+   - Validate path security
+   - Log path operations
+   - Debug path issues
+
+4. Performance:
+   - Optimize scanning
+   - Cache results
+   - Minimize I/O
+   - Track metrics
+   - Handle large directories
+
+5. Security:
+   - Validate paths
+   - Check permissions
+   - Log operations
+   - Prevent traversal
+   - Monitor access
+
+## Implementation
+1. Set up scanner
+2. Configure filters
+3. Implement caching
+4. Enable monitoring
+5. Track metrics
