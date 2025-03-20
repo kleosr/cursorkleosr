@@ -79,6 +79,3 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Security
-For security concerns, please email security@kleosr.com or open a security advisory on GitHub. 
