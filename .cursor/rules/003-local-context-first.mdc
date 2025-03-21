@@ -1,47 +1,75 @@
 ---
-description: "Local Context Management and Caching"
+description: "Local Context Management and Optimization"
 globs: "**/*"
-tags: [context, caching, performance]
+tags: [system, performance, context]
 priority: 1
 version: 2.0.0
+rule_type: "always"
+enforcement: "strict"
 ---
-## Context
-Managing local context, caching, and performance optimization
 
-## Requirements
-1. Context Management:
-   - Prioritize local context over external sources
-   - Implement context window optimization
-   - Handle context switching efficiently
-   - Maintain context history
+## Always Enforcement
+1. Context Rules:
+   - Automatic context loading
+   - Real-time validation
+   - Priority management
+   - Resource optimization
+   - Performance tracking
+
+2. Validation Controls:
+   - Context verification
+   - Source validation
+   - Security checks
+   - Performance monitoring
+   - Resource tracking
+
+3. Enforcement Actions:
+   - Automatic optimization
+   - Context cleanup
+   - Security hardening
+   - Resource balancing
+   - Performance tuning
+
+## Context Management
+1. Local Priority:
+   - Prioritize local context
+   - Optimize context windows
+   - Manage switching
+   - Track history
+   - Monitor usage
 
 2. Caching Strategy:
-   - Cache frequently accessed data
-   - Implement versioned caching
-   - Clear cache every 24 hours
-   - Track cache hit/miss rates
+   - Intelligent caching
+   - Version management
+   - Daily cleanup
+   - Track metrics
+   - Monitor performance
 
-3. Performance Optimization:
-   - Minimize context switches
-   - Optimize memory usage
+3. Performance Controls:
+   - Minimize switches
+   - Optimize memory
    - Reduce API calls
-   - Monitor resource utilization
+   - Track resources
+   - Monitor usage
 
-4. Security Considerations:
-   - Validate context sources
-   - Secure cache storage
-   - Implement access controls
-   - Log context operations
+## Security Implementation
+1. Context Security:
+   - Validate sources
+   - Secure storage
+   - Access control
+   - Operation logging
+   - Monitor usage
 
-5. Integration:
-   - Coordinate with MCP servers
-   - Sync with OpenRouter
-   - Update DeepLucid context
-   - Handle fallbacks
+2. Integration:
+   - MCP coordination
+   - OpenRouter sync
+   - Fallback handling
+   - Error recovery
+   - Performance tracking
 
-## Implementation
-1. Set up context manager
-2. Configure caching system
-3. Implement security checks
-4. Enable monitoring
-5. Track performance metrics
+3. Monitoring:
+   - Resource usage
+   - Performance metrics
+   - Security events
+   - Error patterns
+   - System health

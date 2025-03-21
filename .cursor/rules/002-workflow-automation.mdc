@@ -1,0 +1,65 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 002-workflow-automation.mdc
+---
+description: "Workflow Automation and Process Management"
+globs: "**/*"
+tags: [workflow, automation, process]
+priority: 2
+version: 1.0.0
+---
+
+## Automated Workflows
+
+1. Code Analysis:
+   - Run on file changes
+   - Check against style guides
+   - Validate types
+   - Scan for security issues
+   - Monitor performance impact
+   - Track technical debt
+
+2. Documentation:
+   - Auto-generate on changes
+   - Update README files
+   - Maintain CHANGELOG
+   - Track API changes
+   - Generate type docs
+   - Update examples
+
+3. Testing:
+   - Run unit tests
+   - Integration testing
+   - Performance benchmarks
+   - Security scanning
+   - Coverage reporting
+   - Automated fixes
+
+## Process Management
+
+1. Version Control:
+   - Auto-branch naming
+   - Commit message validation
+   - PR templates
+   - Branch protection
+   - Merge requirements
+   - Change tracking
+
+2. Deployment:
+   - Automated staging
+   - Production safeguards
+   - Rollback procedures
+   - Health checks
+   - Performance monitoring
+   - Error tracking
+
+3. Maintenance:
+   - Dependency updates
+   - Security patches
+   - Cache clearing
+   - Log rotation
+   - Backup procedures
+   - Health reporting 

@@ -1,9 +1,7 @@
 ---
-description: "Directory Scanning and File Management"
-globs: "**/*"
-tags: [filesystem, scanning, management]
-priority: 2
-version: 2.0.0
+description: 
+globs: 
+alwaysApply: true
 ---
 ## Context
 Multi-phase directory scanning, file filtering, and path management

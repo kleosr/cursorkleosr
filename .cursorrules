@@ -1,60 +1,146 @@
 # PROJECT-WIDE DIRECTIVES
-1. All .mdc rules in .cursor/rules take precedence
-2. Default to TypeScript unless specified otherwise
-3. Use AWS SDK v3 patterns for cloud integrations
+1. All .mdc rules in .cursor/rules take precedence and are always enforced
+2. Default to TypeScript with strict type checking
+3. Use modern frontend best practices and patterns
 4. Prefer named exports over default exports
 5. Document all @todo comments in JIRA format
 6. Follow security-first development practices
 7. Implement automated testing for all changes
 8. Use context-aware documentation generation
+9. Enforce automatic code quality checks
+10. Enable real-time validation and monitoring
+11. Implement progressive web app standards
+12. Ensure cross-browser compatibility
 
 # MCP CONFIGURATION
-- Primary servers: Sequential Thinking, OpenRouter, DeepLucid
-- Fallback strategy: Local context → MCP → Manual
-- Context window: 32768 tokens
-- Concurrent agents: 3-4 maximum
-- Learning rate: Adaptive based on performance
-- Confidence threshold: 80% for high-risk changes
+- Primary servers: Sequential Thinking, OpenRouter
+- Fallback strategy: Local context → OpenRouter → Sequential Thinking
+- Context window: 163840 tokens (DeepSeek optimized)
+- Concurrent agents: 4 maximum (parallel branches)
+- Learning rate: Adaptive based on performance metrics
+- Confidence threshold: 85% for high-risk changes
+- Default model: deepseek/deepseek-r1-zero:free
+- Backup models: google/gemini-2.0-flash-thinking-exp:free, undi95/toppy-m-7b:free
+- Enforcement: Always with strict validation
+- Monitoring: Real-time with automatic actions
 
 # AI INTEGRATION RULES
 1. Sequential Thinking:
-   - Use DeepLucid methodology for all complex tasks
+   - Implement 12-depth reasoning chains
    - Break down problems into numbered steps
-   - Include dependency mapping
-   - Validate solutions through OpenRouter
+   - Enable memory management and caching
+   - Validate through confidence scoring
+   - Monitor performance metrics
+   - Use adaptive tokenization
+   - Enable streaming responses
+   - Implement error recovery
+   - Automatic context optimization
+   - Real-time validation checks
 
 2. Code Analysis:
-   - Implement multi-phase directory scanning
-   - Use gitignore-aware file filtering
-   - Cache results for performance
-   - Clear cache every 24 hours
+   - Use adaptive caching strategy
+   - Implement branch pruning
+   - Enable parallel task processing
+   - Monitor resource utilization
+   - Clear cache based on metrics
+   - Track performance indicators
+   - Automatic code quality checks
+   - Real-time security scanning
+   - Continuous integration validation
+   - Performance optimization
 
 3. Documentation:
    - Generate context-aware markdown files
    - Use intelligent naming conventions
    - Include clear descriptions and boundaries
-   - Track changes via Linear
+   - Track changes via git commits
+   - Implement automated documentation updates
+   - Enable metric tracking
+   - Automatic README updates
+   - API documentation generation
+   - Change log maintenance
+   - Type documentation
 
 4. Security:
    - Validate all file paths
    - Prevent access to sensitive directories
-   - Log all operations
+   - Log all operations with metrics
    - Implement security checks
+   - Monitor API usage
+   - Track token consumption
+   - Implement rate limiting
+   - Real-time vulnerability scanning
+   - Automatic security fixes
+   - Access control enforcement
 
 5. Performance:
    - Use efficient glob patterns
-   - Implement caching with versioning
-   - Optimize API calls
+   - Implement adaptive caching
+   - Optimize API calls with batching
    - Monitor resource usage
+   - Track latency metrics
+   - Enable streaming for large responses
+   - Implement parallel processing
+   - Automatic performance tuning
+   - Resource optimization
+   - Load balancing
+
+# AUTOMATION FEATURES
+1. Code Management:
+   - Automatic code formatting
+   - Style enforcement
+   - Type checking
+   - Linting rules
+   - Dependency updates
+   - Security scanning
+   - Performance profiling
+   - Documentation generation
+   - Test coverage analysis
+   - Quality metrics tracking
+
+2. Process Control:
+   - Automated workflows
+   - CI/CD pipelines
+   - Quality gates
+   - Security validation
+   - Performance checks
+   - Resource monitoring
+   - Error tracking
+   - Metric collection
+   - Alert management
+   - System health checks
+
+3. Integration Management:
+   - Version control automation
+   - Branch management
+   - Conflict resolution
+   - Dependency tracking
+   - API coordination
+   - Service integration
+   - Resource allocation
+   - System coordination
+   - Performance optimization
+   - Security enforcement
 
 # ERROR HANDLING
 1. Implement comprehensive error logging
 2. Use descriptive error messages
 3. Include debugging context
 4. Provide recovery steps
+5. Track error patterns
+6. Enable automated recovery
+7. Monitor error rates
+8. Implement fallback strategies
+9. Automatic error classification
+10. Real-time error resolution
 
 # VERSION CONTROL
 1. Use separate branches per domain
 2. Implement automated conflict resolution
-3. Track changes via Linear
+3. Track changes via git
 4. Maintain detailed commit messages
+5. Enable automated versioning
+6. Track deployment metrics
+7. Monitor branch health
+8. Implement automated testing
+9. Enforce branch protection

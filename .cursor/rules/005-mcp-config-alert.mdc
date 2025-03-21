@@ -1,52 +1,75 @@
 ---
-description: "MCP Server Configuration and Management"
-globs: "**/mcp.{json,yaml,yml}"
-tags: [mcp, configuration, monitoring]
+description: "MCP Server Configuration and Alert Management"
+globs: "**/*"
+tags: [system, monitoring, alerts]
 priority: 1
 version: 2.0.0
+rule_type: "always"
+enforcement: "strict"
 ---
-## Context
-MCP server configuration, monitoring, and management
 
-## Requirements
-1. Server Configuration:
-   - Configure for advanced reasoning
-   - Enable dynamic adaptation
-   - Optimize context windows
-   - Set up fallback strategies
-   - Limit concurrent agents (3-4)
+## Always Enforcement
+1. Alert Rules:
+   - Automatic monitoring
+   - Real-time validation
+   - Instant notifications
+   - Performance tracking
+   - Resource management
+
+2. Configuration Controls:
+   - Continuous validation
+   - Security compliance
+   - Performance checks
+   - Resource monitoring
+   - System health
+
+3. Enforcement Actions:
+   - Automatic recovery
+   - Performance tuning
+   - Security hardening
+   - Resource balancing
+   - System optimization
+
+## Server Configuration
+1. Core Settings:
+   - Advanced reasoning
+   - Dynamic adaptation
+   - Context optimization
+   - Fallback strategies
+   - Agent limits (3-4)
 
 2. Performance Monitoring:
-   - Track server health
-   - Monitor resource usage
-   - Measure response times
-   - Log error rates
-   - Analyze throughput
+   - Server health
+   - Resource usage
+   - Response times
+   - Error rates
+   - System throughput
 
 3. Integration Management:
-   - Coordinate with DeepLucid
-   - Sync with OpenRouter
-   - Handle cross-validation
-   - Manage conflicts
-   - Track dependencies
+   - OpenRouter sync
+   - Cross-validation
+   - Conflict handling
+   - Dependency tracking
+   - System coordination
 
-4. Security Controls:
-   - Access management
+## Security Controls
+1. Access Management:
    - Request validation
    - Rate limiting
    - Audit logging
    - Vulnerability scanning
+   - Access control
 
-5. Alerts and Notifications:
-   - Configuration changes
+2. Alert System:
+   - Config changes
    - Performance issues
    - Security incidents
    - Integration failures
-   - Resource constraints
+   - Resource alerts
 
-## Implementation
-1. Set up monitoring
-2. Configure alerts
-3. Implement security
-4. Enable logging
-5. Track metrics
+3. Response Actions:
+   - Automatic mitigation
+   - Issue resolution
+   - System recovery
+   - Performance optimization
+   - Resource reallocation

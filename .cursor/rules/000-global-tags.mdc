@@ -1,0 +1,59 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 000-global-tags.mdc
+---
+description: "Global Tag Configuration for MCP Server"
+globs: "**/*"
+tags: [system, config]
+priority: 0
+version: 2.0.0
+---
+
+## Global Tags
+1. Primary Categories:
+   - automation: [workflow, ci, monitoring]
+   - ai: [codegen, analysis, fixes]
+   - system: [config, performance, security]
+   - development: [typescript, testing, debugging]
+
+2. Capability Tags:
+   - workflow: [ci, cd, monitoring, alerts]
+   - intelligence: [analysis, prediction, optimization]
+   - validation: [testing, security, performance]
+   - integration: [api, services, databases]
+
+3. Scope Tags:
+   - global: System-wide configurations
+   - project: Project-specific settings
+   - module: Module-level configurations
+   - file: File-specific rules
+
+4. Priority Levels:
+   - p0: Critical system components
+   - p1: Core functionality
+   - p2: Enhanced features
+   - p3: Optional components
+
+## Tag Usage Rules
+1. Format:
+   - Use lowercase for all tags
+   - Use hyphens for multi-word tags
+   - Keep tags concise and specific
+
+2. Inheritance:
+   - Child rules inherit parent tags
+   - Local tags override global ones
+   - Project tags extend system tags
+
+3. Combinations:
+   - Max 5 tags per rule
+   - Must include one primary category
+   - Can combine across categories
+
+4. Validation:
+   - Tags must be predefined
+   - No custom tags without approval
+   - Regular tag cleanup required 

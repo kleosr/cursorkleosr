@@ -1,52 +1,75 @@
 ---
-description: "Code Structure and Analysis Standards"
-globs: "**/*.{js,ts,py,java,go,rs}"
-tags: [code, analysis, standards]
-priority: 2
+description: "Structured Code Organization and Quality Standards"
+globs: "**/*"
+tags: [development, quality, structure]
+priority: 1
 version: 2.0.0
+rule_type: "always"
+enforcement: "strict"
 ---
-## Context
-Code organization, analysis, and quality standards
 
-## Requirements
-1. Code Organization:
-   - Use consistent file structure
-   - Follow naming conventions
-   - Implement modular design
-   - Maintain clean architecture
-   - Document dependencies
+## Always Enforcement
+1. Code Structure:
+   - Automatic organization
+   - Style enforcement
+   - Pattern validation
+   - Quality checks
+   - Performance analysis
+
+2. Quality Controls:
+   - Continuous validation
+   - Standard enforcement
+   - Security scanning
+   - Performance monitoring
+   - Resource tracking
+
+3. Enforcement Actions:
+   - Automatic formatting
+   - Code optimization
+   - Security hardening
+   - Performance tuning
+   - Resource management
+
+## Code Organization
+1. Structure Rules:
+   - Consistent file layout
+   - Naming conventions
+   - Modular design
+   - Clean architecture
+   - Dependency tracking
 
 2. Analysis Standards:
-   - Static code analysis
+   - Static analysis
    - Security scanning
    - Performance profiling
-   - Type checking
-   - Linting enforcement
+   - Type validation
+   - Linting rules
 
-3. Quality Gates:
-   - Test coverage requirements
+3. Quality Requirements:
+   - Test coverage
    - Security compliance
-   - Performance thresholds
-   - Documentation standards
-   - Code review criteria
+   - Performance metrics
+   - Documentation quality
+   - Code review standards
 
-4. Automation:
+## Automation Features
+1. Code Management:
    - Automated testing
    - CI/CD integration
-   - Code quality checks
-   - Documentation generation
+   - Quality validation
+   - Documentation gen
    - Dependency updates
 
-5. Monitoring:
-   - Performance metrics
-   - Error tracking
+2. Monitoring System:
+   - Performance tracking
+   - Error monitoring
    - Usage analytics
    - Security alerts
    - Technical debt
 
-## Implementation
-1. Set up analysis tools
-2. Configure quality gates
-3. Implement automation
-4. Enable monitoring
-5. Track metrics
+3. Integration Tools:
+   - Version control
+   - Review process
+   - Deployment flow
+   - Monitoring setup
+   - Alert system

@@ -1,49 +1,71 @@
 ---
-description: "OpenRouter AI Integration and Code Generation"
-globs: "**/*.{js,ts,py,java,go,rs}"
-tags: [ai, codegen, validation]
-priority: 1
-version: 2.0.0
+description: 
+globs: 
+alwaysApply: true
 ---
-## Context
-Code generation, validation, and AI-assisted development using OpenRouter
 
-## Requirements
-1. Model Configuration:
-   - Use optimized context window (32768 tokens)
-   - Configure for advanced reasoning chains
-   - Enable dynamic adaptation
-   - Implement fallback strategies
+## Model Configuration
+1. Primary Model:
+   - deepseek/deepseek-r1-zero:free
+   - Context: 163840 tokens
+   - Temperature: 0.7
+   - Confidence threshold: 85%
+   - Memory management: Adaptive
+   - Response streaming: Enabled
 
-2. Code Generation:
-   - Generate type-safe, secure code
-   - Follow project style guidelines
-   - Include comprehensive error handling
-   - Add automated tests
-   - Generate documentation
+2. Fallback Chain:
+   - google/gemini-2.0-flash-thinking-exp:free
+   - undi95/toppy-m-7b:free
+   - Automatic fallback on failure
+   - Performance monitoring
+   - Load balancing
 
-3. Validation Workflow:
-   - Cross-validate with DeepLucid
-   - Verify security compliance
-   - Check performance metrics
-   - Validate type safety
-   - Run automated tests
+## Intelligent Code Generation
+1. Type Safety:
+   - TypeScript-first development
+   - Strict type checking
+   - Interface generation
+   - Type inference
+   - Error boundaries
+   - Generic type handling
 
-4. Integration Points:
-   - Sequential thinking validation
-   - MCP server coordination
-   - Conflict resolution
-   - Learning rate adjustment
+2. Error Management:
+   - Predictive error detection
+   - Intelligent recovery paths
+   - Context-aware logging
+   - Metric tracking
+   - Performance profiling
+   - Security validation
 
-5. Quality Control:
-   - Confidence scoring (0-100)
-   - Security checks
+3. Testing Framework:
+   - Automated test generation
+   - Edge case detection
+   - Mock data creation
+   - Integration testing
    - Performance benchmarks
-   - Documentation coverage
+   - Coverage analysis
 
-## Implementation
-1. Set up OpenRouter API
-2. Configure model parameters
-3. Implement validation pipeline
-4. Enable automated testing
-5. Track metrics and feedback
+## Advanced Features
+1. Analysis:
+   - Deep code understanding
+   - Dependency tracking
+   - Security scanning
+   - Performance profiling
+   - Resource monitoring
+   - Pattern detection
+
+2. Implementation:
+   - Smart code generation
+   - Automated refactoring
+   - Documentation updates
+   - Test coverage
+   - Security hardening
+   - Performance optimization
+
+3. Validation:
+   - Continuous testing
+   - Security checks
+   - Performance metrics
+   - Compatibility testing
+   - Resource monitoring
+   - Quality assurance

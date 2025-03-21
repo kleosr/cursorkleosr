@@ -4,49 +4,72 @@ globs: "**/*"
 tags: [ai, workflow, automation]
 priority: 1
 version: 2.0.0
+rule_type: "always"
+enforcement: "strict"
 ---
-## Context
-AI integration, workflow automation, and process management
 
-## Requirements
-1. AI Integration:
-   - DeepLucid methodology
+## Always Enforcement
+1. Integration Rules:
+   - Automatic validation
+   - Real-time monitoring
+   - Performance tracking
+   - Resource management
+   - System optimization
+
+2. Workflow Controls:
+   - Process validation
+   - Quality checks
+   - Security scanning
+   - Performance monitoring
+   - Resource tracking
+
+3. Enforcement Actions:
+   - Automatic optimization
+   - Process tuning
+   - Security hardening
+   - Resource balancing
+   - System recovery
+
+## AI Integration
+1. Core Features:
    - OpenRouter validation
-   - MCP server coordination
+   - MCP coordination
    - Automated planning
    - Self-evolution
+   - Learning system
 
 2. Workflow Automation:
    - Task decomposition
    - Solution validation
    - Documentation generation
    - Testing automation
-   - Deployment pipelines
+   - Deployment pipeline
 
 3. Process Management:
-   - Track task progress
-   - Monitor dependencies
-   - Handle conflicts
-   - Manage resources
-   - Optimize workflows
+   - Task tracking
+   - Dependency handling
+   - Conflict resolution
+   - Resource optimization
+   - Workflow enhancement
 
-4. Quality Assurance:
-   - Automated testing
+## Quality System
+1. Automated Testing:
+   - Continuous testing
    - Code review
    - Security scanning
    - Performance testing
    - Documentation checks
 
-5. Metrics and Analytics:
+2. Metrics Analysis:
    - Success rates
-   - Performance metrics
-   - Resource usage
+   - Performance tracking
+   - Resource monitoring
    - Error patterns
-   - Learning rates
+   - Learning metrics
 
-## Implementation
-1. Configure AI services
-2. Set up automation
-3. Implement monitoring
-4. Enable analytics
-5. Track progress
+3. Integration Tools:
+   - Version control
+   - Review process
+   - Deployment flow
+   - Monitoring setup
+   - Alert system

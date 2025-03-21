@@ -5,16 +5,60 @@ alwaysApply: true
 ---
 # 001-sequential-thinking.mdc
 ---
-description: "Use Sequential Thinking MCP for task decomposition"
+description: "Sequential Thinking for Code Analysis and Debugging"
 globs: "**/*"
-tags: [mcp, planning]
-priority: 3
-version: 1.1.0
+tags: [debugging, analysis]
+priority: 1
+version: 2.0.0
 ---
-## Context
-When user requests involve project planning, task breakdown, or dependency analysis
 
-## Requirements
-1. Always invoke "server-sequential-thinking" MCP first
-2. Present outcomes as numbered steps with dependency mapping
-3. Include time estimates for complex tasks
+## Code Analysis Flow
+1. Problem Identification:
+   - Parse error messages and stack traces
+   - Identify affected code regions
+   - Map dependencies
+   - Track error patterns
+   - Log occurrence frequency
+
+2. Sequential Analysis:
+   - Max depth: 12 steps
+   - Break down complex issues
+   - Track dependency chains
+   - Validate assumptions
+   - Generate test cases
+
+3. Solution Generation:
+   - Propose multiple fixes
+   - Rank by confidence (min 85%)
+   - Test against edge cases
+   - Validate type safety
+   - Check performance impact
+
+4. Implementation:
+   - Generate type-safe code
+   - Add error handling
+   - Include tests
+   - Update documentation
+   - Track changes
+
+## Debugging Protocol
+1. Error Capture:
+   - Stack trace analysis
+   - Context gathering
+   - State inspection
+   - Log correlation
+   - Performance metrics
+
+2. Root Cause Analysis:
+   - Deep trace inspection
+   - Pattern recognition
+   - Dependency checking
+   - State validation
+   - Resource monitoring
+
+3. Fix Validation:
+   - Unit test generation
+   - Integration testing
+   - Performance verification
+   - Security validation
+   - Regression checking
