@@ -8,6 +8,9 @@
 ## Introduction
 This project implements a comprehensive rules and automation system using `.cursorrules` and `.cursor/rules` to ensure consistent development practices, automated workflows, and maintainable code quality. Part of the kleosr/cursorkleosr ecosystem.
 
+## Thank you to the forum contributors
+- @atalas[Atalas Profile](https://forum.cursor.com/u/atalas)
+
 ## Project Description
 The project uses two main configuration systems:
 - `.cursorrules`: Project-wide directives, MCP configuration, and automation features
