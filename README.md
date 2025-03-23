@@ -23,90 +23,138 @@ The project uses two main configuration systems:
    cd cursorkleosr
    ```
 
-2. Configure rules:
+2. Configure Python environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Unix/macOS
+   # or
+   .\venv\Scripts\activate  # On Windows
+   which uv && uv pip install -r requirements.txt || pip install -r requirements.txt
+   ```
+
+3. Configure rules:
    ```bash
    cp .cursorrules.example .cursorrules
    ```
 
-## Usage Instructions
-1. Project-wide directives (.cursorrules):
-   ```plaintext
-   # PROJECT-WIDE DIRECTIVES
-   1. All .mdc rules in .cursor/rules take precedence and are always enforced
-   2. Default to TypeScript with strict type checking
-   3. Use modern frontend best practices and patterns
-   4. Prefer named exports over default exports
-   5. Document all @todo comments in JIRA format
-   6. Follow security-first development practices
-   7. Implement automated testing for all changes
-   8. Use context-aware documentation generation
-   9. Enforce automatic code quality checks
-   10. Enable real-time validation and monitoring
-   11. Implement progressive web app standards
-   12. Ensure cross-browser compatibility
+## Core Components
 
-   # MCP CONFIGURATION
-   - Primary servers: Sequential Thinking, OpenRouter
-   - Fallback strategy: Local context → OpenRouter → Sequential Thinking
-   - Context window: 163840 tokens (DeepSeek optimized)
-   - Concurrent agents: 4 maximum (parallel branches)
-   - Learning rate: Adaptive based on performance metrics
-   - Confidence threshold: 85% for high-risk changes
-   - Default model: deepseek/deepseek-r1-zero:free
-   - Backup models: google/gemini-2.0-flash-thinking-exp:free, undi95/toppy-m-7b:free
-   - Enforcement: Always with strict validation
-   - Monitoring: Real-time with automatic actions
-   ```
+### 1. Project-wide Directives
+- TypeScript with strict type checking
+- Modern frontend best practices
+- Security-first development
+- Automated testing and documentation
+- Real-time validation and monitoring
+- Progressive web app standards
 
-2. Rule sets (.cursor/rules):
-   - `000-global-tags.mdc`: Global Tag Configuration and Management
-   - `001-mcp-config.mdc`: MCP Server Configuration with Cascade Technology
-   - `002-openrouter-codegen.mdc`: OpenRouter AI Integration and Code Generation
-   - `003-automation.mdc`: Advanced Code Automation and Monitoring
-   - `004-structured-coding.mdc`: Code Structure and Analysis Standards
-   - `005-mcp-config-alert.mdc`: MCP Server Configuration and Alert Management
-   - `006-ai-integration.mdc`: AI Integration and Workflow Management
-   - `007-directory-scanning.mdc`: Directory Scanning and Path Management
+### 2. MCP Configuration
+- Sequential Thinking with OpenRouter integration
+- 163840 token context window
+- Multi-model support with fallbacks
+- Real-time monitoring and validation
+- Adaptive learning system
 
-## Key Features
-1. **Always Rule Enforcement**: Automatic and strict rule validation across all components
-2. **Cascade Technology**: Advanced context awareness and predictive action tracking
-3. **Enhanced Automation**: Comprehensive workflow automation and monitoring
-4. **Real-time Validation**: Continuous validation and immediate action system
-5. **Performance Optimization**: Advanced caching and resource management
-6. **Security Controls**: Real-time vulnerability scanning and automatic fixes
-7. **Process Management**: Automated workflows and quality gates
-8. **Integration Tools**: Comprehensive version control and deployment automation
+### 3. Learning and Adaptation
+- User-specified lessons repository
+- AI-learned improvements
+- Package compatibility management
+- Tool configuration and integration
+- Multi-provider LLM support
 
-## Additional Resources
-- [Cursor IDE](https://cursor.com) - Recommended IDE for development
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
-- [Progressive Web Apps](https://web.dev/progressive-web-apps/)
-- [OWASP Security Guidelines](https://owasp.org/www-project-top-ten/)
-- [kleosr/cursorkleosr](https://github.com/kleosr/cursorkleosr) - Main repository
+### 4. MDC Rules Structure
+- YAML frontmatter format
+- Task-specific organization
+- Automatic rule application
+- Reference system (@file syntax)
+- Documentation standards
 
-## How It Works
-The rules system implements several key features:
-1. **Always Enforcement**: Automatic and strict rule validation
-2. **Project-wide Directives**: Enhanced development standards
-3. **MCP Configuration**: Advanced server and model configuration
-4. **Rule Sets**: Comprehensive guidelines with automatic enforcement
-5. **Automation Features**: Enhanced workflow automation
-6. **Process Control**: Advanced monitoring and validation
-7. **Integration Management**: Comprehensive system coordination
+### 5. Sequential Thinking Protocol
+- 12-step depth analysis
+- Parallel processing capabilities
+- Confidence scoring system
+- Performance tracking
+- Solution validation
+
+### 6. Scratchpad System
+- Task progress tracking ([X] format)
+- Milestone management
+- Resource allocation
+- Quality metrics
+- Performance monitoring
+
+## Tool Integration
+
+### 1. Development Tools
+- Code generation and analysis
+- Static type checking
+- Automated testing
+- Documentation generation
+- Build automation
+
+### 2. AI Integration
+- Code completion
+- Error detection
+- Pattern recognition
+- Security scanning
+- Test generation
+
+### 3. External Services
+- Web scraping capabilities
+- Search integration
+- Screenshot verification
+- API integration
+- Cloud services
+
+## Security and Performance
+
+### 1. Security Protocols
+- Dependency scanning
+- Access control
+- Data validation
+- Secret management
+- Audit logging
+
+### 2. Performance Optimization
+- Bundle optimization
+- Code splitting
+- Resource management
+- Cache strategies
+- Development server optimization
+
+## Version Control Integration
+
+### 1. Git Workflow
+- Branch naming conventions
+- Commit message standards
+- Pull request templates
+- Code review process
+- Release management
+
+### 2. Continuous Integration
+- Automated testing
+- Build verification
+- Security scanning
+- Documentation updates
+- Deployment automation
 
 ## Changelog
-### Version 3.0.0 (Current)
+
+### Version 3.1.0 (Current)
+- Enhanced learning and adaptation system
+- Improved tool integration framework
+- Added multi-provider LLM support
+- Enhanced scratchpad system with progress tracking
+- Improved security protocols
+- Added performance optimization features
+- Enhanced documentation standards
+
+### Version 3.0.0
 - Implemented "Always" rule type with strict enforcement
 - Added Cascade Technology for enhanced context awareness
 - Enhanced automation features and process control
 - Improved MCP configuration with DeepSeek optimization
-- Increased context window to 163840 tokens
 - Added real-time validation and monitoring
 - Enhanced security measures with automatic fixes
-- Improved performance optimization
-- Added comprehensive automation features
-- Updated all rules to version 3.0.0
 
 ### Version 2.0.0
 - Integrated sequential thinking methodology
@@ -114,18 +162,10 @@ The rules system implements several key features:
 - Implemented multi-phase scanning
 - Added confidence scoring system
 - Enhanced security measures
-- Improved performance
 - Added self-evolution capabilities
-- Reorganized rules structure
-
-### Version 1.0.0 (Initial)
-- Basic rule structure
-- Simple MCP configuration
-- Limited automation capabilities
-- Basic security measures
 
 ## Contributing
 We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) before submitting pull requests.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
