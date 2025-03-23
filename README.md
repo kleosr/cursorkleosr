@@ -23,16 +23,7 @@ The project uses two main configuration systems:
    cd cursorkleosr
    ```
 
-2. Configure Python environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Unix/macOS
-   # or
-   .\venv\Scripts\activate  # On Windows
-   which uv && uv pip install -r requirements.txt || pip install -r requirements.txt
-   ```
-
-3. Configure rules:
+2. Configure rules:
    ```bash
    cp .cursorrules.example .cursorrules
    ```

@@ -28,22 +28,12 @@ The Cursor AI Rule System provides an advanced framework for AI-assisted develop
 ### Prerequisites
 - Cursor IDE with MCP server access
 - OpenRouter API key
-- Python 3.8+ installed
 
 ### Installation
 ```bash
 # Clone repository
 git clone https://github.com/kleosr/cursorkleosr.git
 cd cursorkleosr
-
-# Set up Python environment
-python -m venv venv
-source venv/bin/activate  # On Unix/macOS
-# or
-.\venv\Scripts\activate  # On Windows
-
-# Install dependencies
-which uv && uv pip install -r requirements.txt || pip install -r requirements.txt
 
 # Configure rules
 cp .cursorrules.example .cursorrules
