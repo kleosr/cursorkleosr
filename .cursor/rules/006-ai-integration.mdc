@@ -1,11 +1,7 @@
 ---
-description: "AI Integration and Workflow Management"
-globs: "**/*"
-tags: [ai, workflow, automation]
-priority: 1
-version: 2.0.0
-rule_type: "always"
-enforcement: "strict"
+description: 
+globs: 
+alwaysApply: true
 ---
 
 ## Always Enforcement

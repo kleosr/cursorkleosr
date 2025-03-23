@@ -1,0 +1,153 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 009-scratchpad-integration.mdc
+---
+description: "Scratchpad and Self-Improvement System"
+globs: "**/*"
+tags: [scratchpad, self-improvement, planning, evolution]
+priority: 1
+version: 1.0.0
+---
+
+## Scratchpad System
+
+The scratchpad system provides a structured approach for task planning, progress tracking, and lessons learned. It serves as both a working memory and a long-term knowledge base.
+
+### Core Components
+
+1. **Task Planning**: Organize complex tasks into manageable steps
+2. **Progress Tracking**: Monitor task completion status
+3. **Lessons Learned**: Document reusable knowledge and fixes
+4. **Self-Evolution**: Improve system behavior based on experience
+
+## Implementation
+
+### Scratchpad Structure
+
+The scratchpad is maintained in a dedicated section of the `.cursorrules` file:
+
+```markdown
+# Scratchpad
+
+## Current Task: [Task Name]
+
+### Task Analysis
+[Description of the task and initial thoughts]
+
+### Plan
+[ ] Step 1: [Description]
+[ ] Step 2: [Description]
+[ ] Step 3: [Description]
+
+### Progress
+- [Timestamp] Completed Step 1
+- [Timestamp] Started Step 2
+
+### Notes
+- [Important observations about the task]
+```
+
+### Lessons Learned Structure
+
+Lessons are maintained in a dedicated section of the `.cursorrules` file:
+
+```markdown
+# Lessons
+
+## User Specified Lessons
+- [Important lessons provided by the user]
+
+## System Learned
+- [Lesson 1] - [Date learned]
+- [Lesson 2] - [Date learned]
+```
+
+## Usage Guidelines
+
+### Task Planning Protocol
+
+1. **New Task Initialization**:
+   - When a new task is received, clear the scratchpad of previous task content
+   - Document the task requirements
+   - Break down the task into logical steps
+   - Use checkboxes for tracking progress
+
+2. **Task Execution**:
+   - Update progress as steps are completed
+   - Mark tasks as complete: `[X] Step 1: Description`
+   - Add additional steps as needed
+   - Document challenges and solutions
+
+3. **Task Completion**:
+   - Summarize completed work
+   - Document any lessons learned
+   - Clear the scratchpad for the next task
+
+### Lessons Management
+
+1. **Recording Lessons**:
+   - When encountering errors or receiving corrections, add to lessons
+   - Format: "Specific correction or insight - general principle"
+   - Group related lessons by category
+   - Include timestamps for historical tracking
+
+2. **Applying Lessons**:
+   - Review relevant lessons before starting new tasks
+   - Apply learned patterns to similar situations
+   - Reference specific lessons when making decisions
+   - Update lessons when better approaches are discovered
+
+3. **Categorizing Lessons**:
+   - Technical: Version requirements, API specifics, library usage
+   - Process: Workflow improvements, task management
+   - Domain: Project-specific knowledge
+   - Common Errors: Frequently encountered mistakes
+
+## Self-Evolution Mechanism
+
+1. **Pattern Recognition**:
+   - Identify recurring challenges
+   - Extract general principles from specific cases
+   - Develop reusable solutions
+
+2. **Adaptive Learning**:
+   - Apply past lessons to new contexts
+   - Update approaches based on feedback
+   - Maintain knowledge currency
+   - Optimize for efficiency
+
+3. **Continuous Improvement**:
+   - Regular review of lessons learned
+   - Refactoring of accumulated knowledge
+   - Elimination of outdated information
+   - Integration of new best practices
+
+## Template for Task Planning
+
+```markdown
+# Scratchpad
+
+## Current Task: [Task Name]
+
+### Requirements
+- [Requirement 1]
+- [Requirement 2]
+
+### Plan
+[ ] Step 1: [Description]
+[ ] Step 2: [Description]
+[ ] Step 3: [Description]
+
+### Progress
+- [Timestamp] Started task
+- [Timestamp] Completed Step 1
+
+### Notes
+- [Important observations]
+```
+
+/// Comments: This file implements the scratchpad system for task planning and self-improvement.
+/// The scratchpad content should be maintained in the .cursorrules file for continuity. 

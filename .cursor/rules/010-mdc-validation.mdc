@@ -1,0 +1,195 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 010-mdc-validation.mdc
+---
+description: "MDC Format Validation and Creation Rules"
+globs: "**/*.mdc"
+tags: [documentation, validation, standards, mdc]
+priority: 1
+version: 1.0.0
+---
+
+## MDC File Format
+
+MDC (Markdown Configuration) files provide context-specific instructions and rules for AI systems. This document outlines the format requirements and validation rules for creating and maintaining MDC files in the cursorkleosr framework.
+
+### Dual Frontmatter Structure
+
+Each MDC file in cursorkleosr uses a dual frontmatter structure:
+
+1. **Primary Frontmatter** - Basic configuration for Cursor IDE
+2. **Enhanced Frontmatter** - Detailed configuration for the AI system
+
+```markdown
+---
+description: 
+globs: 
+alwaysApply: true/false
+---
+# File-Title.mdc
+---
+description: "Detailed description"
+globs: "**/*.ext"
+tags: [category1, category2]
+priority: 1-5
+version: X.Y.Z
+---
+
+## Content Section
+...
+```
+
+### Primary Frontmatter Fields
+
+- **description**: Brief description of the rule's purpose
+- **globs**: Comma-separated list of file patterns (no brackets or quotes)
+- **alwaysApply**: Boolean flag for global rule application
+
+### Enhanced Frontmatter Fields
+
+- **description**: Detailed description of the rule's purpose and usage
+- **globs**: File patterns this rule applies to (no brackets or quotes)
+- **tags**: Array of categorization tags
+- **priority**: Numeric priority level (1-5)
+- **version**: Semantic version number
+
+## Content Structure
+
+After the dual frontmatter, the remainder of the file should be valid Markdown:
+
+```markdown
+## Section 1
+- Content and guidelines
+- Code examples
+
+## Section 2
+More detailed information...
+```
+
+### Required Sections
+
+1. **Title**: H1 heading matching the filename
+2. **Overview**: Brief explanation of the rule's purpose
+3. **Content Sections**: H2 headings for major topics
+4. **Examples**: Code or usage examples when applicable
+5. **Comments**: Optional developer notes with `///` prefix
+
+## Validation Rules
+
+### Filename Convention
+
+- Use numbered prefixes for ordering: `001-`, `002-`, etc.
+- Use descriptive names: `sequential-thinking.mdc`
+- Place task-specific rules in the `tasks/` subdirectory
+- Use kebab-case for filenames
+
+### Frontmatter Validation
+
+1. **Primary Frontmatter**:
+   - Must be the first content in the file
+   - Must be enclosed between triple-dash lines
+   - Empty description and globs are acceptable
+
+2. **Enhanced Frontmatter**:
+   - Must follow the H1 title
+   - Must be enclosed between triple-dash lines
+   - Description must be non-empty and quoted
+   - Tags must follow standardized categories
+
+### Tag Validation
+
+1. **Primary Categories**:
+   - automation: [workflow, ci, monitoring]
+   - ai: [codegen, analysis, fixes]
+   - system: [config, performance, security]
+   - development: [typescript, testing, debugging]
+
+2. **Tag Rules**:
+   - Use lowercase for all tags
+   - Use hyphens for multi-word tags
+   - Maximum 5 tags per rule
+   - Include at least one primary category
+
+### Content Validation
+
+1. **Headings**:
+   - H1 for file title (only one per file)
+   - H2 for major sections
+   - H3/H4 for subsections
+   - Use title case for headings
+
+2. **Code Blocks**:
+   - Use fenced code blocks with language specifiers
+   - Include meaningful examples
+   - Comment code blocks for clarity
+
+3. **Links and References**:
+   - Use `[rule-name.mdc](mdc:location/of/the/rule.mdc)` for references
+   - Include absolute paths for external references
+   - Use relative paths for internal references
+
+## Best Practices
+
+1. **File Size**:
+   - Keep files focused on single topics
+   - Aim for 100-300 lines per file
+   - Split large rule sets into multiple files
+
+2. **Documentation Quality**:
+   - Use clear, concise language
+   - Include examples for complex concepts
+   - Document edge cases and limitations
+   - Keep descriptions actionable
+
+3. **Maintenance**:
+   - Update version numbers on significant changes
+   - Document changes in file comments
+   - Ensure backward compatibility
+   - Cross-reference related files
+
+4. **Inheritance**:
+   - Use tags for grouping related rules
+   - Reference parent rules when extending functionality
+   - Maintain consistent terminology across rule sets
+
+## Creating New MDC Files
+
+### Template
+
+```markdown
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# NNN-descriptive-name.mdc
+---
+description: "Concise description of rule purpose"
+globs: "**/*.ext"
+tags: [primary-category, specific-tag]
+priority: 3
+version: 1.0.0
+---
+
+## Overview
+Brief explanation of this rule's purpose and scope.
+
+## Section One
+Detailed information about the first aspect.
+
+## Section Two
+Detailed information about the second aspect.
+
+## Examples
+```code
+// Example implementation
+```
+
+/// Comments: Additional notes for developers
+```
+
+/// Comments: This file outlines the validation rules for MDC files in the cursorkleosr framework.
+/// The dual frontmatter structure is specific to this framework and differs from standard MDC formats. 

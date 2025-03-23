@@ -24,123 +24,259 @@
 - Enforcement: Always with strict validation
 - Monitoring: Real-time with automatic actions
 
-# AI INTEGRATION RULES
-1. Sequential Thinking:
-   - Implement 12-depth reasoning chains
-   - Break down problems into numbered steps
-   - Enable memory management and caching
-   - Validate through confidence scoring
-   - Monitor performance metrics
-   - Use adaptive tokenization
-   - Enable streaming responses
-   - Implement error recovery
-   - Automatic context optimization
-   - Real-time validation checks
+# LEARNING AND ADAPTATION
+1. Lessons System:
+   - User-specified lessons repository
+   - AI-learned improvements
+   - Version-specific fixes
+   - Common pitfalls and solutions
+   - Package compatibility notes
+   - Model-specific optimizations
+   - Character encoding handling
+   - Version-specific adjustments
 
-2. Code Analysis:
-   - Use adaptive caching strategy
-   - Implement branch pruning
-   - Enable parallel task processing
-   - Monitor resource utilization
-   - Clear cache based on metrics
-   - Track performance indicators
-   - Automatic code quality checks
-   - Real-time security scanning
-   - Continuous integration validation
+2. Tool Configuration:
+   - Python venv activation required
+   - UV package manager preference
+   - Fallback to pip when needed
+   - Screenshot verification workflow
+   - Web scraping capabilities
+   - Search engine integration
+   - Multi-provider LLM support
+   - Git commit message handling
+
+# MDC RULES STRUCTURE
+1. File Organization:
+   - .mdc extension required
+   - YAML frontmatter format
+   - Task-specific rules in tasks/
+   - General rules in root
+   - Automatic rule application
+   - Context-aware inclusion
+   - Reference system (@file syntax)
+   - Rule documentation standards
+
+2. Rule Properties:
+   - Description field required
+   - Glob pattern matching
+   - Always-apply flag support
+   - Markdown content format
+   - Code example inclusion
+   - Architectural decisions
+   - Guidelines documentation
+   - Workflow specifications
+
+# SEQUENTIAL THINKING PROTOCOL
+1. Thought Process:
+   - Max depth: 12 steps
+   - Enable parallel processing
+   - Track confidence scores
+   - Allow branching paths
+   - Maintain context awareness
+   - Enable self-correction
+   - Document decision paths
+   - Track performance metrics
+
+2. Problem Analysis:
+   - Break down complex issues
+   - Map dependencies
+   - Identify root causes
+   - Generate test cases
+   - Track error patterns
+   - Document assumptions
+   - Validate solutions
+   - Monitor progress
+
+3. Solution Generation:
+   - Propose multiple approaches
+   - Rank by confidence (min 85%)
+   - Test edge cases
+   - Validate type safety
+   - Check performance impact
+   - Ensure security compliance
+   - Document trade-offs
+   - Track implementation metrics
+
+# SCRATCHPAD SYSTEM
+1. Task Management:
+   - Current task tracking
+   - Progress monitoring ([X] format)
+   - Step completion status
+   - Blockers and dependencies
+   - Time tracking
+   - Resource allocation
+   - Risk assessment
+   - Quality metrics
+   - Task reflection points
+   - Milestone tracking
+
+2. Knowledge Base:
+   - Lessons learned
+   - Best practices
+   - Common pitfalls
+   - Solution patterns
+   - Code snippets
+   - Documentation links
+   - Reference materials
+   - Performance data
+
+3. Evolution Mechanism:
+   - Pattern recognition
+   - Adaptive learning
+   - Knowledge refinement
    - Performance optimization
+   - Error prevention
+   - Quality improvement
+   - Process automation
+   - Metric tracking
+
+# TOOL INTEGRATION
+1. Development Tools:
+   - Code generation
+   - Static analysis
+   - Type checking
+   - Linting
+   - Testing
+   - Documentation
+   - Build automation
+   - Deployment
+
+2. AI Integration:
+   - Code completion
+   - Error detection
+   - Pattern recognition
+   - Performance analysis
+   - Security scanning
+   - Documentation generation
+   - Test generation
+   - Refactoring suggestions
+
+3. External Services:
+   - Web scraping
+   - Search integration
+   - LLM providers
+   - Screenshot verification
+   - API integration
+   - Cloud services
+   - Monitoring tools
+   - Analytics
+
+# CODE QUALITY STANDARDS
+1. Code Style:
+   - TypeScript strict mode
+   - ESLint configuration
+   - Prettier formatting
+   - Import ordering
+   - Component structure
+   - File organization
+   - Naming conventions
+   - Documentation standards
+
+2. Testing Requirements:
+   - Unit test coverage (min 80%)
+   - Integration testing
+   - E2E testing
+   - Performance testing
+   - Security testing
+   - Accessibility testing
+   - Cross-browser testing
+   - Mobile responsiveness
 
 3. Documentation:
-   - Generate context-aware markdown files
-   - Use intelligent naming conventions
-   - Include clear descriptions and boundaries
-   - Track changes via git commits
-   - Implement automated documentation updates
-   - Enable metric tracking
-   - Automatic README updates
-   - API documentation generation
-   - Change log maintenance
-   - Type documentation
+   - JSDoc comments
+   - README files
+   - API documentation
+   - Component documentation
+   - Architecture diagrams
+   - Setup guides
+   - Troubleshooting guides
+   - Change logs
 
-4. Security:
-   - Validate all file paths
-   - Prevent access to sensitive directories
-   - Log all operations with metrics
-   - Implement security checks
-   - Monitor API usage
-   - Track token consumption
-   - Implement rate limiting
-   - Real-time vulnerability scanning
-   - Automatic security fixes
-   - Access control enforcement
+# SECURITY PROTOCOLS
+1. Code Security:
+   - Dependency scanning
+   - Static analysis
+   - Dynamic analysis
+   - Vulnerability checks
+   - Access control
+   - Data validation
+   - Error handling
+   - Logging standards
 
-5. Performance:
-   - Use efficient glob patterns
-   - Implement adaptive caching
-   - Optimize API calls with batching
-   - Monitor resource usage
-   - Track latency metrics
-   - Enable streaming for large responses
-   - Implement parallel processing
-   - Automatic performance tuning
-   - Resource optimization
-   - Load balancing
+2. Development Security:
+   - Secure coding practices
+   - API security
+   - Authentication
+   - Authorization
+   - Data encryption
+   - Secret management
+   - Audit logging
+   - Compliance checks
 
-# AUTOMATION FEATURES
-1. Code Management:
-   - Automatic code formatting
-   - Style enforcement
-   - Type checking
-   - Linting rules
-   - Dependency updates
-   - Security scanning
-   - Performance profiling
-   - Documentation generation
-   - Test coverage analysis
-   - Quality metrics tracking
+# PERFORMANCE OPTIMIZATION
+1. Frontend Performance:
+   - Bundle optimization
+   - Code splitting
+   - Lazy loading
+   - Caching strategies
+   - Image optimization
+   - CSS optimization
+   - JavaScript optimization
+   - Resource management
 
-2. Process Control:
-   - Automated workflows
-   - CI/CD pipelines
-   - Quality gates
-   - Security validation
-   - Performance checks
+2. Development Performance:
+   - Build optimization
+   - Development server
+   - Hot reloading
+   - Cache management
+   - IDE integration
+   - Tool automation
+   - Workflow optimization
    - Resource monitoring
-   - Error tracking
-   - Metric collection
-   - Alert management
-   - System health checks
-
-3. Integration Management:
-   - Version control automation
-   - Branch management
-   - Conflict resolution
-   - Dependency tracking
-   - API coordination
-   - Service integration
-   - Resource allocation
-   - System coordination
-   - Performance optimization
-   - Security enforcement
 
 # ERROR HANDLING
-1. Implement comprehensive error logging
-2. Use descriptive error messages
-3. Include debugging context
-4. Provide recovery steps
-5. Track error patterns
-6. Enable automated recovery
-7. Monitor error rates
-8. Implement fallback strategies
-9. Automatic error classification
-10. Real-time error resolution
+1. Runtime Errors:
+   - Error boundaries
+   - Global error handling
+   - Error logging
+   - Error reporting
+   - Recovery strategies
+   - User feedback
+   - Debug information
+   - Performance impact
+
+2. Development Errors:
+   - Compile-time checks
+   - Type checking
+   - Linting rules
+   - Test failures
+   - Build errors
+   - Deployment issues
+   - Integration errors
+   - Configuration problems
 
 # VERSION CONTROL
-1. Use separate branches per domain
-2. Implement automated conflict resolution
-3. Track changes via git
-4. Maintain detailed commit messages
-5. Enable automated versioning
-6. Track deployment metrics
-7. Monitor branch health
-8. Implement automated testing
-9. Enforce branch protection
+1. Git Workflow:
+   - Branch naming
+   - Commit messages
+   - Pull requests
+   - Code review
+   - Merge strategy
+   - Version tagging
+   - Release management
+   - Changelog maintenance
+
+2. Continuous Integration:
+   - Automated testing
+   - Build verification
+   - Code quality checks
+   - Security scanning
+   - Performance testing
+   - Documentation updates
+   - Deployment automation
+   - Monitoring integration
+
+/// Comments: This integrated .cursorrules file combines the best practices from all sources
+/// while maintaining consistency with the established MDC framework and enhancing the
+/// development workflow with AI-powered tools and processes. 
+/// The scratchpad system has been enhanced with progress tracking features. 

@@ -1,0 +1,203 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 008-tool-integration.mdc
+---
+description: "External Tool Integration and Usage Patterns"
+globs: "**/*"
+tags: [tools, integration, automation, external-services]
+priority: 1
+version: 1.0.0
+---
+
+## Available Tools
+
+This file documents the external tools integrated with the Cursor AI system for enhanced capabilities.
+
+### 1. Web Browser Integration
+
+Web scraping and content retrieval with configurable options:
+
+```bash
+python3 ./tools/web_scraper.py --max-concurrent 3 URL1 URL2 URL3
+```
+
+Configuration options:
+- `--max-concurrent`: Number of concurrent requests (default: 3)
+- `--timeout`: Request timeout in seconds (default: 30)
+- `--user-agent`: Custom user agent string
+- `--delay`: Delay between requests in seconds
+
+Example usage:
+```python
+from tools.web_scraper import scrape_urls
+
+# Basic scraping
+content = scrape_urls(["https://example.com"])
+
+# With options
+options = {
+    "max_concurrent": 5,
+    "timeout": 60,
+    "user_agent": "Custom Agent",
+    "delay": 2
+}
+content = scrape_urls(["https://example.com"], **options)
+```
+
+### 2. Search Engine Integration
+
+Search web content through DuckDuckGo:
+
+```bash
+python3 ./tools/search_engine.py "your search keywords"
+```
+
+Configuration options:
+- `--max-results`: Maximum number of results (default: 10)
+- `--max-retries`: Maximum retry attempts (default: 3)
+
+Example usage:
+```python
+from tools.search_engine import search
+
+# Basic search
+results = search("python programming")
+
+# With options
+results = search("python programming", max_results=15, max_retries=5)
+```
+
+Output format:
+```
+URL: https://example.com
+Title: Result title
+Snippet: Brief description of the search result
+```
+
+### 3. LLM Integration
+
+Interact with various LLM providers:
+
+```bash
+python3 ./tools/llm_api.py --prompt "Your prompt here" --provider "anthropic"
+```
+
+Supported providers:
+- OpenAI (default, model: gpt-4o)
+- Azure OpenAI
+- DeepSeek (model: deepseek-chat)
+- Anthropic (model: claude-3-sonnet-20240229)
+- Gemini (model: gemini-pro)
+- Local LLM (model: Qwen/Qwen2.5-32B-Instruct-AWQ)
+
+Example usage:
+```python
+from tools.llm_api import query_llm
+
+# Basic query
+response = query_llm("What is the capital of France?")
+
+# With provider
+response = query_llm(
+    "What is the background color of this webpage?",
+    provider="anthropic"
+)
+```
+
+### 4. Screenshot Verification
+
+Capture and analyze web page screenshots:
+
+```bash
+python3 ./tools/screenshot_utils.py URL --output OUTPUT --width WIDTH --height HEIGHT
+```
+
+Configuration options:
+- `--output`: Output filename (default: screenshot.png)
+- `--width`: Viewport width (default: 1280)
+- `--height`: Viewport height (default: 720)
+
+Example usage:
+```python
+from tools.screenshot_utils import take_screenshot_sync
+from tools.llm_api import query_llm
+
+# Take a screenshot
+screenshot_path = take_screenshot_sync('https://example.com', 'screenshot.png')
+
+# Verify with LLM
+response = query_llm(
+    "What is the background color and title of this webpage?",
+    provider="openai",  # or "anthropic"
+    image_path=screenshot_path
+)
+```
+
+## Tool Usage Patterns
+
+### Sequential Tool Chain
+
+For complex workflows, chain tools together:
+
+1. Search for relevant information
+2. Scrape specific web pages from search results
+3. Extract content and process with LLM
+4. Document findings
+
+Example:
+```python
+# 1. Search for information
+search_results = search("recent AI developments")
+
+# 2. Extract relevant URLs
+urls = [result["url"] for result in search_results[:3]]
+
+# 3. Scrape content
+content = scrape_urls(urls)
+
+# 4. Process with LLM
+summary = query_llm(f"Summarize this information: {content}")
+```
+
+### Parallel Tool Execution
+
+For independent tasks, execute tools in parallel:
+
+```python
+import asyncio
+from tools.web_scraper import scrape_urls_async
+
+async def process_multiple_sources():
+    # Fetch multiple sources concurrently
+    urls = ["https://site1.com", "https://site2.com", "https://site3.com"]
+    results = await scrape_urls_async(urls, max_concurrent=3)
+    
+    # Process results
+    return results
+
+# Run the parallel execution
+results = asyncio.run(process_multiple_sources())
+```
+
+### Tools Environment Setup
+
+Ensure Python virtual environment is activated:
+
+```bash
+# Check for venv
+if [ ! -d "venv" ]; then
+    python3 -m venv venv
+fi
+
+# Activate venv
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+/// Comments: This file documents the external tools available for integration with Cursor AI. 
+/// The tools directory needs to be created or copied from devin.cursorrules repository. 

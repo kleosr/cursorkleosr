@@ -1,0 +1,180 @@
+---
+description: Template for task-specific MDC files
+globs: 
+alwaysApply: false
+---
+# 001-task-template.mdc
+---
+description: "Template for Creating Task-Specific Guidelines"
+globs: ""
+tags: [task, template, guidance]
+priority: 1
+version: 1.0.0
+---
+
+## Task Template Overview
+
+This template provides a standardized structure for creating task-specific guidance in the MDC format. Task-specific MDC files should focus on particular workflows, processes, or development patterns that are applied consistently across projects.
+
+## When to Create a Task MDC
+
+Create a task-specific MDC file when:
+
+1. A workflow or process needs to be documented and standardized
+2. Multiple team members need to perform the same task consistently
+3. A complex development pattern needs clear documentation
+4. The guidance is specific enough that it doesn't belong in a general rule
+
+## Task MDC Structure
+
+### Required Components
+
+1. **Task Definition**: Clear explanation of what the task involves
+2. **Prerequisites**: Required tools, permissions, or knowledge
+3. **Step-by-Step Process**: Numbered steps for completing the task
+4. **Validation Criteria**: How to verify successful completion
+5. **Troubleshooting**: Common issues and their solutions
+
+### Recommended Components
+
+6. **Examples**: Real-world examples of task completion
+7. **Related Tasks**: Links to related task documentation
+8. **Best Practices**: Optimization tips and recommended patterns
+9. **References**: External resources or documentation
+
+## Template
+
+```markdown
+---
+description: Description of when to use this task guide
+globs: **/<relevant-paths>/*
+alwaysApply: false
+---
+# NNN-task-name.mdc
+---
+description: "Detailed guidance for performing [Task Name]"
+globs: "**/<relevant-files>.*"
+tags: [task, category, specific-tags]
+priority: 2
+version: 1.0.0
+---
+
+## Task Definition
+[Clear explanation of what this task involves and when it should be performed]
+
+## Prerequisites
+- [Tool/permission/knowledge requirement 1]
+- [Tool/permission/knowledge requirement 2]
+- [Tool/permission/knowledge requirement 3]
+
+## Step-by-Step Process
+
+1. **Preparation**
+   - [Preparation step 1]
+   - [Preparation step 2]
+
+2. **Implementation**
+   - [Implementation step 1]
+   - [Implementation step 2]
+   - [Implementation step 3]
+
+3. **Validation**
+   - [Validation step 1]
+   - [Validation step 2]
+
+## Validation Criteria
+- [Criteria 1: How to verify successful implementation]
+- [Criteria 2: How to verify successful implementation]
+
+## Troubleshooting
+
+### Common Issue 1
+- **Symptom**: [Description of the issue]
+- **Cause**: [Explanation of what causes this issue]
+- **Solution**: [Step-by-step solution]
+
+### Common Issue 2
+- **Symptom**: [Description of the issue]
+- **Cause**: [Explanation of what causes this issue]
+- **Solution**: [Step-by-step solution]
+
+## Examples
+
+### Example 1: [Simple Case]
+```code
+// Code example for simple case
+```
+
+### Example 2: [Complex Case]
+```code
+// Code example for complex case
+```
+
+## Related Tasks
+- [Related task 1]
+- [Related task 2]
+
+## Best Practices
+- [Best practice 1]
+- [Best practice 2]
+- [Best practice 3]
+
+## References
+- [Reference 1]
+- [Reference 2]
+```
+
+## Naming Convention
+
+Task MDC files should follow this naming convention:
+
+```
+NNN-task-category-name.mdc
+```
+
+Where:
+- **NNN**: Three-digit number for ordering (e.g., 001, 002)
+- **category**: General area the task belongs to (e.g., testing, deployment)
+- **name**: Descriptive name of the task (e.g., component-creation)
+
+Examples:
+- `001-testing-unit-tests.mdc`
+- `002-deployment-production.mdc`
+- `003-documentation-api.mdc`
+
+## Task Categories
+
+Organize task MDCs into these recommended categories:
+
+1. **Development Tasks**
+   - Code generation
+   - Component creation
+   - API development
+   - Schema updates
+
+2. **Testing Tasks**
+   - Unit testing
+   - Integration testing
+   - Performance testing
+   - Security testing
+
+3. **Documentation Tasks**
+   - API documentation
+   - User guides
+   - System architecture
+   - Code comments
+
+4. **Deployment Tasks**
+   - Environment setup
+   - Build processes
+   - Release management
+   - Monitoring
+
+5. **Maintenance Tasks**
+   - Refactoring
+   - Dependency updates
+   - Performance optimization
+   - Security patching
+
+/// Comments: This template provides a standardized structure for task-specific MDC files.
+/// When creating new task MDCs, copy this template and replace the placeholder content. 

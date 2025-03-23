@@ -5,12 +5,44 @@ alwaysApply: true
 ---
 # 001-sequential-thinking.mdc
 ---
-description: "Sequential Thinking for Code Analysis and Debugging"
+description: "Sequential Thinking for Code Analysis and Problem Solving"
 globs: "**/*"
-tags: [debugging, analysis]
+tags: [debugging, analysis, reasoning, problem-solving]
 priority: 1
-version: 2.0.0
+version: 3.0.0
 ---
+
+## Core Parameters
+- `maxDepth: 12` - Maximum number of sequential thoughts in a chain
+- `parallelTasks: true` - Enables parallel processing of thoughts when possible
+- `contextWindow: 163840` - Maximum context window size for processing thoughts
+- `branchingEnabled: true` - Allows thought processes to branch into different paths
+- `revisionEnabled: true` - Enables revision of previous thoughts
+- `confidenceThreshold: 0.85` - Minimum confidence level for thought acceptance
+
+## Enhancement Features
+- `enableSummarization: true` - Automatically summarizes complex thought chains
+- `thoughtCategorization: true` - Categorizes thoughts by type and relevance
+- `progressTracking: true` - Tracks progress through thought chains
+- `dynamicAdaptation: true` - Adapts thinking strategy based on context
+
+## How Sequential Thinking Works
+
+1. **Thought Initialization**
+   - System analyzes the problem scope
+   - Determines initial number of required thoughts
+   - Sets up thinking parameters
+
+2. **Thought Processing**
+   - Each thought builds on previous ones
+   - Thoughts can branch into sub-thoughts
+   - Parallel processing when possible
+   - Dynamic adaptation based on context
+
+3. **Revision and Refinement**
+   - Thoughts can be revised based on new information
+   - Confidence threshold ensures quality
+   - Summarization helps maintain clarity
 
 ## Code Analysis Flow
 1. Problem Identification:
@@ -62,3 +94,25 @@ version: 2.0.0
    - Performance verification
    - Security validation
    - Regression checking
+
+## Example Usage
+
+```javascript
+// Sequential thinking example
+{
+  thoughtNumber: 1,
+  thought: "Initial problem analysis",
+  nextThoughtNeeded: true,
+  branchingEnabled: true
+}
+
+// With branching
+{
+  thoughtNumber: 2,
+  thought: "Exploring solution path A",
+  branchId: "A",
+  nextThoughtNeeded: true
+}
+```
+
+/// Comments: This file integrates Sequential Thinking concepts from both the existing implementation and guide.mdc. Adjust parameters as needed for specific use cases.
