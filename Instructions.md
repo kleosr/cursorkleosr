@@ -9,6 +9,10 @@ The Cursor AI Rule System provides an advanced framework for AI-assisted develop
 ### Core Components
 1. `.cursorrules` - Global configuration file (project root)
 2. `.cursor/rules/*.mdc` - Specialized rule modules with "Always" enforcement
+3. Learning and Adaptation System
+4. Sequential Thinking Protocol
+5. Scratchpad System
+6. Tool Integration Framework
 
 ### Model Configuration
 - Primary: `deepseek/deepseek-r1-zero:free`
@@ -23,161 +27,178 @@ The Cursor AI Rule System provides an advanced framework for AI-assisted develop
 
 ### Prerequisites
 - Cursor IDE with MCP server access
-- OpenRouter API key 
+- OpenRouter API key
+- Python 3.8+ installed
 
 ### Installation
 ```bash
+# Clone repository
 git clone https://github.com/kleosr/cursorkleosr.git
 cd cursorkleosr
+
+# Set up Python environment
+python -m venv venv
+source venv/bin/activate  # On Unix/macOS
+# or
+.\venv\Scripts\activate  # On Windows
+
+# Install dependencies
+which uv && uv pip install -r requirements.txt || pip install -r requirements.txt
+
+# Configure rules
 cp .cursorrules.example .cursorrules
 ```
 
-## Core Configuration
+## Core Features
 
-### Project Directives
-1. All `.mdc` rules are strictly enforced
-2. TypeScript with strict type checking
-3. Modern frontend best practices
-4. Named exports preferred
-5. JIRA-format @todo comments
-6. Security-first development
-7. Automated testing required
-8. Context-aware documentation
-9. Automatic code quality checks
-10. Real-time validation
-11. Progressive web app standards
-12. Cross-browser compatibility
+### 1. Sequential Thinking Protocol
+- 12-step depth maximum
+- Parallel processing enabled
+- Confidence scoring (85%+ required)
+- Context-aware solutions
+- Performance tracking
 
-### MCP Server Settings
-- Sequential Thinking + OpenRouter integration
-- Local → OpenRouter → Sequential fallback chain
-- 4 concurrent agents maximum
-- Adaptive learning rate
-- Real-time monitoring and validation
+### 2. Learning System
+- User-specified lessons
+- AI-learned improvements
+- Package compatibility
+- Tool configuration
+- Multi-provider LLM support
 
-## Rule Structure
+### 3. Scratchpad System
+- Task progress tracking ([X] format)
+- Milestone management
+- Resource allocation
+- Quality metrics
+- Performance monitoring
 
-### `.mdc` File Format
+### 4. Tool Integration
+- Code generation
+- Static analysis
+- Testing automation
+- Documentation
+- Security scanning
+
+## Development Workflow
+
+### 1. Project Structure
+```
+project/
+├── .cursorrules
+├── .cursor/
+│   └── rules/
+│       ├── 000-global-tags.mdc
+│       ├── 001-mcp-config.mdc
+│       └── ...
+├── src/
+├── lib/
+├── app/
+└── components/
+```
+
+### 2. Rule Creation
 ```yaml
 ---
 description: "Rule purpose"
 globs: "File patterns"
 tags: [category1, category2]
 priority: 1-5
-version: X.Y.Z
+version: "3.1.0"
 rule_type: "always"
 enforcement: "strict"
 ---
+
+# Rule Title
+
+## Description
+Detailed rule description
+
+## Implementation
+Implementation details
+
+## Validation
+Validation criteria
 ```
 
-### Global Tag System
-1. Primary Categories:
-   - automation: [workflow, ci, monitoring]
-   - ai: [codegen, analysis, fixes]
-   - system: [config, performance, security]
-   - development: [typescript, testing, debugging]
+### 3. Task Management
+1. Task Planning:
+   ```markdown
+   # Current Task
+   [ ] Step 1: Planning
+   [ ] Step 2: Implementation
+   [ ] Step 3: Testing
+   [ ] Step 4: Documentation
+   ```
 
-2. Tag Rules:
-   - Lowercase with hyphens
-   - Maximum 5 tags per rule
-   - One primary category required
-   - Predefined tags only
+2. Progress Tracking:
+   ```markdown
+   # Task Progress
+   [X] Initial setup complete
+   [X] Core features implemented
+   [ ] Testing in progress
+   [ ] Documentation pending
+   ```
 
-## Core Features
+## Security Guidelines
 
-### Sequential Thinking
-1. Problem Analysis:
-   - 12-step depth maximum
-   - Dependency chain tracking
-   - Context-aware solutions
-   - Confidence scoring (85%+ required)
+### 1. Code Security
+- Use dependency scanning
+- Implement access control
+- Validate all data
+- Secure credentials
+- Enable audit logging
 
-2. Solution Validation:
-   - Type safety verification
-   - Performance impact analysis
-   - Security compliance check
-   - Integration testing
+### 2. Development Security
+- Follow secure coding practices
+- Implement API security
+- Use authentication
+- Encrypt sensitive data
+- Manage secrets securely
 
-### Automation Pipeline
-1. Code Management:
-   - Real-time linting
-   - Automatic formatting
-   - Type checking
-   - Security scanning
-   - Performance profiling
+## Performance Best Practices
 
-2. Documentation:
-   - Auto-generated docs
-   - API documentation
-   - Changelog maintenance
-   - Type definitions
+### 1. Frontend Optimization
+- Optimize bundles
+- Implement code splitting
+- Use lazy loading
+- Optimize resources
+- Monitor performance
 
-3. Testing:
-   - Unit test generation
-   - Integration testing
-   - Performance benchmarks
-   - Security validation
+### 2. Development Optimization
+- Use build optimization
+- Enable hot reloading
+- Manage caching
+- Monitor resources
+- Automate workflows
 
-### Security Controls
-1. Path Management:
-   - `.resolve()` for all paths
-   - Access control enforcement
-   - Path traversal prevention
-   - Operation logging
+## Troubleshooting
 
-2. API Security:
-   - Rate limiting
-   - Request validation
-   - Key management
-   - Vulnerability scanning
+### Common Issues
+1. Rule Validation Failures:
+   - Check rule syntax
+   - Verify glob patterns
+   - Validate frontmatter
+   - Check enforcement level
 
-### Performance Optimization
-1. Caching:
-   - Intelligent expiration
-   - Version management
-   - Metric-based clearing
-   - Resource monitoring
+2. Tool Integration Issues:
+   - Verify environment setup
+   - Check dependencies
+   - Validate API keys
+   - Monitor logs
 
-2. Resource Management:
-   - Parallel processing
-   - Load balancing
-   - Memory optimization
-   - Performance tracking
-
-## Development Workflow
-
-### Directory Structure
-1. Standard Directories:
-   - `src/`
-   - `lib/`
-   - `app/`
-   - `components/`
-
-2. Project-Specific:
-   - Repository analysis
-   - `.gitignore` filtering
-   - Priority-based scanning
-
-### Version Control
-1. Branch Management:
-   - Feature-based branches
-   - Automated conflict resolution
-   - Linear task tracking
-   - Change validation
-
-2. Quality Gates:
-   - Automated testing
-   - Security scanning
-   - Performance checks
-   - Documentation updates
+### Support Resources
+- GitHub Issues
+- Documentation
+- Community Forums
+- Stack Overflow
 
 ## CRITICAL NOTES
 
-1. Rule Modification:
-   - Understand full system architecture
+1. Rule Management:
    - Follow strict compliance
-   - Maintain security protocols
-   - Track all changes
+   - Maintain security
+   - Track changes
+   - Document updates
 
 2. Security Requirements:
    - Validate all paths
@@ -186,7 +207,7 @@ enforcement: "strict"
    - Monitor access
 
 3. Performance Guidelines:
-   - Follow caching strategy
-   - Optimize resource usage
+   - Follow optimization practices
    - Monitor metrics
-   - Balance load
+   - Balance resources
+   - Track performance 
