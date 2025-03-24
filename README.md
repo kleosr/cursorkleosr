@@ -73,6 +73,16 @@ The project uses two main configuration systems:
 - Quality metrics
 - Performance monitoring
 
+### 7. KleoSr CodeWorkFlow (NEW)
+- Kleo Matrix five-phase development protocol
+- Strict operational boundaries with explicit transitions
+- Prevents unauthorized code modifications
+- Comprehensive traceability throughout the development cycle
+- Phase-specific operational constraints
+- Detailed implementation tracking via registries
+- Systematic validation processes
+- See [KleoMatrix-README.md](KleoMatrix-README.md) for details
+
 ## Tool Integration
 
 ### 1. Development Tools
@@ -130,7 +140,15 @@ The project uses two main configuration systems:
 
 ## Changelog
 
-### Version 3.1.0 (Current)
+### Version 3.2.0 (Current)
+- Added KleoSr CodeWorkFlow with Kleo Matrix protocol
+- Implemented five-phase development workflow system
+- Enhanced operational boundaries and transition control
+- Added Implementation Registry tracking
+- Improved validation and verification processes
+- Added structured phase-specific constraint enforcement
+
+### Version 3.1.0
 - Enhanced learning and adaptation system
 - Improved tool integration framework
 - Added multi-provider LLM support
