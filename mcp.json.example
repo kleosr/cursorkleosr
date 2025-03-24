@@ -1,0 +1,99 @@
+{
+  "mcpServers": {
+    "server-sequential-thinking": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@smithery-ai/server-sequential-thinking",
+        "--config",
+        "{\"maxDepth\":8,\"parallelTasks\":true,\"enableSummarization\":true,\"thoughtCategorization\":true,\"progressTracking\":true,\"dynamicAdaptation\":true,\"contextWindow\":32768}"
+      ]
+    },
+    "duckduckgo-mcp-server": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@nickclyde/duckduckgo-mcp-server",
+        "--config",
+        "{}"
+      ]
+    },
+    "openrouterai": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@mcpserver/openrouterai",
+        "--config",
+        "{\"openrouterApiKey\":\"your-api-key\",\"openrouterDefaultModel\":\"open-r1/olympiccoder-32b:free\"}"
+      ]
+    },
+    "mcp-knowledge-graph": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@itseasy21/mcp-knowledge-graph",
+        "--config",
+        "{}"
+      ]
+    },
+    "webmcp": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@jasonjmcghee/webmcp",
+        "--config",
+        "{}"
+      ]
+    },
+    "codex-keeper": {
+      "command": "node",
+      // here i use the absolut path,you can change it to yourself
+      "args": ["E:/share/github/003/modify/mcp-codex-keeper/build/index.js"]
+    },
+    "DeepLucid3D-MCP": {
+      "command": "node",
+      // here i use the absolut path,you can change it to yourself
+      "args": ["E:/share/github/003/DeepLucid3D-MCP/build/index.js"],
+      "env": {
+        "defaultRenderer": "threejs",
+        "shaderDebug": true
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "github": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-github",
+        "--config",
+        "{}"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "token"
+      }
+    }
+  }
+}

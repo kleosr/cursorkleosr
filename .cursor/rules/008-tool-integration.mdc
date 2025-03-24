@@ -136,6 +136,80 @@ response = query_llm(
 )
 ```
 
+### 5. Jina Reader
+
+Clean web content extraction using Jina.ai:
+
+```bash
+python3 ./tools/jina_reader.py URL [--token TOKEN] [--extract-links] [--output OUTPUT]
+```
+
+Configuration options:
+- `--token`: Jina.ai API token (optional, defaults to environment variable)
+- `--extract-links`: Include page link summary
+- `--output`: Save content to specified file
+- `--timeout`: Request timeout in seconds (default: 30)
+- `--debug`: Enable debug mode for detailed logs
+
+Example usage:
+```python
+from tools.jina_reader import read_webpage, JinaReader
+
+# Basic reading
+title, content = read_webpage("https://example.com")
+
+# Advanced usage with reader class
+reader = JinaReader(api_token="your_token")
+result = reader.read_url(
+    url="https://example.com",
+    extract_links=True,
+    timeout=30
+)
+
+if result:
+    print(f"Title: {result.title}")
+    print(f"Content: {result.content}")
+```
+
+### 6. Jina Search
+
+Perform web searches using Jina.ai search API:
+
+```bash
+python3 ./tools/jina_search.py "search query" [--max-results N] [--site DOMAIN] [--site-search] [--json]
+```
+
+Configuration options:
+- `--max-results`: Maximum number of results (default: 10)
+- `--token`: Jina.ai API token (optional)
+- `--site`: Restrict search to specific website
+- `--site-search`: Only search within specified site
+- `--json`: Output results in JSON format
+- `--page`: Result page number
+- `--debug`: Enable debug logging
+
+Example usage:
+```python
+from tools.jina_search import search_jina, JinaSearcher
+
+# Basic search
+results = search_jina("python programming", max_results=10)
+
+# Advanced usage with searcher class
+searcher = JinaSearcher(api_token="your_token", site="https://docs.python.org")
+results = searcher.search(
+    query="async programming",
+    num_results=20,
+    page=1,
+    site_search=True
+)
+
+for result in results:
+    print(f"Title: {result.title}")
+    print(f"URL: {result.url}")
+    print(f"Snippet: {result.snippet}")
+```
+
 ## Tool Usage Patterns
 
 ### Sequential Tool Chain
