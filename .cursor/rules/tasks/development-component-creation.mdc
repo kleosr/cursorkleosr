@@ -3,7 +3,7 @@ description:
 globs: 
 alwaysApply: true
 ---
-# 002-development-component-creation.mdc
+# development-component-creation.mdc
 ---
 description: "Standards and Best Practices for Component Creation"
 globs: "**/components/*.{js,jsx,ts,tsx}"
@@ -237,9 +237,9 @@ export default ContactForm;
 ```
 
 ## Related Tasks
-- [Component Testing](mdc:.cursor/rules/tasks/003-testing-component-tests.mdc)
-- [Styling Components](mdc:.cursor/rules/tasks/004-development-component-styling.mdc)
-- [Component Documentation](mdc:.cursor/rules/tasks/005-documentation-component-docs.mdc)
+- [Component Testing](mdc:.cursor/rules/tasks/testing-component-tests.mdc)
+- [Styling Components](mdc:.cursor/rules/tasks/development-component-styling.mdc)
+- [Component Documentation](mdc:.cursor/rules/tasks/documentation-component-docs.mdc)
 
 ## Best Practices
 - Use functional components with hooks instead of class components

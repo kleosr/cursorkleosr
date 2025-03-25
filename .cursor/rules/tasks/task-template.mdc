@@ -3,7 +3,7 @@ description: Template for task-specific MDC files
 globs: 
 alwaysApply: false
 ---
-# 001-task-template.mdc
+# task-template.mdc
 ---
 description: "Template for Creating Task-Specific Guidelines"
 globs: ""
@@ -50,7 +50,7 @@ description: Description of when to use this task guide
 globs: **/<relevant-paths>/*
 alwaysApply: false
 ---
-# NNN-task-name.mdc
+# task-name.mdc
 ---
 description: "Detailed guidance for performing [Task Name]"
 globs: "**/<relevant-files>.*"
@@ -129,18 +129,17 @@ version: 1.0.0
 Task MDC files should follow this naming convention:
 
 ```
-NNN-task-category-name.mdc
+task-category-name.mdc
 ```
 
 Where:
-- **NNN**: Three-digit number for ordering (e.g., 001, 002)
 - **category**: General area the task belongs to (e.g., testing, deployment)
 - **name**: Descriptive name of the task (e.g., component-creation)
 
 Examples:
-- `001-testing-unit-tests.mdc`
-- `002-deployment-production.mdc`
-- `003-documentation-api.mdc`
+- `testing-unit-tests.mdc`
+- `deployment-production.mdc`
+- `documentation-api.mdc`
 
 ## Task Categories
 
