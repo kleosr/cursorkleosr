@@ -1,10 +1,6 @@
 ---
 description: "Standards and Best Practices for Component Creation"
 globs: "**/components/*.{js,jsx,ts,tsx}"
----
----
-description: "Standards and Best Practices for Component Creation"
-globs: "**/components/*.{js,jsx,ts,tsx}"
 tags: [task, development, components, frontend]
 priority: 2
 version: 1.0.0
@@ -79,7 +75,10 @@ const Button: React.FC<ButtonProps> = ({
 ## Best Practices
 - Use functional components with hooks
 - Keep components focused on single responsibility
-- Extract complex logic Useaces for all propsaluow ntions
+- Extract complex logic to custom hooks
+- Use TypeScript interfaces for all props
+- Provide default values for optional props
+- Follow project's naming conventions
 - Test components in isolation
 
 ## Related Tasks
