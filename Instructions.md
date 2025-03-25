@@ -8,26 +8,23 @@ The Cursor AI Rule System provides an advanced framework for AI-assisted develop
 
 ### Core Components
 1. `.cursorrules` - Global configuration file (project root)
-2. `.cursor/rules/*.mdc` - Specialized rule modules with "Always" enforcement
-3. Learning and Adaptation System
-4. Sequential Thinking Protocol
-5. Scratchpad System
-6. Tool Integration Framework
+2. `.cursor/rules/` - Semantically organized rule modules with "Always" enforcement
+3. KleoSr Matrix Protocol - Five-phase development workflow
+4. AI Chat Rules System - Standardized AI interaction patterns
+5. Command System - Unified command interface
+6. Notepad Integration - Interactive workflow environment
 
 ### Model Configuration
 - Primary: `deepseek/deepseek-r1-zero:free`
 - Context: 163840 tokens
-- Temperature: 0.7
 - Confidence threshold: 85%
-- Backup models:
-  - `google/gemini-2.0-flash-thinking-exp:free`
-  - `undi95/toppy-m-7b:free`
+- Backup models configured as needed
 
 ## Quick Start
 
 ### Prerequisites
 - Cursor IDE with MCP server access
-- OpenRouter API key
+- OpenRouter API key (if using OpenRouter features)
 
 ### Installation
 ```bash
@@ -41,32 +38,39 @@ cp .cursorrules.example .cursorrules
 
 ## Core Features
 
-### 1. Sequential Thinking Protocol
-- 12-step depth maximum
-- Parallel processing enabled
-- Confidence scoring (85%+ required)
-- Context-aware solutions
-- Performance tracking
+### 1. KleoSr Matrix Protocol
+- Five distinct phases (ANALYZE, CONCEPTUALIZE, BLUEPRINT, CONSTRUCT, VALIDATE)
+- Strict operational boundaries
+- Implementation registry tracking
+- Blueprint validation
+- Systematic verification
 
-### 2. Learning System
-- User-specified lessons
-- AI-learned improvements
-- Package compatibility
-- Tool configuration
-- Multi-provider LLM support
+### 2. AI Chat Rules System
+- Mode-based operation (Research, Innovate, Plan, Execute, Review)
+- Structured response format
+- Implementation checklist methodology
+- Command handling with @ prefix
+- Copyable rules for consistent AI behavior
 
-### 3. Scratchpad System
-- Task progress tracking ([X] format)
-- Milestone management
-- Resource allocation
-- Quality metrics
-- Performance monitoring
+### 3. Command System
+- Direct command execution with `@command` syntax
+- Category-based organization (`@category/command`)
+- File references (`@file:path`)
+- Notepad integration (`@notepad:command`)
+- AI interactions (`@ai/rules`)
 
-### 4. Tool Integration
-- Code generation
-- Static analysis
+### 4. Notepad Integration
+- Interactive command execution
+- Command history tracking
+- Session management
+- Structured output display
+- Complex workflow simplification
+
+### 5. Tool Integration
+- Code generation and analysis
+- Static analysis and type checking
 - Testing automation
-- Documentation
+- Documentation generation
 - Security scanning
 
 ## Development Workflow
@@ -74,16 +78,32 @@ cp .cursorrules.example .cursorrules
 ### 1. Project Structure
 ```
 project/
-├── .cursorrules
+├── .cursorrules                    # Command hub
 ├── .cursor/
 │   └── rules/
-│       ├── 000-global-tags.mdc
-│       ├── 001-mcp-config.mdc
-│       └── ...
+│       ├── core/                   # Core system configurations
+│       │   ├── global-tags.mdc
+│       │   ├── mcp-config.mdc
+│       │   ├── matrix-protocol.mdc
+│       │   └── ai-chat-rules.mdc
+│       ├── processing/             # Information processing rules
+│       │   ├── sequential-thinking.mdc
+│       │   └── local-context.mdc
+│       ├── commands/               # Command system implementations
+│       │   ├── command-system.mdc
+│       │   └── notepad-integration.mdc
+│       ├── tools/                  # Tool integration components
+│       │   ├── tool-integration.mdc
+│       │   └── scratchpad.mdc
+│       ├── automation/             # Automation utilities
+│       │   ├── workflow.mdc
+│       │   └── directory-scanning.mdc
+│       ├── validation/             # Validation systems
+│       │   └── mdc-validation.mdc
+│       └── tasks/                  # Task-specific rule sets
+│           └── [task-specific files]
 ├── src/
-├── lib/
-├── app/
-└── components/
+└── ...
 ```
 
 ### 2. Rule Creation
@@ -93,24 +113,94 @@ description: "Rule purpose"
 globs: "File patterns"
 tags: [category1, category2]
 priority: 1-5
-version: "3.1.0"
-rule_type: "always"
-enforcement: "strict"
+version: "5.1.0"
+alwaysApply: true
 ---
 
 # Rule Title
 
-## Description
-Detailed rule description
+## Feature List
+Key features of the rule
 
 ## Implementation
 Implementation details
 
-## Validation
-Validation criteria
+## Usage
+How to use the rule
 ```
 
-### 3. Task Management
+Rules should be placed in the appropriate directory based on their purpose:
+- General system rules: `core/`
+- Information processing: `processing/`
+- Command functionality: `commands/`
+- Tool integration: `tools/`
+- Automation features: `automation/`
+- Validation systems: `validation/`
+- Task-specific rules: `tasks/`
+
+### 3. Command Usage
+
+#### Core Commands
+```
+@analyze        # Run codebase analysis (ANALYZE PHASE)
+@concept        # Brainstorm solutions (CONCEPTUALIZE PHASE)
+@blueprint      # Create implementation plan (BLUEPRINT PHASE)
+@construct      # Execute implementation (CONSTRUCT PHASE)
+@validate       # Verify implementation (VALIDATE PHASE)
+```
+
+#### MCP Commands
+```
+@mcp/config     # Display current MCP configuration
+@mcp/tools      # List available integrated tools
+@mcp/thinking   # Run sequential thinking protocol
+@mcp/search     # Search codebase with semantic understanding
+```
+
+#### AI Commands
+```
+@ai/rules       # Display AI chat interaction rules
+```
+
+#### File References
+```
+@file:global        # Global directives
+@file:mcp/config    # MCP configuration
+@file:thinking      # Sequential thinking
+@file:matrix        # KleoSr Matrix protocol
+@file:commands      # Command system
+@file:ai/rules      # AI chat rules
+# ... and more
+```
+
+#### Notepad Commands
+```
+@notepad:analyze    # Run analysis in notepad
+@notepad:blueprint  # Create blueprint in notepad
+@notepad:thinking   # Run sequential thinking in notepad
+@notepad:history    # View command history
+```
+
+### 4. Using AI Chat Rules
+
+To apply the AI chat rules in any conversation:
+
+1. Copy the contents of the AI chat rules file:
+   ```bash
+   cat .cursor/rules/core/ai-chat-rules.mdc
+   ```
+2. Paste at the beginning of a new chat
+3. Begin interaction with `@analyze` or `ENTER RESEARCH MODE`
+4. The AI will follow the structured mode system and format responses accordingly
+
+This enables:
+- Mode-based operation (Research, Innovate, Plan, Execute, Review)
+- Structured response formatting
+- Implementation checklist methodology
+- Disciplined mode transitions
+- Consistent behavior across chats
+
+### 5. Task Management
 1. Task Planning:
    ```markdown
    # Current Task
@@ -182,22 +272,13 @@ Validation criteria
 - Community Forums
 - Stack Overflow
 
-## CRITICAL NOTES
+## Version Information
 
-1. Rule Management:
-   - Follow strict compliance
-   - Maintain security
-   - Track changes
-   - Document updates
+The current version is 5.1.0, which includes:
+- Reorganized MDC files into semantic directory structure
+- Simplified all MDC files to reduce token usage
+- Added AI Chat Rules system for standardized interactions
+- Enhanced command system with new @ai/rules command
+- Improved cross-referencing between files
 
-2. Security Requirements:
-   - Validate all paths
-   - Protect credentials
-   - Log operations
-   - Monitor access
-
-3. Performance Guidelines:
-   - Follow optimization practices
-   - Monitor metrics
-   - Balance resources
-   - Track performance 
+For a complete changelog, see the README.md file. 
