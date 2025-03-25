@@ -1,9 +1,7 @@
 ---
-description: 
-globs: 
-alwaysApply: true
+description: "Standards and Best Practices for Component Creation"
+globs: "**/components/*.{js,jsx,ts,tsx}"
 ---
-# development-component-creation.mdc
 ---
 description: "Standards and Best Practices for Component Creation"
 globs: "**/components/*.{js,jsx,ts,tsx}"
@@ -11,251 +9,79 @@ tags: [task, development, components, frontend]
 priority: 2
 version: 1.0.0
 ---
+# Component Creation
 
-## Task Definition
-
-This guide outlines the process for creating new components in the application. Components should be modular, reusable, and follow established patterns to ensure consistency and maintainability across the codebase.
+Guidelines for creating modular, reusable frontend components.
 
 ## Prerequisites
+- Node.js and npm/yarn
+- React/TypeScript knowledge
+- Project structure familiarity
+- Design specifications (if applicable)
 
-- Node.js and npm/yarn installed
-- Access to the codebase repository
-- Understanding of React/TypeScript fundamentals
-- Familiarity with the project structure
-- Access to design specifications (if applicable)
+## Process
 
-## Step-by-Step Process
+1. **Planning**
+   - Define component purpose and functionality
+   - Identify props and state requirements
+   - Determine component boundaries
+   - Decide between presentational vs. container pattern
 
-1. **Component Planning**
-   - Determine the component's purpose and functionality
-   - Identify required props and state
-   - Establish component boundaries and responsibilities
-   - Decide whether the component is presentational or container-based
+2. **Structure**
+   ```
+   components/
+   └── MyComponent/
+       ├── index.ts              # Export file
+       ├── MyComponent.tsx       # Main component
+       ├── MyComponent.test.tsx  # Tests
+       └── styles.ts             # Styling
+   ```
 
-2. **Directory Structure**
-   - Create a new directory in the appropriate components folder
-   - Follow the established naming convention (PascalCase for component names)
-   - Create the necessary files:
-     ```
-     components/
-     └── MyComponent/
-         ├── index.ts             # Export file
-         ├── MyComponent.tsx      # Main component
-         ├── MyComponent.test.tsx # Tests
-         └── styles.ts           # Styled components (if applicable)
-     ```
+3. **Implementation**
+   - Create TypeScript interfaces for props
+   - Implement component with proper typing
+   - Add default exports in index.ts
+   - Write unit tests
+   - Document with JSDoc comments
 
-3. **Component Implementation**
-   - Start with TypeScript interfaces for props:
-     ```typescript
-     interface MyComponentProps {
-       title: string;
-       onClick?: (id: string) => void;
-       isActive?: boolean;
-     }
-     ```
-   - Implement the component with proper typing:
-     ```typescript
-     const MyComponent: React.FC<MyComponentProps> = ({
-       title,
-       onClick,
-       isActive = false
-     }) => {
-       return (
-         <div className={isActive ? 'active' : ''}>
-           <h2>{title}</h2>
-           <button onClick={() => onClick?.(title)}>
-             Click me
-           </button>
-         </div>
-       );
-     };
-     ```
-   - Create a default export in index.ts:
-     ```typescript
-     export { default } from './MyComponent';
-     export * from './MyComponent';
-     ```
-
-4. **Testing**
-   - Write tests for the component using Jest and React Testing Library
-   - Test component rendering
-   - Test user interactions
-   - Test prop variations
-   - Test edge cases
-
-5. **Documentation**
-   - Add JSDoc comments to the component and its props
-   - Include examples of usage
-   - Document any complex logic or decisions
-
-## Validation Criteria
-
+## Validation
 - Component renders without errors
-- All tests pass
-- Component follows project structure and naming conventions
-- Props are properly typed with TypeScript
-- Component is responsive and follows design specifications
+- Tests pass
+- TypeScript compile succeeds
+- Matches design specifications
 - No console errors or warnings
-
-## Troubleshooting
-
-### Common Issue: Component Not Rendering
-- **Symptom**: Component is not visible in the application
-- **Cause**: Import path may be incorrect or component export is missing
-- **Solution**: Check the import path and ensure the component is properly exported in index.ts
-
-### Common Issue: TypeScript Errors
-- **Symptom**: TypeScript compiler shows errors related to props
-- **Cause**: Incorrect prop types or missing required props
-- **Solution**: Verify prop interfaces and ensure all required props are provided when using the component
-
-### Common Issue: Style Inconsistencies
-- **Symptom**: Component doesn't match design specifications
-- **Cause**: Missing style properties or incorrect theme usage
-- **Solution**: Compare with design specs and use theme variables instead of hardcoded values
 
 ## Examples
 
-### Example 1: Simple Button Component
-
+**Simple Component**:
 ```typescript
-// components/Button/Button.tsx
-import React from 'react';
-import { StyledButton } from './styles';
-
-export interface ButtonProps {
+// Button.tsx
+interface ButtonProps {
   label: string;
   onClick: () => void;
-  variant?: 'primary' | 'secondary' | 'danger';
-  disabled?: boolean;
+  variant?: 'primary' | 'secondary';
 }
 
 const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
-  variant = 'primary',
-  disabled = false
-}) => {
-  return (
-    <StyledButton
-      onClick={onClick}
-      variant={variant}
-      disabled={disabled}
-      data-testid="button"
-    >
-      {label}
-    </StyledButton>
-  );
-};
-
-export default Button;
+  variant = 'primary'
+}) => (
+  <button 
+    className={`btn btn-${variant}`}
+    onClick={onClick}
+  >
+    {label}
+  </button>
+);
 ```
 
-### Example 2: Complex Form Component
-
-```typescript
-// components/ContactForm/ContactForm.tsx
-import React, { useState } from 'react';
-import { Button, TextField } from '../';
-import { FormContainer } from './styles';
-
-export interface ContactFormProps {
-  onSubmit: (data: ContactFormData) => void;
-  initialData?: ContactFormData;
-}
-
-export interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
-const ContactForm: React.FC<ContactFormProps> = ({
-  onSubmit,
-  initialData = { name: '', email: '', message: '' }
-}) => {
-  const [formData, setFormData] = useState<ContactFormData>(initialData);
-  const [errors, setErrors] = useState<Partial<ContactFormData>>({});
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const validate = (): boolean => {
-    const newErrors: Partial<ContactFormData> = {};
-    
-    if (!formData.name) newErrors.name = 'Name is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Email is invalid';
-    if (!formData.message) newErrors.message = 'Message is required';
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validate()) {
-      onSubmit(formData);
-    }
-  };
-
-  return (
-    <FormContainer onSubmit={handleSubmit}>
-      <TextField
-        label="Name"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        error={errors.name}
-      />
-      <TextField
-        label="Email"
-        name="email"
-        type="email"
-        value={formData.email}
-        onChange={handleChange}
-        error={errors.email}
-      />
-      <TextField
-        label="Message"
-        name="message"
-        multiline
-        rows={4}
-        value={formData.message}
-        onChange={handleChange}
-        error={errors.message}
-      />
-      <Button label="Submit" onClick={() => {}} type="submit" />
-    </FormContainer>
-  );
-};
-
-export default ContactForm;
-```
+## Best Practices
+- Use functional components with hooks
+- Keep components focused on single responsibility
+- Extract complex logic Useaces for all propsaluow ntions
+- Test components in isolation
 
 ## Related Tasks
 - [Component Testing](mdc:.cursor/rules/tasks/testing-component-tests.mdc)
-- [Styling Components](mdc:.cursor/rules/tasks/development-component-styling.mdc)
-- [Component Documentation](mdc:.cursor/rules/tasks/documentation-component-docs.mdc)
-
-## Best Practices
-- Use functional components with hooks instead of class components
-- Keep components focused on a single responsibility
-- Extract complex logic into custom hooks
-- Use TypeScript interfaces for all props
-- Provide default values for optional props
-- Use proper semantic HTML elements
-- Implement accessibility features (ARIA attributes, keyboard navigation)
-- Follow the project's naming conventions consistently
-- Test components in isolation using mocks for dependencies
-
-## References
-- [React Documentation](mdc:https:/reactjs.org/docs/getting-started.html)
-- [TypeScript React Cheatsheet](mdc:https:/github.com/typescript-cheatsheets/react)
-- [React Testing Library](mdc:https:/testing-library.com/docs/react-testing-library/intro)
-
-/// Comments: This file provides guidance for creating components within the project.
-/// Update the examples to match your project's specific conventions and libraries. 
+- [Component Styling](mdc:.cursor/rules/tasks/development-component-styling.mdc)
