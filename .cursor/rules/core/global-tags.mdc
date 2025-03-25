@@ -1,0 +1,28 @@
+---
+description: "Global Tags and Essential Directives"
+globs: "**/*"
+tags: [global, directives, essentials]
+priority: 1
+version: 1.0.0
+alwaysApply: true
+---
+# Global Directives
+
+Essential project-wide directives that apply to all operations.
+
+## Core Directives
+
+1. All .mdc rules in .cursor/rules take precedence and are always enforced
+2. Default to TypeScript with strict type checking
+3. Use context-aware documentation generation
+4. Follow security-first development practices
+
+## File Organization
+
+- .mdc files organized by purpose in directories
+- YAML frontmatter for metadata
+- References through @file: commands
+
+## Command Reference
+
+See `.cursorrules` for the complete command reference 

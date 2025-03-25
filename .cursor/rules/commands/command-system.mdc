@@ -1,0 +1,38 @@
+---
+description: "Command System for Cursor Interface"
+globs: "**/*"
+tags: [commands, execution]
+priority: 1
+version: 1.0.0
+---
+# Command System
+
+Universal command interface for Cursor operations using @command syntax.
+
+## Command Types
+
+- Matrix commands: `@analyze`, `@concept`, etc.
+- MCP commands: `@mcp/config`, `@mcp/tools`, etc.
+- File references: `@file:path`
+- Notepad commands: `@notepad:command`
+
+## Implementation
+
+Command processing follows:
+1. Parse input for command pattern
+2. Route to appropriate handler
+3. Execute command action
+4. Return result
+
+## Usage
+
+```
+@analyze                # Run analysis
+@mcp/config             # Show configuration
+@file:matrix            # Open matrix protocol
+```
+
+## References
+
+- See `.cursorrules` for complete command list
+- See `commands/notepad-integration.mdc` for notepad features 

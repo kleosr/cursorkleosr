@@ -28,15 +28,46 @@ The project uses two main configuration systems:
    cp .cursorrules.example .cursorrules
    ```
 
+## MDC File Organization
+
+The project uses a semantically organized directory structure for MDC files:
+
+```
+.cursor/
+└── rules/
+    ├── core/               # Core system configurations
+    │   ├── global-tags.mdc
+    │   ├── mcp-config.mdc 
+    │   ├── matrix-protocol.mdc
+    │   └── ai-chat-rules.mdc
+    ├── processing/         # Information processing rules
+    │   ├── sequential-thinking.mdc
+    │   └── local-context.mdc
+    ├── commands/           # Command system implementations
+    │   ├── command-system.mdc
+    │   └── notepad-integration.mdc
+    ├── tools/              # Tool integration components
+    │   ├── tool-integration.mdc
+    │   └── scratchpad.mdc
+    ├── automation/         # Automation utilities
+    │   ├── workflow.mdc
+    │   └── directory-scanning.mdc
+    ├── validation/         # Validation systems
+    │   └── mdc-validation.mdc
+    └── tasks/              # Task-specific rule sets
+        └── [task-specific files]
+```
+
+Each MDC file follows a consistent, simplified structure to reduce token usage and improve clarity.
+
 ## Core Components
 
 ### 1. Project-wide Directives
 - TypeScript with strict type checking
-- Modern frontend best practices
 - Security-first development
 - Automated testing and documentation
 - Real-time validation and monitoring
-- Progressive web app standards
+- Context-aware documentation generation
 
 ### 2. MCP Configuration
 - Sequential Thinking with OpenRouter integration
@@ -45,43 +76,102 @@ The project uses two main configuration systems:
 - Real-time monitoring and validation
 - Adaptive learning system
 
-### 3. Learning and Adaptation
-- User-specified lessons repository
-- AI-learned improvements
-- Package compatibility management
-- Tool configuration and integration
-- Multi-provider LLM support
-
-### 4. MDC Rules Structure
-- YAML frontmatter format
-- Task-specific organization
-- Automatic rule application
-- Reference system (@file syntax)
-- Documentation standards
-
-### 5. Sequential Thinking Protocol
-- 12-step depth analysis
-- Parallel processing capabilities
-- Confidence scoring system
-- Performance tracking
-- Solution validation
-
-### 6. Scratchpad System
-- Task progress tracking ([X] format)
-- Milestone management
-- Resource allocation
-- Quality metrics
-- Performance monitoring
-
-### 7. KleoSr CodeWorkFlow (NEW)
-- Kleo Matrix five-phase development protocol
+### 3. KleoSr Matrix Protocol
+- Five-phase development workflow (ANALYZE, CONCEPTUALIZE, BLUEPRINT, CONSTRUCT, VALIDATE)
 - Strict operational boundaries with explicit transitions
 - Prevents unauthorized code modifications
 - Comprehensive traceability throughout the development cycle
 - Phase-specific operational constraints
-- Detailed implementation tracking via registries
-- Systematic validation processes
-- See [KleoMatrix-README.md](KleoMatrix-README.md) for details
+- See `@file:matrix` for complete documentation
+
+### 4. AI Chat Rules (NEW)
+- Standardized interaction patterns for AI assistants
+- Mode-based operation (Research, Innovate, Plan, Execute, Review)
+- Strict mode transition requirements
+- Structured response formats
+- Implementation checklist methodology
+- Copyable rules for consistent AI behavior across chats
+- See `@file:ai/rules` for complete rules
+
+### 5. Command System
+- Streamlined command syntax with `@command` format
+- Direct execution of common tasks
+- Simplified Kleo Matrix phase transitions
+- File reference system
+- Category-based command organization
+- See `.cursorrules` for the complete command reference
+
+### 6. Notepad Integration
+- Execute commands directly from the Cursor notepad
+- Command format: `@notepad:command`
+- Command history tracking
+- Session management
+- Structured result display
+- Simplified workflow for complex operations
+
+## Command Quick Reference
+
+### Core Commands
+```
+@analyze        # Run codebase analysis (shorthand for INITIATE ANALYZE PHASE)
+@concept        # Brainstorm solutions (shorthand for INITIATE CONCEPTUALIZE PHASE)
+@blueprint      # Create implementation plan (shorthand for INITIATE BLUEPRINT PHASE)
+@construct      # Execute implementation (shorthand for INITIATE CONSTRUCT PHASE)
+@validate       # Verify implementation (shorthand for INITIATE VALIDATE PHASE)
+```
+
+### MCP Commands
+```
+@mcp/config     # Display current MCP configuration
+@mcp/tools      # List available integrated tools
+@mcp/thinking   # Run sequential thinking protocol
+@mcp/search     # Search codebase with semantic understanding
+```
+
+### AI Commands
+```
+@ai/rules       # Display AI chat interaction rules
+```
+
+### File References
+```
+@file:global        # Global directives
+@file:mcp/config    # MCP configuration
+@file:thinking      # Sequential thinking
+@file:workflow      # Workflow automation
+@file:matrix        # KleoSr Matrix protocol
+@file:tools         # Tool integration
+@file:commands      # Command system
+@file:notepad       # Notepad integration
+@file:context       # Local context
+@file:scratchpad    # Scratchpad system
+@file:validation    # MDC validation
+@file:scanning      # Directory scanning
+@file:ai/rules      # AI chat rules
+```
+
+### Notepad Commands
+```
+@notepad:analyze       # Run analysis in notepad
+@notepad:blueprint     # Create blueprint in notepad
+@notepad:validate      # Run validation in notepad
+@notepad:thinking      # Run sequential thinking in notepad
+@notepad:history       # View command history
+@notepad:session:start # Start a new session
+@notepad:session:end   # End current session
+@notepad:session:view  # View session details
+```
+
+## Using AI Chat Rules
+
+To apply the AI chat rules in any conversation:
+1. Copy the contents of the AI chat rules file:
+   ```bash
+   cat .cursor/rules/core/ai-chat-rules.mdc
+   ```
+2. Paste at the beginning of a new chat
+3. Begin interaction with `@analyze` or `ENTER RESEARCH MODE`
+4. The AI will follow the structured mode system and format responses accordingly
 
 ## Tool Integration
 
@@ -99,13 +189,6 @@ The project uses two main configuration systems:
 - Security scanning
 - Test generation
 
-### 3. External Services
-- Web scraping capabilities
-- Search integration
-- Screenshot verification
-- API integration
-- Cloud services
-
 ## Security and Performance
 
 ### 1. Security Protocols
@@ -122,25 +205,32 @@ The project uses two main configuration systems:
 - Cache strategies
 - Development server optimization
 
-## Version Control Integration
-
-### 1. Git Workflow
-- Branch naming conventions
-- Commit message standards
-- Pull request templates
-- Code review process
-- Release management
-
-### 2. Continuous Integration
-- Automated testing
-- Build verification
-- Security scanning
-- Documentation updates
-- Deployment automation
-
 ## Changelog
 
-### Version 3.2.0 (Current)
+### Version 5.1.0 (Current)
+- Added AI Chat Rules system for standardized AI interactions
+- Updated command system with @ai/rules command
+- Added file reference for AI chat rules
+- Enhanced README with AI chat rules documentation
+- Improved cross-referencing between related files
+
+### Version 5.0.0
+- Reorganized MDC files into semantic directory structure
+- Simplified all MDC files to reduce token usage
+- Standardized MDC file format and structure
+- Updated file reference system with new paths
+- Improved command documentation
+- Enhanced cross-referencing between files
+
+### Version 4.0.0
+- Streamlined `.cursorrules` file as a command hub
+- Added command execution system with `@command` syntax
+- Added notepad integration with `@notepad:command` format
+- Enhanced Kleo Matrix protocol with command shortcuts
+- Added command history and session management
+- Added file reference system with `@file:path` syntax
+
+### Version 3.2.0
 - Added KleoSr CodeWorkFlow with Kleo Matrix protocol
 - Implemented five-phase development workflow system
 - Enhanced operational boundaries and transition control

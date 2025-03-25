@@ -1,0 +1,41 @@
+---
+description: "Directory Scanning and Monitoring"
+globs: "**/*"
+tags: [scanning, monitoring, filesystem]
+priority: 1
+version: 1.0.0
+---
+# Directory Scanning
+
+Automated file system monitoring and scanning for context awareness.
+
+## Features
+
+- Real-time file monitoring
+- Pattern-based file categorization
+- Context extraction
+- Dependency mapping
+- Change detection
+
+## Implementation
+
+The directory scanning system:
+1. Monitors workspace for changes
+2. Categorizes files by type, purpose, and content
+3. Extracts relevant context for AI operations
+4. Builds and maintains dependency graphs
+5. Triggers relevant automations on changes
+
+## Commands
+
+- File system events trigger automatic scanning
+- Manual scanning through API access
+- Watch configuration through settings
+
+## Usage
+
+Directory scanning improves:
+- Context awareness for AI operations
+- Dependency understanding
+- Change impact analysis
+- Project structure awareness 

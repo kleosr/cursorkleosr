@@ -1,0 +1,44 @@
+---
+description: "MDC Validation System"
+globs: "**/*"
+tags: [validation, mdc, quality]
+priority: 1
+version: 1.0.0
+---
+# MDC Validation
+
+Validates MDC file structure, content, and compliance with standards.
+
+## Features
+
+- Frontmatter validation
+- Content structure checks
+- Cross-reference validation
+- Tag consistency
+- Priority enforcement
+
+## Implementation
+
+The validation system:
+1. Checks YAML frontmatter for required fields
+2. Validates content structure follows standards
+3. Verifies cross-references exist and resolve correctly
+4. Enforces tag consistency across related files
+5. Ensures priority values align with file importance
+
+## Validation Rules
+
+- Description field is required
+- Glob patterns must be valid
+- Tags must be from approved list
+- Priority must be numeric
+- Version must follow semantic versioning
+- Content must have proper structure
+
+## Usage
+
+MDC validation ensures:
+- Consistent documentation
+- Accurate cross-references
+- Proper file discovery
+- Reliable rule application 

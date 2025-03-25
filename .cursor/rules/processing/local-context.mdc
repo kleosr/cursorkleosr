@@ -1,0 +1,33 @@
+---
+description: "Local Context Priority System"
+globs: "**/*"
+tags: [context, local-first, processing]
+priority: 1
+version: 1.0.0
+---
+# Local Context First
+
+Prioritizes local context and file-specific information over global patterns.
+
+## Features
+
+- Contextual relevance scoring
+- Nearest-file analysis
+- Dependency graph integration
+- Semantic proximity detection
+
+## Implementation
+
+The system prioritizes:
+1. Same file > directly imported files > project files > framework
+2. Recent modifications > unchanged code
+3. Explicit patterns > inferred patterns
+4. Local conventions > global best practices
+
+## Usage
+
+Local context prioritization improves:
+- Code completion accuracy
+- Error detection relevance
+- Suggestion quality
+- Documentation generation 

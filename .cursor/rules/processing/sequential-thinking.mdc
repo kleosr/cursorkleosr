@@ -1,0 +1,39 @@
+---
+description: "Sequential Thinking Protocol"
+globs: "**/*"
+tags: [thinking, sequential, problem-solving]
+priority: 1
+version: 1.0.0
+---
+# Sequential Thinking
+
+Structured problem-solving through sequential thought steps to enhance reasoning.
+
+## Features
+
+- Maximum depth: 12 steps
+- Parallel processing capability
+- Confidence scoring
+- Branching logic
+- Self-correction mechanism
+
+## Process
+
+1. Break down complex problems into steps
+2. Generate step-by-step solutions
+3. Track confidence per step
+4. Allow branching for alternative approaches
+5. Review and refine solution paths
+
+## Commands
+
+- `@mcp/thinking` - Run sequential thinking
+- `@notepad:thinking` - Run in notepad with visible steps
+
+## Usage
+
+For complex reasoning tasks, use the sequential thinking protocol to:
+- Analyze trade-offs systematically
+- Map dependencies between components
+- Validate solution efficacy
+- Document decision rationale 
