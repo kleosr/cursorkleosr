@@ -12,6 +12,7 @@ Central index for all MDC rules in the cursorkleosr system.
 - [MCP Configuration](mdc:core/mcp-config.mdc) - Master Control Program settings
 - [Matrix Protocol](mdc:core/matrix-protocol.mdc) - KleoSr Matrix development protocol
 - [AI Chat Rules](mdc:core/ai-chat-rules.mdc) - Standard rules for AI chat interactions
+- [Memory Bank](mdc:core/memory-bank.mdc) - Persistent project documentation system
 
 ## Processing Systems
 

@@ -93,7 +93,16 @@ Each MDC file follows a consistent, simplified structure to reduce token usage a
 - Copyable rules for consistent AI behavior across chats
 - See `@file:ai/rules` for complete rules
 
-### 5. Command System
+### 5. KleoSr Memory Bank (NEW)
+- Persistent project documentation system
+- Structured file hierarchy for complete context retention
+- Core files: projectbrief.md, productContext.md, activeContext.md, systemPatterns.md, techContext.md, progress.md
+- Plan and Act workflow modes
+- Documentation update triggers and procedures
+- Project intelligence capture in .kleosr rules
+- See `@file:memory` for complete documentation
+
+### 6. Command System
 - Streamlined command syntax with `@command` format
 - Direct execution of common tasks
 - Simplified Kleo Matrix phase transitions
@@ -101,7 +110,7 @@ Each MDC file follows a consistent, simplified structure to reduce token usage a
 - Category-based command organization
 - See `.cursorrules` for the complete command reference
 
-### 6. Notepad Integration
+### 7. Notepad Integration
 - Execute commands directly from the Cursor notepad
 - Command format: `@notepad:command`
 - Command history tracking
@@ -148,6 +157,7 @@ Each MDC file follows a consistent, simplified structure to reduce token usage a
 @file:validation    # MDC validation
 @file:scanning      # Directory scanning
 @file:ai/rules      # AI chat rules
+@file:memory        # KleoSr Memory Bank
 ```
 
 ### Notepad Commands
@@ -207,7 +217,14 @@ To apply the AI chat rules in any conversation:
 
 ## Changelog
 
-### Version 5.1.0 (Current)
+### Version 5.2.0 (Current)
+- Added KleoSr Memory Bank for persistent project documentation
+- Updated file reference system with @file:memory
+- Enhanced README with Memory Bank documentation
+- Updated index with Memory Bank reference
+- Improved cross-referencing between related files
+
+### Version 5.1.0
 - Added AI Chat Rules system for standardized AI interactions
 - Updated command system with @ai/rules command
 - Added file reference for AI chat rules
