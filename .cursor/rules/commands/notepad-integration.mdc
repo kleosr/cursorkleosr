@@ -22,6 +22,10 @@ Integration between command system and Cursor notepad for interactive workflows.
 - `@notepad:blueprint` - Create blueprint in notepad
 - `@notepad:validate` - Run validation in notepad
 - `@notepad:thinking` - Run sequential thinking in notepad
+- `@notepad:memory` - Access Memory Bank in notepad
+- `@notepad:memory:update` - Update Memory Bank in notepad
+- `@notepad:memory:view` - View Memory Bank contents in notepad
+- `@notepad:memory:check` - Validate Memory Bank in notepad
 - `@notepad:history` - View command history
 - `@notepad:session:start` - Start new session
 - `@notepad:session:end` - End current session
@@ -37,4 +41,5 @@ Integration between command system and Cursor notepad for interactive workflows.
 ## References
 
 - See `.cursorrules` for complete command list
-- See `commands/command-system.mdc` for command system details 
+- See `commands/command-system.mdc` for command system details
+- See `core/memory-bank.mdc` for Memory Bank documentation 

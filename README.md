@@ -54,7 +54,8 @@ The project uses a semantically organized directory structure for MDC files:
     │   ├── workflow.mdc
     │   └── directory-scanning.mdc
     ├── validation/         # Validation systems
-    │   └── mdc-validation.mdc
+    │   ├── mdc-validation.mdc
+    │   └── memory-bank-validation.mdc
     └── tasks/              # Task-specific rule sets
         └── [task-specific files]
 ```
@@ -97,7 +98,7 @@ Each MDC file follows a consistent, simplified structure to reduce token usage a
 - Phase-specific operational constraints
 - See `@file:matrix` for complete documentation
 
-### 4. AI Chat Rules (NEW)
+### 4. AI Chat Rules
 - Standardized interaction patterns for AI assistants
 - Mode-based operation (Research, Innovate, Plan, Execute, Review)
 - Strict mode transition requirements
@@ -106,13 +107,15 @@ Each MDC file follows a consistent, simplified structure to reduce token usage a
 - Copyable rules for consistent AI behavior across chats
 - See `@file:ai/rules` for complete rules
 
-### 5. KleoSr Memory Bank (NEW)
+### 5. KleoSr Memory Bank
 - Persistent project documentation system
 - Structured file hierarchy for complete context retention
 - Core files: projectbrief.md, productContext.md, activeContext.md, systemPatterns.md, techContext.md, progress.md
 - Plan and Act workflow modes
 - Documentation update triggers and procedures
 - Project intelligence capture in .kleosr rules
+- Command system for management and validation
+- Automated consistency checking and validation
 - See `@file:memory` for complete documentation
 
 ### 6. Command System
@@ -121,6 +124,7 @@ Each MDC file follows a consistent, simplified structure to reduce token usage a
 - Simplified Kleo Matrix phase transitions
 - File reference system
 - Category-based command organization
+- Memory Bank integration
 - See `.cursorrules` for the complete command reference
 
 ### 7. Notepad Integration
@@ -129,6 +133,7 @@ Each MDC file follows a consistent, simplified structure to reduce token usage a
 - Command history tracking
 - Session management
 - Structured result display
+- Memory Bank access and management
 - Simplified workflow for complex operations
 
 ## Command Quick Reference
@@ -186,6 +191,10 @@ Each MDC file follows a consistent, simplified structure to reduce token usage a
 @notepad:blueprint     # Create blueprint in notepad
 @notepad:validate      # Run validation in notepad
 @notepad:thinking      # Run sequential thinking in notepad
+@notepad:memory        # Access Memory Bank in notepad
+@notepad:memory:update # Update Memory Bank in notepad
+@notepad:memory:view   # View Memory Bank contents in notepad
+@notepad:memory:check  # Validate Memory Bank in notepad
 @notepad:history       # View command history
 @notepad:session:start # Start a new session
 @notepad:session:end   # End current session
@@ -222,9 +231,15 @@ The Memory Bank provides persistent project knowledge between AI sessions:
 
 3. To update the Memory Bank when requirements change:
    - Edit the relevant file(s) in the `memory-bank/` directory
-   - Use the trigger phrase "update memory bank" in your next AI session
+   - Use the `@memory/update` command or the trigger phrase "update memory bank"
+   - Alternatively, use `@notepad:memory:update` in the Cursor notepad
 
-4. The AI will read all Memory Bank files at the start of each session, ensuring complete context retention.
+4. To validate Memory Bank consistency:
+   - Use the `@memory/check` command
+   - Or use `@notepad:memory:check` in the Cursor notepad
+   - The system will verify file existence, required sections, and cross-references
+
+5. The AI will read all Memory Bank files at the start of each session, ensuring complete context retention.
 
 ## Tool Integration
 
@@ -260,70 +275,54 @@ The Memory Bank provides persistent project knowledge between AI sessions:
 
 ## Changelog
 
-### Version 5.2.0 (Current)
-- Added KleoSr Memory Bank for persistent project documentation
-- Created memory-bank directory with six core documentation files
-- Created `.cursor/rules/core/memory-bank.mdc` specification
-- Updated file reference system with @file:memory
-- Enhanced README with Memory Bank documentation and usage instructions
-- Updated index with Memory Bank reference
-- Improved cross-referencing between related files
+### Version 6.0.0 (Current)
+* Completed Memory Bank system implementation
+* Added Memory Bank commands (`@memory/update`, `@memory/view`, `@memory/check`)
+* Added Memory Bank notepad integration (`@notepad:memory`, `@notepad:memory:update`, etc.)
+* Created Memory Bank validation system
+* Integrated Memory Bank with workflow automation
+* Enhanced documentation for Memory Bank usage
+* Added automated consistency checking
+
+### Version 5.2.0
+* Added KleoSr Memory Bank for persistent project documentation
+* Created memory-bank directory with six core documentation files
+* Created `.cursor/rules/core/memory-bank.mdc` specification
+* Updated file reference system with @file:memory
+* Enhanced README with Memory Bank documentation and usage instructions
+* Updated index with Memory Bank reference
+* Improved cross-referencing between related files
 
 ### Version 5.1.0
-- Added AI Chat Rules system for standardized AI interactions
-- Updated command system with @ai/rules command
-- Added file reference for AI chat rules
-- Enhanced README with AI chat rules documentation
-- Improved cross-referencing between related files
+* Added AI Chat Rules system for standardized AI interactions
+* Updated command system with @ai/rules command
+* Added file reference for AI chat rules
+* Enhanced README with AI chat rules documentation
+* Improved cross-referencing between related files
 
 ### Version 5.0.0
-- Reorganized MDC files into semantic directory structure
-- Simplified all MDC files to reduce token usage
-- Standardized MDC file format and structure
-- Updated file reference system with new paths
-- Improved command documentation
-- Enhanced cross-referencing between files
+* Reorganized MDC files into semantic directory structure
+* Simplified all MDC files to reduce token usage
+* Standardized MDC file format and structure
+* Updated file reference system with new paths
+* Improved command documentation
+* Enhanced cross-referencing between files
 
 ### Version 4.0.0
-- Streamlined `.cursorrules` file as a command hub
-- Added command execution system with `@command` syntax
-- Added notepad integration with `@notepad:command` format
-- Enhanced Kleo Matrix protocol with command shortcuts
-- Added command history and session management
-- Added file reference system with `@file:path` syntax
+* Streamlined `.cursorrules` file as a command hub
+* Added command execution system with `@command` syntax
+* Added notepad integration with `@notepad:command` format
+* Enhanced Kleo Matrix protocol with command shortcuts
+* Added command history and session management
+* Added file reference system with `@file:path` syntax
 
 ### Version 3.2.0
-- Added KleoSr CodeWorkFlow with Kleo Matrix protocol
-- Implemented five-phase development workflow system
-- Enhanced operational boundaries and transition control
-- Added Implementation Registry tracking
-- Improved validation and verification processes
-- Added structured phase-specific constraint enforcement
-
-### Version 3.1.0
-- Enhanced learning and adaptation system
-- Improved tool integration framework
-- Added multi-provider LLM support
-- Enhanced scratchpad system with progress tracking
-- Improved security protocols
-- Added performance optimization features
-- Enhanced documentation standards
-
-### Version 3.0.0
-- Implemented "Always" rule type with strict enforcement
-- Added Cascade Technology for enhanced context awareness
-- Enhanced automation features and process control
-- Improved MCP configuration with DeepSeek optimization
-- Added real-time validation and monitoring
-- Enhanced security measures with automatic fixes
-
-### Version 2.0.0
-- Integrated sequential thinking methodology
-- Added OpenRouter validation
-- Implemented multi-phase scanning
-- Added confidence scoring system
-- Enhanced security measures
-- Added self-evolution capabilities
+* Added KleoSr CodeWorkFlow with Kleo Matrix protocol
+* Implemented five-phase development workflow system
+* Enhanced operational boundaries and transition control
+* Added Implementation Registry tracking
+* Improved validation and verification processes
+* Added structured phase-specific constraint enforcement
 
 ## Contributing
 We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) before submitting pull requests.

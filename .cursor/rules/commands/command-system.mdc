@@ -13,6 +13,7 @@ Universal command interface for Cursor operations using @command syntax.
 
 - Matrix commands: `@analyze`, `@concept`, etc.
 - MCP commands: `@mcp/config`, `@mcp/tools`, etc.
+- Memory commands: `@memory/update`, `@memory/view`, etc.
 - File references: `@file:path`
 - Notepad commands: `@notepad:command`
 
@@ -30,9 +31,12 @@ Command processing follows:
 @analyze                # Run analysis
 @mcp/config             # Show configuration
 @file:matrix            # Open matrix protocol
+@memory/update          # Update Memory Bank
+@memory/view            # View Memory Bank contents
 ```
 
 ## References
 
 - See `.cursorrules` for complete command list
-- See `commands/notepad-integration.mdc` for notepad features 
+- See `commands/notepad-integration.mdc` for notepad features
+- See `core/memory-bank.mdc` for Memory Bank documentation 

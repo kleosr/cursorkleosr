@@ -16,6 +16,7 @@ Automated task execution and process management for development workflows.
 - Conditional execution
 - Phase-based task grouping
 - Progress tracking
+- Memory Bank integration
 
 ## Triggers
 
@@ -25,6 +26,7 @@ Automation can be triggered by:
 - Phase transitions
 - Time-based schedules
 - External events
+- Memory Bank updates
 
 ## Implementation
 
@@ -33,6 +35,8 @@ The workflow system:
 2. Executes defined action sequences
 3. Tracks progress and status
 4. Reports results to appropriate outputs
+5. Updates Memory Bank documentation
+6. Performs consistency validation
 
 ## Usage
 
@@ -40,4 +44,20 @@ Use workflow automation to:
 - Streamline repetitive tasks
 - Enforce process consistency
 - Maintain quality standards
-- Reduce manual intervention 
+- Reduce manual intervention
+- Keep Memory Bank documentation current
+- Validate documentation integrity
+
+## Memory Bank Automation
+
+The workflow system provides automatic management of Memory Bank:
+- Triggers documentation updates after significant changes
+- Validates cross-file consistency
+- Prompts for updates to outdated information
+- Synchronizes activeContext.md and progress.md
+- Maintains documentation quality standards
+
+## References
+
+- See `core/memory-bank.mdc` for Memory Bank documentation
+- See `validation/memory-bank-validation.mdc` for validation rules 

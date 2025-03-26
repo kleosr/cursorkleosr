@@ -37,6 +37,7 @@ Central index for all MDC rules in the cursorkleosr system.
 ## Validation Systems
 
 - [MDC Validation](mdc:validation/mdc-validation.mdc) - MDC file validation
+- [Memory Bank Validation](mdc:validation/memory-bank-validation.mdc) - Memory Bank file validation
 
 ## Task-Specific Rules
 

@@ -21,6 +21,10 @@
 
 @ai/rules - Display AI chat interaction rules
 
+@memory/update - Trigger Memory Bank update process
+@memory/view - Display Memory Bank document contents
+@memory/check - Validate Memory Bank completeness
+
 ## FILE REFERENCES
 
 @file:global - Global directives (.cursor/rules/core/global-tags.mdc)
@@ -36,6 +40,7 @@
 @file:validation - MDC validation (.cursor/rules/validation/mdc-validation.mdc)
 @file:scanning - Directory scanning (.cursor/rules/automation/directory-scanning.mdc)
 @file:ai/rules - AI chat rules (.cursor/rules/core/ai-chat-rules.mdc)
+@file:memory - KleoSr Memory Bank (.cursor/rules/core/memory-bank.mdc)
 
 ## ESSENTIAL DIRECTIVES
 # Only the most critical directives remain here; others moved to .mdc files
@@ -61,6 +66,7 @@ PHASE 5: VALIDATE - Verifying implementation matches blueprint
 @notepad:blueprint - Create blueprint in notepad
 @notepad:validate - Run validation in notepad
 @notepad:thinking - Run sequential thinking in notepad
+@notepad:memory - Access Memory Bank in notepad
 
 ## MCP CONFIGURATION QUICK REFERENCE
 
