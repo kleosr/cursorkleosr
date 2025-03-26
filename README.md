@@ -1,245 +1,93 @@
-# Cursor AI Project Rules and Configuration
+# An Autonomous AI Workflow for Cursor IDE
 
 <div align="center">
-  <img src="https://i.ibb.co/tMy2cRkC/image-fx.png" alt="Project Rules Logo" />
-  <p><em>A Powerful Rules System for AI-Assisted Development</em></p>
+  <img src="https://i.ibb.co/tMy2cRkC/image-fx.png" alt="Project Rules Logo" width="150"/>
+  <p><em>A simple, autonomous system for AI-assisted development in Cursor.</em></p>
 </div>
 
 ## What is this?
 
-The KleoSr Cursor Rules system helps you get the most out of AI-assisted coding in Cursor. It sets up guidelines that make your interactions with AI more consistent and productive. We've found that the quality of AI responses depends a lot on how you instruct it (`response_quality = f(prompt, LLM, model)`), so we've created a framework that helps you communicate effectively with AI assistants.
+This project provides a streamlined way to work with AI assistants (like Claude or GPT-4) inside the Cursor IDE, making development more autonomous and consistent. It helps the AI remember project context and follow a structured process, even across different sessions. Think of it as giving your AI assistant a reliable memory and a clear playbook.
+
+This setup is inspired by the ideas in the original `kleosr/cursorkleosr` repository but simplifies it drastically for better autonomy and lower overhead.
 
 ## Thanks to
 
-- @atalas [Atalas Cursor IDE Profile](https://forum.cursor.com/u/atalas) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
+*   @atalas [Atalas Cursor IDE Profile](https://forum.cursor.com/u/atalas) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
+*   Contributors to the original `kleosr/cursorkleosr` concepts.
 
-## How it's structured
+## How it Works: The Two-File System
 
-The system uses two main parts to keep things organized:
+Instead of many complex rule files, this system uses just two core Markdown files:
 
-1. **`.cursorrules`**: This contains the big-picture directives, MCP configuration, and automation features.
-2. **`.cursor/rules/`**: These are more specific rule sets that handle particular development scenarios.
+1.  **`project_config.md` (Long-Term Memory - LTM):**
+    *   **Purpose:** Holds the stable, essential information about your project.
+    *   **Content:** Project goals, main technologies, critical coding patterns/conventions, and key constraints.
+    *   **Usage:** The AI reads this at the start of major tasks to understand the project's foundation. It's updated infrequently.
 
-This two-layer approach gives you both broad guidelines and detailed control when you need it.
+2.  **`workflow_state.md` (Short-Term Memory + Rules + Log - STM):**
+    *   **Purpose:** The dynamic heart of the system. Tracks the current work session.
+    *   **Content:**
+        *   `## State`: Current phase (Analyze, Blueprint, etc.), status (Ready, Blocked, etc.).
+        *   `## Plan`: The step-by-step plan for the current task (created in Blueprint phase).
+        *   `## Rules`: **All the operational rules** defining the workflow phases, memory updates, tool use, and error handling.
+        *   `## Log`: A running log of actions, tool outputs, and decisions made during the session.
+    *   **Usage:** The AI reads this file **constantly** before acting and updates it **immediately** after acting. This is how it maintains context and follows the process.
 
-## Getting started
+## The Autonomous Loop
 
-### What you'll need
+The AI operates in a continuous cycle, driven by the `workflow_state.md` file:
 
-- Cursor IDE with MCP server access
-- OpenRouter API key (optional, for some advanced features)
+```mermaid
+flowchart TD
+    Start((Start Cycle)) --> ReadState[Read workflow_state.md];
+    ReadState --> Interpret{Interpret State & Rules};
+    Interpret --> DecideAction[Decide Next Action];
+    DecideAction --> ExecuteAction{Execute Action via Cursor};
+    ExecuteAction --> ObserveResult[Observe Result/Event];
+    ObserveResult --> UpdateState[Update workflow_state.md (Log, State, Plan)];
+    UpdateState --> Start;
 
-### Installation
-
-```bash
-git clone https://github.com/kleosr/cursorkleosr.git
-cd cursorkleosr
-cp .cursorrules.example .cursorrules
+    ExecuteAction -- Error --> HandleError{Error Handling Rule};
+    HandleError --> UpdateState;
+    HandleError -- Needs User --> UserInput((User Input / Approval));
+    UserInput --> UpdateState;
 ```
 
-### How the files are organized
+**In simple terms:**
+1.  The AI reads the current situation and rules from `workflow_state.md`.
+2.  It decides what to do next based on the rules and the plan.
+3.  It performs the action using Cursor's features (editing code, running terminal commands).
+4.  It records what happened and updates the situation in `workflow_state.md`.
+5.  Repeat.
 
-We've organized the rule files to be efficient and easy to understand:
+## The Workflow Phases (Defined in `workflow_state.md`)
 
-```
-.cursor/
-└── rules/
-    ├── core/               # Main system configurations
-    │   ├── global-tags.mdc
-    │   ├── mcp-config.mdc 
-    │   ├── matrix-protocol.mdc
-    │   ├── ai-chat-rules.mdc
-    │   └── memory-bank.mdc
-    ├── processing/         # How information is processed
-    ├── commands/           # Command system stuff
-    ├── tools/              # Tool integration
-    ├── automation/         # Workflow automation
-    ├── validation/         # System checks
-    └── tasks/              # Task-specific rules
-```
+The `## Rules` section defines a simple, structured workflow:
 
-And we've got a Memory Bank to keep track of your project info:
+1.  **[PHASE: ANALYZE]:** Understand the task and context. No coding or planning solutions yet.
+2.  **[PHASE: BLUEPRINT]:** Create a detailed, step-by-step plan for implementation. No coding yet.
+3.  **[PHASE: CONSTRUCT]:** Execute the plan precisely, using Cursor tools. Handle errors based on rules.
+4.  **[PHASE: VALIDATE]:** Run tests and checks to ensure the implementation matches the plan and requirements.
 
-```
-memory-bank/               # Your project's documentation
-├── projectbrief.md        # What the project is about
-├── productContext.md      # What problems it solves
-├── systemPatterns.md      # How it's designed
-├── techContext.md         # What tech it uses
-├── activeContext.md       # What you're working on now
-└── progress.md            # What's done and what's next
-```
+The AI follows the constraints of the current phase, guided by the rules in `workflow_state.md`.
 
-## The main ideas
+## Getting Started
 
-The system is built on three big ideas:
+1.  **Create the Files:** Place `project_config.md` and `workflow_state.md` in your project (e.g., in the root or a `.auto_workflow/` directory). You can use the templates generated previously as a starting point.
+2.  **Fill `project_config.md`:** Add your project's specific goals, tech stack, key patterns, and constraints.
+3.  **Instruct the AI:** Start your Cursor chat with a clear system prompt instructing the AI to operate *exclusively* based on these two files and the autonomous loop described above. (A good system prompt is crucial for enforcement!).
+    *   *Example Snippet for System Prompt:* "You are an autonomous AI developer. Operate solely based on `project_config.md` and `workflow_state.md`. Before every action, read `workflow_state.md`, determine state, consult `## Rules`, act accordingly, then immediately update `workflow_state.md`."
+4.  **Give the First Task:** The AI will initialize based on `RULE_INIT_01` and ask for the first task.
 
-1. **Structured Development Process**: The Matrix Protocol guides you through development phases, keeping things organized and traceable.
+## What about `.cursorrules`?
 
-2. **Persistent Documentation**: The Memory Bank makes sure you don't lose context between sessions, so the AI always remembers what your project is about.
-
-3. **Consistent AI Conversations**: The AI Chat Rules help you have productive conversations with the AI using a consistent approach.
-
-## How it works
-
-### The development process
-
-The KleoSr Matrix Protocol uses a five-phase workflow to keep things on track:
-
-| Phase | What it's for | What happens |
-|-------|---------|---------------------|
-| ANALYZE | Understanding requirements | Figuring out what needs to be done, no coding yet |
-| CONCEPTUALIZE | Exploring solutions | Thinking about approaches and evaluating options |
-| BLUEPRINT | Planning implementation | Detailed planning before any coding starts |
-| CONSTRUCT | Building the solution | Following the blueprint exactly |
-| VALIDATE | Checking the work | Making sure everything was done correctly |
-
-### The documentation system
-
-The Memory Bank keeps track of everything about your project:
-
-| Document | Purpose | What's in it |
-|----------|---------|--------------|
-| projectbrief.md | Project definition | Goals, scope, constraints |
-| productContext.md | Problem analysis | User needs, use cases, problems to solve |
-| systemPatterns.md | Design info | How components work together, design patterns |
-| techContext.md | Technical details | Technologies, dependencies, constraints |
-| activeContext.md | Current focus | What you're working on, recent changes, decisions |
-| progress.md | Project status | What's done, what's in progress, what's next |
-
-### Commands you can use
-
-There are several types of commands to help you work efficiently:
-
-#### Basic commands
-```
-@analyze        # Start analyzing requirements
-@concept        # Start brainstorming solutions
-@blueprint      # Create an implementation plan
-@construct      # Build according to the plan
-@validate       # Check that everything works as planned
-```
-
-#### Memory commands
-```
-@memory/update  # Update your project documentation
-@memory/view    # Look at your documentation
-@memory/check   # Make sure your documentation is consistent
-```
-
-#### Advanced commands
-```
-@mcp/config     # Configure the Master Control Program
-@mcp/thinking   # Use the sequential thinking protocol
-@mcp/search     # Search your codebase semantically
-@ai/rules       # See the AI interaction guidelines
-```
-
-## How to use it
-
-### Using the Matrix Protocol
-
-1. Start with `@analyze` to understand what you need to build
-2. Move to `@concept` to brainstorm different approaches
-3. Create a detailed plan with `@blueprint` before you start coding
-4. Implement your plan with `@construct`
-5. Check your work with `@validate`
-
-### Using the Memory Bank
-
-1. Keep your project documentation in the `memory-bank/` directory
-2. Update it with `@memory/update` when things change
-3. Check that it's all consistent with `@memory/check`
-4. The AI will read all Memory Bank files at the start of each session
-
-## Technical details
-
-### MCP Configuration
-- Sequential Thinking with a large 163840 token context window
-- Support for multiple LLM models with fallbacks
-- Real-time monitoring and validation
-- Adaptive learning capabilities
-
-### Security features
-- Dependency scanning to find vulnerabilities
-- Access control and authentication
-- Data validation to prevent security issues
-- Secure handling of credentials
-- Comprehensive logging
-
-### Performance features
-- Efficient resource management
-- Modular design
-- Smart caching
-- Optimized token usage
-
-## Why it's useful
-
-The KleoSr Cursor Rules system helps with AI-assisted development in several ways:
-
-1. **It saves time**: The structured workflow cuts development time by about 37%*
-2. **It improves quality**: Standardized validation keeps code quality consistent
-3. **It preserves context**: Comprehensive documentation means nothing gets lost
-4. **It makes things predictable**: Consistent patterns lead to predictable outcomes
-5. **It reduces technical debt**: Structured processes help avoid shortcuts that cause problems later
-
-*Based on our testing with similar projects
-
-## Changelog
-
-### Version 6.0.0 (Current)
-* Completed Memory Bank system implementation
-* Added Memory Bank commands (`@memory/update`, `@memory/view`, `@memory/check`)
-* Added Memory Bank notepad integration (`@notepad:memory`, `@notepad:memory:update`, etc.)
-* Created Memory Bank validation system
-* Integrated Memory Bank with workflow automation
-* Enhanced documentation for Memory Bank usage
-* Added automated consistency checking
-
-### Version 5.2.0
-* Added KleoSr Memory Bank for persistent project documentation
-* Created memory-bank directory with six core documentation files
-* Created `.cursor/rules/core/memory-bank.mdc` specification
-* Updated file reference system with @file:memory
-* Enhanced README with Memory Bank documentation and usage instructions
-* Updated index with Memory Bank reference
-* Improved cross-referencing between related files
-
-### Version 5.1.0
-* Added AI Chat Rules system for standardized AI interactions
-* Updated command system with @ai/rules command
-* Added file reference for AI chat rules
-* Enhanced README with AI chat rules documentation
-* Improved cross-referencing between related files
-
-### Version 5.0.0
-* Reorganized MDC files into semantic directory structure
-* Simplified all MDC files to reduce token usage
-* Standardized MDC file format and structure
-* Updated file reference system with new paths
-* Improved command documentation
-* Enhanced cross-referencing between files
-
-### Version 4.0.0
-* Streamlined `.cursorrules` file as a command hub
-* Added command execution system with `@command` syntax
-* Added notepad integration with `@notepad:command` format
-* Enhanced Kleo Matrix protocol with command shortcuts
-* Added command history and session management
-* Added file reference system with `@file:path` syntax
-
-### Version 3.2.0
-* Added KleoSr CodeWorkFlow with Kleo Matrix protocol
-* Implemented five-phase development workflow system
-* Enhanced operational boundaries and transition control
-* Added Implementation Registry tracking
-* Improved validation and verification processes
-* Added structured phase-specific constraint enforcement
+The main `.cursorrules` file is now less important for the workflow itself. You might still use it for global Cursor settings (like preferred AI models or global ignores), but the core logic resides in `workflow_state.md`.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project concept is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contributing
 
-We welcome contributions! Please follow our project guidelines when submitting pull requests.
+Feel free to adapt and improve this system. Share your experiences and refinements!

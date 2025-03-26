@@ -1,284 +1,59 @@
-# Cursor AI Rule System: Usage Instructions
+# Instructions: Autonomous AI Workflow for Cursor
 
 ## Overview
 
-The Cursor AI Rule System provides an advanced framework for AI-assisted development with strict enforcement of coding standards, automated workflows, and intelligent code generation. This document outlines the core components and usage guidelines.
+Welcome to the simplified autonomous AI workflow for Cursor! This system helps your AI assistant work more effectively and consistently by giving it a structured process and a reliable memory. It uses just two core files to manage everything.
 
-## System Architecture
+## How it Works: The Core Idea
 
-### Core Components
-1. `.cursorrules` - Global configuration file (project root)
-2. `.cursor/rules/` - Semantically organized rule modules with "Always" enforcement
-3. KleoSr Matrix Protocol - Five-phase development workflow
-4. AI Chat Rules System - Standardized AI interaction patterns
-5. Command System - Unified command interface
-6. Notepad Integration - Interactive workflow environment
+The AI operates in a loop:
+1.  It reads the current situation and rules from `workflow_state.md`.
+2.  It decides what to do next based on those rules and the task plan.
+3.  It uses Cursor's features (like editing code or running commands in the terminal) to perform the action.
+4.  It records what happened in `workflow_state.md`.
+5.  It repeats the cycle.
 
-### Model Configuration
-- Primary: `deepseek/deepseek-r1-zero:free`
-- Context: 163840 tokens
-- Confidence threshold: 85%
-- Backup models configured as needed
+This allows the AI to handle tasks autonomously, remember context across sessions, and even attempt to fix errors based on the defined rules.
 
-## Quick Start
+## The Two Key Files
 
-### Prerequisites
-- Cursor IDE with MCP server access
-- OpenRouter API key (if using OpenRouter features)
+1.  **`project_config.md` (Long-Term Memory):**
+    *   Contains the stable basics of your project: main goals, technologies used, important coding rules, and limitations.
+    *   Think of it as the project's "constitution." The AI reads it to understand the big picture. You set this up once and update it rarely.
 
-### Installation
-```bash
-# Clone repository
-git clone https://github.com/kleosr/cursorkleosr.git
-cd cursorkleosr
+2.  **`workflow_state.md` (Dynamic State, Rules & Log):**
+    *   This is the AI's main workspace file. It's constantly read and updated.
+    *   **`## State`:** Shows the current workflow phase (Analyze, Blueprint, Construct, Validate) and status (Ready, Blocked, etc.).
+    *   **`## Plan`:** Holds the step-by-step plan for the current task (created by the AI in the Blueprint phase).
+    *   **`## Rules`:** Contains *all* the rules the AI follows for workflow, memory, tools, and error handling.
+    *   **`## Log`:** Records everything the AI does and observes during the session.
 
-# Configure rules
-cp .cursorrules.example .cursorrules
-```
+*(The old `memory-bank/` and `.cursor/rules/` directories are **no longer used** by this system.)*
 
-## Core Features
+## Getting Started
 
-### 1. KleoSr Matrix Protocol
-- Five distinct phases (ANALYZE, CONCEPTUALIZE, BLUEPRINT, CONSTRUCT, VALIDATE)
-- Strict operational boundaries
-- Implementation registry tracking
-- Blueprint validation
-- Systematic verification
+1.  **Prepare Files:**
+    *   Create `project_config.md` and `workflow_state.md` in your project (e.g., in the root or a `.auto_workflow/` directory). Use the templates provided in the main README or generated previously.
+    *   Fill in `project_config.md` with your project's specific details (goals, tech stack, etc.).
+    *   Ensure `workflow_state.md` has the initial structure (State, Plan, Rules, Log sections) and the embedded rules.
 
-### 2. AI Chat Rules System
-- Mode-based operation (Research, Innovate, Plan, Execute, Review)
-- Structured response format
-- Implementation checklist methodology
-- Command handling with @ prefix
-- Copyable rules for consistent AI behavior
+2.  **Configure `.cursorrules` (Optional):**
+    *   If you need to set global Cursor preferences (like AI model choice), update the main `.cursorrules` file. Otherwise, this file might not be needed. The core workflow logic is *not* in `.cursorrules` anymore.
 
-### 3. Command System
-- Direct command execution with `@command` syntax
-- Category-based organization (`@category/command`)
-- File references (`@file:path`)
-- Notepad integration (`@notepad:command`)
-- AI interactions (`@ai/rules`)
+3.  **Instruct the AI (Crucial!):**
+    *   Start your Cursor chat session with a strong system prompt telling the AI to operate based *only* on `project_config.md` and `workflow_state.md`.
+    *   **Emphasize the loop:** Read state/rules -> Act -> Update state.
+    *   *Example Prompt Snippet:* "You are an autonomous AI developer using a two-file system. Your sole sources of truth are `project_config.md` (LTM) and `workflow_state.md` (STM/Rules/Log). Before every action, read `workflow_state.md`, consult `## Rules` based on `## State`, act via Cursor, then immediately update `workflow_state.md`."
 
-### 4. Notepad Integration
-- Interactive command execution
-- Command history tracking
-- Session management
-- Structured output display
-- Complex workflow simplification
+4.  **Start Working:**
+    *   Give the AI its first task. It should initialize according to `RULE_INIT_01` in `workflow_state.md` and enter the ANALYZE phase.
+    *   Use commands like `@blueprint`, `@construct`, `@validate` (as defined by `RULE_WF_TRANSITION_01`) to guide the AI through the phases when needed.
 
-### 5. Tool Integration
-- Code generation and analysis
-- Static analysis and type checking
-- Testing automation
-- Documentation generation
-- Security scanning
+## Using the Workflow
 
-## Development Workflow
+*   **Phases:** Let the AI operate within the constraints of the current phase (Analyze, Blueprint, Construct, Validate) as shown in `workflow_state.md`. Use commands to transition phases.
+*   **Monitoring:** You can observe the AI's progress and reasoning by looking at the `## Log` and `## State` sections in `workflow_state.md`.
+*   **Intervention:** If the AI gets blocked (e.g., `State.Status` is `BLOCKED_*` or `NEEDS_*`), it should report the issue based on the rules. Provide clarification or approve proposed plan changes as needed.
+*   **Memory Updates:** The AI should handle updates to `workflow_state.md` automatically. Updates to `project_config.md` are typically proposed by the AI and require your approval (per `RULE_MEM_UPDATE_LTM_01`).
 
-### 1. Project Structure
-```
-project/
-├── .cursorrules                    # Command hub
-├── .cursor/
-│   └── rules/
-│       ├── core/                   # Core system configurations
-│       │   ├── global-tags.mdc
-│       │   ├── mcp-config.mdc
-│       │   ├── matrix-protocol.mdc
-│       │   └── ai-chat-rules.mdc
-│       ├── processing/             # Information processing rules
-│       │   ├── sequential-thinking.mdc
-│       │   └── local-context.mdc
-│       ├── commands/               # Command system implementations
-│       │   ├── command-system.mdc
-│       │   └── notepad-integration.mdc
-│       ├── tools/                  # Tool integration components
-│       │   ├── tool-integration.mdc
-│       │   └── scratchpad.mdc
-│       ├── automation/             # Automation utilities
-│       │   ├── workflow.mdc
-│       │   └── directory-scanning.mdc
-│       ├── validation/             # Validation systems
-│       │   └── mdc-validation.mdc
-│       └── tasks/                  # Task-specific rule sets
-│           └── [task-specific files]
-├── src/
-└── ...
-```
-
-### 2. Rule Creation
-```yaml
----
-description: "Rule purpose"
-globs: "File patterns"
-tags: [category1, category2]
-priority: 1-5
-version: "5.1.0"
-alwaysApply: true
----
-
-# Rule Title
-
-## Feature List
-Key features of the rule
-
-## Implementation
-Implementation details
-
-## Usage
-How to use the rule
-```
-
-Rules should be placed in the appropriate directory based on their purpose:
-- General system rules: `core/`
-- Information processing: `processing/`
-- Command functionality: `commands/`
-- Tool integration: `tools/`
-- Automation features: `automation/`
-- Validation systems: `validation/`
-- Task-specific rules: `tasks/`
-
-### 3. Command Usage
-
-#### Core Commands
-```
-@analyze        # Run codebase analysis (ANALYZE PHASE)
-@concept        # Brainstorm solutions (CONCEPTUALIZE PHASE)
-@blueprint      # Create implementation plan (BLUEPRINT PHASE)
-@construct      # Execute implementation (CONSTRUCT PHASE)
-@validate       # Verify implementation (VALIDATE PHASE)
-```
-
-#### MCP Commands
-```
-@mcp/config     # Display current MCP configuration
-@mcp/tools      # List available integrated tools
-@mcp/thinking   # Run sequential thinking protocol
-@mcp/search     # Search codebase with semantic understanding
-```
-
-#### AI Commands
-```
-@ai/rules       # Display AI chat interaction rules
-```
-
-#### File References
-```
-@file:global        # Global directives
-@file:mcp/config    # MCP configuration
-@file:thinking      # Sequential thinking
-@file:matrix        # KleoSr Matrix protocol
-@file:commands      # Command system
-@file:ai/rules      # AI chat rules
-# ... and more
-```
-
-#### Notepad Commands
-```
-@notepad:analyze    # Run analysis in notepad
-@notepad:blueprint  # Create blueprint in notepad
-@notepad:thinking   # Run sequential thinking in notepad
-@notepad:history    # View command history
-```
-
-### 4. Using AI Chat Rules
-
-To apply the AI chat rules in any conversation:
-
-1. Copy the contents of the AI chat rules file:
-   ```bash
-   cat .cursor/rules/core/ai-chat-rules.mdc
-   ```
-2. Paste at the beginning of a new chat
-3. Begin interaction with `@analyze` or `ENTER RESEARCH MODE`
-4. The AI will follow the structured mode system and format responses accordingly
-
-This enables:
-- Mode-based operation (Research, Innovate, Plan, Execute, Review)
-- Structured response formatting
-- Implementation checklist methodology
-- Disciplined mode transitions
-- Consistent behavior across chats
-
-### 5. Task Management
-1. Task Planning:
-   ```markdown
-   # Current Task
-   [ ] Step 1: Planning
-   [ ] Step 2: Implementation
-   [ ] Step 3: Testing
-   [ ] Step 4: Documentation
-   ```
-
-2. Progress Tracking:
-   ```markdown
-   # Task Progress
-   [X] Initial setup complete
-   [X] Core features implemented
-   [ ] Testing in progress
-   [ ] Documentation pending
-   ```
-
-## Security Guidelines
-
-### 1. Code Security
-- Use dependency scanning
-- Implement access control
-- Validate all data
-- Secure credentials
-- Enable audit logging
-
-### 2. Development Security
-- Follow secure coding practices
-- Implement API security
-- Use authentication
-- Encrypt sensitive data
-- Manage secrets securely
-
-## Performance Best Practices
-
-### 1. Frontend Optimization
-- Optimize bundles
-- Implement code splitting
-- Use lazy loading
-- Optimize resources
-- Monitor performance
-
-### 2. Development Optimization
-- Use build optimization
-- Enable hot reloading
-- Manage caching
-- Monitor resources
-- Automate workflows
-
-## Troubleshooting
-
-### Common Issues
-1. Rule Validation Failures:
-   - Check rule syntax
-   - Verify glob patterns
-   - Validate frontmatter
-   - Check enforcement level
-
-2. Tool Integration Issues:
-   - Verify environment setup
-   - Check dependencies
-   - Validate API keys
-   - Monitor logs
-
-### Support Resources
-- GitHub Issues
-- Documentation
-- Community Forums
-- Stack Overflow
-
-## Version Information
-
-The current version is 5.1.0, which includes:
-- Reorganized MDC files into semantic directory structure
-- Simplified all MDC files to reduce token usage
-- Added AI Chat Rules system for standardized interactions
-- Enhanced command system with new @ai/rules command
-- Improved cross-referencing between files
-
-For a complete changelog, see the README.md file. 
+This system aims for significant autonomy, but clear initial instruction via the system prompt and occasional guidance when the AI encounters complex blocks are key to success.

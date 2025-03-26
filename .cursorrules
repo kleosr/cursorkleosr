@@ -1,79 +1,24 @@
-# KLEOSR CURSOR COMMAND HUB
-# Version 4.0.0
+# Cursor Project Configuration
+# Simplified for Autonomous Workflow (v1.0)
 
-## COMMAND SYNTAX
-# @command_name - Execute a specific command
-# @category/command - Execute a categorized command
-# @file:path - Reference a specific file
+# Note: Core workflow logic, phases, and operational rules are now defined
+# within the project's 'workflow_state.md' file.
 
-## CORE COMMANDS
-
-@analyze - Run codebase analysis (shorthand for INITIATE ANALYZE PHASE)
-@concept - Brainstorm solutions (shorthand for INITIATE CONCEPTUALIZE PHASE)
-@blueprint - Create implementation plan (shorthand for INITIATE BLUEPRINT PHASE)
-@construct - Execute implementation (shorthand for INITIATE CONSTRUCT PHASE)
-@validate - Verify implementation (shorthand for INITIATE VALIDATE PHASE)
+## MCP / Global Commands (If applicable)
+# Retained in case these are global Cursor features used independently.
 
 @mcp/config - Display current MCP configuration
 @mcp/tools - List available integrated tools
 @mcp/thinking - Run sequential thinking protocol
 @mcp/search - Search codebase with semantic understanding
 
-@ai/rules - Display AI chat interaction rules
-
-@memory/update - Trigger Memory Bank update process
-@memory/view - Display Memory Bank document contents
-@memory/check - Validate Memory Bank completeness
-
-## FILE REFERENCES
-
-@file:global - Global directives (.cursor/rules/core/global-tags.mdc)
-@file:mcp/config - MCP configuration (.cursor/rules/core/mcp-config.mdc)
-@file:thinking - Sequential thinking (.cursor/rules/processing/sequential-thinking.mdc)
-@file:workflow - Workflow automation (.cursor/rules/automation/workflow.mdc)
-@file:matrix - KleoSr Matrix protocol (.cursor/rules/core/matrix-protocol.mdc)
-@file:tools - Tool integration (.cursor/rules/tools/tool-integration.mdc)
-@file:commands - Command system (.cursor/rules/commands/command-system.mdc)
-@file:notepad - Notepad integration (.cursor/rules/commands/notepad-integration.mdc)
-@file:context - Local context (.cursor/rules/processing/local-context.mdc)
-@file:scratchpad - Scratchpad system (.cursor/rules/tools/scratchpad.mdc)
-@file:validation - MDC validation (.cursor/rules/validation/mdc-validation.mdc)
-@file:scanning - Directory scanning (.cursor/rules/automation/directory-scanning.mdc)
-@file:ai/rules - AI chat rules (.cursor/rules/core/ai-chat-rules.mdc)
-@file:memory - KleoSr Memory Bank (.cursor/rules/core/memory-bank.mdc)
-
-## ESSENTIAL DIRECTIVES
-# Only the most critical directives remain here; others moved to .mdc files
-
-1. All .mdc rules in .cursor/rules take precedence and are always enforced
-2. Default to TypeScript with strict type checking
-3. Use context-aware documentation generation
-4. Follow security-first development practices
-
-## KLEO MATRIX QUICK REFERENCE
-# Core workflow phases with command shortcuts
-
-PHASE 1: ANALYZE - Understanding requirements without implementation
-PHASE 2: CONCEPTUALIZE - Brainstorming potential approaches
-PHASE 3: BLUEPRINT - Creating detailed implementation plan
-PHASE 4: CONSTRUCT - Executing blueprint exactly as planned
-PHASE 5: VALIDATE - Verifying implementation matches blueprint
-
-## NOTEPAD INTEGRATION
-# Use @notepad:command to execute in notepad
-
-@notepad:analyze - Run analysis in notepad
-@notepad:blueprint - Create blueprint in notepad
-@notepad:validate - Run validation in notepad
-@notepad:thinking - Run sequential thinking in notepad
-@notepad:memory - Access Memory Bank in notepad
-
-## MCP CONFIGURATION QUICK REFERENCE
+## MCP Configuration Quick Reference (If applicable)
+# Retained in case Cursor uses this file for global AI settings.
 
 - Primary models: deepseek/deepseek-r1-zero:free, claude-3-sonnet
 - Context window: 163840 tokens (DeepSeek optimized)
 - Confidence threshold: 85% for high-risk changes
 - Enforcement: Always with strict validation
 
-# For complete documentation, see .cursor/rules directory
-# Last updated: $(date +%Y-%m-%d) 
+# Project-specific directives (like default language, security practices)
+# should now be defined in 'project_config.md'.
