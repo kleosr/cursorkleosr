@@ -1,9 +1,6 @@
 ---
 description: "KleoSr Memory Bank"
 globs: "**/*"
-tags: [memory, documentation, context, persistence]
-priority: 2
-version: 1.0.0
 alwaysApply: true
 ---
 # KleoSr Memory Bank
