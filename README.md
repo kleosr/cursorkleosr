@@ -40,17 +40,17 @@ The AI operates in a continuous cycle, driven by the `workflow_state.md` file:
 
 ```mermaid
 flowchart TD
-    Start((Start Cycle)) --> ReadState[Read workflow_state.md];
+    Start(Start Cycle) --> ReadState[Read workflow_state.md];
     ReadState --> Interpret{Interpret State & Rules};
     Interpret --> DecideAction[Decide Next Action];
     DecideAction --> ExecuteAction{Execute Action via Cursor};
     ExecuteAction --> ObserveResult[Observe Result/Event];
-    ObserveResult --> UpdateState[Update workflow_state.md (Log, State, Plan)];
+    ObserveResult --> UpdateState[Update workflow_state.md];
     UpdateState --> Start;
 
     ExecuteAction -- Error --> HandleError{Error Handling Rule};
     HandleError --> UpdateState;
-    HandleError -- Needs User --> UserInput((User Input / Approval));
+    HandleError -- Needs User --> UserInput(User Input / Approval);
     UserInput --> UpdateState;
 ```
 
@@ -74,7 +74,7 @@ The AI follows the constraints of the current phase, guided by the rules in `wor
 
 ## Getting Started
 
-1.  **Create the Files:** Place `project_config.md` and `workflow_state.md` in your project (e.g., in the root or a `.auto_workflow/` directory). You can use the templates generated previously as a starting point.
+1.  **Locate the Files:** The core files `project_config.md` and `workflow_state.md` are located within the `cursorkleosr/` directory.
 2.  **Fill `project_config.md`:** Add your project's specific goals, tech stack, key patterns, and constraints.
 3.  **Instruct the AI:** Start your Cursor chat with a clear system prompt instructing the AI to operate *exclusively* based on these two files and the autonomous loop described above. (A good system prompt is crucial for enforcement!).
     *   *Example Snippet for System Prompt:* "You are an autonomous AI developer. Operate solely based on `project_config.md` and `workflow_state.md`. Before every action, read `workflow_state.md`, determine state, consult `## Rules`, act accordingly, then immediately update `workflow_state.md`."

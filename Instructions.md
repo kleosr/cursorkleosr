@@ -33,7 +33,7 @@ This allows the AI to handle tasks autonomously, remember context across session
 ## Getting Started
 
 1.  **Prepare Files:**
-    *   Create `project_config.md` and `workflow_state.md` in your project (e.g., in the root or a `.auto_workflow/` directory). Use the templates provided in the main README or generated previously.
+    *   Locate the core files `project_config.md` and `workflow_state.md` within the `cursorkleosr/` directory.
     *   Fill in `project_config.md` with your project's specific details (goals, tech stack, etc.).
     *   Ensure `workflow_state.md` has the initial structure (State, Plan, Rules, Log sections) and the embedded rules.
 
