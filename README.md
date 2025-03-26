@@ -39,7 +39,8 @@ The project uses a semantically organized directory structure for MDC files:
     │   ├── global-tags.mdc
     │   ├── mcp-config.mdc 
     │   ├── matrix-protocol.mdc
-    │   └── ai-chat-rules.mdc
+    │   ├── ai-chat-rules.mdc
+    │   └── memory-bank.mdc
     ├── processing/         # Information processing rules
     │   ├── sequential-thinking.mdc
     │   └── local-context.mdc
@@ -56,6 +57,18 @@ The project uses a semantically organized directory structure for MDC files:
     │   └── mdc-validation.mdc
     └── tasks/              # Task-specific rule sets
         └── [task-specific files]
+```
+
+Additionally, the project includes a Memory Bank for persistent documentation:
+
+```
+memory-bank/               # Persistent project documentation
+├── projectbrief.md        # Project purpose and requirements
+├── productContext.md      # Problems solved and user goals
+├── systemPatterns.md      # System architecture and patterns
+├── techContext.md         # Technologies and constraints
+├── activeContext.md       # Current focus and decisions
+└── progress.md            # Project status and issues
 ```
 
 Each MDC file follows a consistent, simplified structure to reduce token usage and improve clarity.
@@ -142,6 +155,13 @@ Each MDC file follows a consistent, simplified structure to reduce token usage a
 @ai/rules       # Display AI chat interaction rules
 ```
 
+### Memory Bank Commands
+```
+@memory/update  # Trigger Memory Bank update process
+@memory/view    # Display Memory Bank document contents
+@memory/check   # Validate Memory Bank completeness
+```
+
 ### File References
 ```
 @file:global        # Global directives
@@ -183,6 +203,29 @@ To apply the AI chat rules in any conversation:
 3. Begin interaction with `@analyze` or `ENTER RESEARCH MODE`
 4. The AI will follow the structured mode system and format responses accordingly
 
+## Using the Memory Bank
+
+The Memory Bank provides persistent project knowledge between AI sessions:
+
+1. Project files are stored in the `memory-bank/` directory:
+   ```bash
+   ls memory-bank/
+   ```
+
+2. Core files include:
+   - `projectbrief.md`: Project purpose and core requirements
+   - `productContext.md`: Why the project exists and problems it solves
+   - `activeContext.md`: Current work focus and next steps
+   - `systemPatterns.md`: Architecture and design patterns
+   - `techContext.md`: Technologies and constraints
+   - `progress.md`: Project status and known issues
+
+3. To update the Memory Bank when requirements change:
+   - Edit the relevant file(s) in the `memory-bank/` directory
+   - Use the trigger phrase "update memory bank" in your next AI session
+
+4. The AI will read all Memory Bank files at the start of each session, ensuring complete context retention.
+
 ## Tool Integration
 
 ### 1. Development Tools
@@ -219,8 +262,10 @@ To apply the AI chat rules in any conversation:
 
 ### Version 5.2.0 (Current)
 - Added KleoSr Memory Bank for persistent project documentation
+- Created memory-bank directory with six core documentation files
+- Created `.cursor/rules/core/memory-bank.mdc` specification
 - Updated file reference system with @file:memory
-- Enhanced README with Memory Bank documentation
+- Enhanced README with Memory Bank documentation and usage instructions
 - Updated index with Memory Bank reference
 - Improved cross-referencing between related files
 
@@ -284,4 +329,4 @@ To apply the AI chat rules in any conversation:
 We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) before submitting pull requests.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
