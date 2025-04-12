@@ -37,3 +37,10 @@
 *   Must support IE11 (if applicable).
 *   Deployment target is AWS Lambda.
 *   Strict adherence to budget/performance targets.
+
+---
+
+## Tokenization Settings
+
+*   **Estimation Method:** Character-based
+*   **Characters Per Token (Estimate):** 4

@@ -55,5 +55,10 @@ This allows the AI to handle tasks autonomously, remember context across session
 *   **Monitoring:** You can observe the AI's progress and reasoning by looking at the `## Log` and `## State` sections in `workflow_state.md`.
 *   **Intervention:** If the AI gets blocked (e.g., `State.Status` is `BLOCKED_*` or `NEEDS_*`), it should report the issue based on the rules. Provide clarification or approve proposed plan changes as needed.
 *   **Memory Updates:** The AI should handle updates to `workflow_state.md` automatically. Updates to `project_config.md` are typically proposed by the AI and require your approval (per `RULE_MEM_UPDATE_LTM_01`).
+*   **Iteration over Items:**
+    *   You can define a list of items for the AI to process sequentially in the `## Items` section of `workflow_state.md` (define the format, e.g., a Markdown table).
+    *   The AI will use `RULE_ITERATE_01` and `RULE_ITERATE_02` to process each item.
+    *   Crucially, the `## Log` section is cleared between items (by `RULE_ITERATE_01`) to prevent context "drift" and keep the AI focused on the current item.
+    *   The specific processing logic for each item is determined by the `## Plan` and executed via `RULE_PROCESS_ITEM_01`.
 
 This system aims for significant autonomy, but clear initial instruction via the system prompt and occasional guidance when the AI encounters complex blocks are key to success.
