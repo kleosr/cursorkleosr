@@ -14,6 +14,7 @@ This setup is inspired by the ideas in the original `kleosr/cursorkleosr` reposi
 ## Thanks to
 
 *   @atalas [Atalas Cursor IDE Profile](https://forum.cursor.com/u/atalas) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
+*   @stevejb [Stevejb Cursor IDE Profile](https://forum.cursor.com/u/stevejb) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
 *   Contributors to the original `kleosr/cursorkleosr` concepts.
 
 ## How it Works: The Two-File System
