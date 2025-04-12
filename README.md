@@ -94,3 +94,9 @@ This project concept is licensed under the MIT License - see the LICENSE file fo
 ## Contributing
 
 Feel free to adapt and improve this system. Share your experiences and refinements!
+
+## Thanks to
+
+*   @atalas [Atalas Cursor IDE Profile](https://forum.cursor.com/u/atalas) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
+*   @stevejb [Stevejb Cursor IDE Profile](https://forum.cursor.com/u/stevejb) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
+*   Contributors to the original `kleosr/cursorkleosr` concepts.
