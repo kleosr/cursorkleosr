@@ -165,7 +165,6 @@ RULE_PROCESS_ITEM_01:
        *   `Summary`: The generated summary. (Placeholder: Implement logic to store the summary.)
        *   `Token Count`: `estimated_tokens`.
     6. Log the processing actions, results, and estimated token count to the `## Log`. (Placeholder: Implement logging.)
-    5. Log the processing actions, results, and estimated token count to the `## Log`.
 
   **Action:** Generate modification. Instruct Cursor to apply it. Log action.
 
