@@ -44,3 +44,11 @@
 
 *   **Estimation Method:** Character-based
 *   **Characters Per Token (Estimate):** 4
+
+---
+
+## Changelog
+
+| Date | One-sentence summary |
+|------|----------------------|
+| *empty* | *The agent appends here automatically after each **VALIDATE** phase* |
