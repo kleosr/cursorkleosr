@@ -43,6 +43,8 @@ CurrentItem: null # Identifier for the item currently being processed in iterati
 
 ## Rules
 
+> **Keep every major section under an explicit H2 (`##`) heading so the agent can locate them unambiguously.**
+
 *Embedded rules governing the AI's autonomous operation.*
 
 **# --- Core Workflow Rules ---**
@@ -182,6 +184,16 @@ RULE_ERR_HANDLE_GENERAL_01:
   **Trigger:** Unexpected error or ambiguity.
   **Action:** Log error/situation to `## Log`. Set `State.Status = BLOCKED_UNKNOWN`. Report to user, request instructions.
 
+**# --- Log Management Rules ---**
+
+RULE_LOG_ROTATE_01:
+  **Trigger:** `length(## Log) > 5 000 chars`
+  **Action:** Summarise the top 5 findings from **## Log** into **## ArchiveLog**, then clear **## Log**.
+
+RULE_SUMMARY_01:
+  **Trigger:** `Phase == VALIDATE && Status == COMPLETED`
+  **Action:** Append one-sentence summary of completed work **with today's date** to `project_config.md` under **## Changelog**.
+
 ---
 
 ## Log
@@ -198,7 +210,13 @@ RULE_ERR_HANDLE_GENERAL_01:
 
 *Actual Log:*
 *   `[2025-03-26 17:53:47] Initialized new session. State set to ANALYZE/READY.`
+
 ---
+
+## ArchiveLog
+
+*RULE_LOG_ROTATE_01 stores condensed summaries here when ## Log exceeds 5,000 characters.*
+*(This section preserves important findings from rotated logs)*
 
 ## Items
 
