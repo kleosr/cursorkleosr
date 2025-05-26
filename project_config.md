@@ -1,54 +1,28 @@
-# Project Configuration (LTM)
+# project_config.md
+Last-Updated: 2025-01-16
 
-*This file contains the stable, long-term context for the project.*
-*It should be updated infrequently, primarily when core goals, tech, or patterns change.*
-
----
-
-## Core Goal
-
-*(Define the primary objective and purpose of this project here. E.g., "Create a web application for managing personal tasks...")*
-
----
+## Project Goal
+Describe the primary objective of your project in 1-2 sentences.
 
 ## Tech Stack
-
-*(List the primary technologies, frameworks, and languages used. E.g.,)*
-*   **Frontend:** React, TypeScript, CSS Modules
-*   **Backend:** Node.js, Express, PostgreSQL
-*   **Testing:** Jest, React Testing Library
-*   **Linting/Formatting:** ESLint, Prettier
-
----
+- **Language(s):** e.g. TypeScript 5, Python 3.12
+- **Framework(s):** e.g. Next.js 14, FastAPI 0.111
+- **Build / Tooling:** esbuild, Poetry, Docker, etc.
 
 ## Critical Patterns & Conventions
+List coding standards, architectural patterns, naming conventions, and style guides that must be followed.
 
-*(Document any non-standard but crucial design patterns, architectural decisions, or coding conventions specific to this project. E.g.,)*
-*   **State Management:** Redux Toolkit slices pattern.
-*   **API Design:** RESTful principles, specific endpoint naming convention `/api/v1/...`.
-*   **Error Handling:** Use custom `AppError` class for backend errors.
-*   **Commit Messages:** Follow Conventional Commits format.
-
----
-
-## Key Constraints
-
-*(List any major limitations or non-negotiable requirements. E.g.,)*
-*   Must support IE11 (if applicable).
-*   Deployment target is AWS Lambda.
-*   Strict adherence to budget/performance targets.
-
----
+## Constraints
+- Performance / latency budgets  
+- Security or compliance requirements  
+- External APIs with rate limits or cost ceilings  
 
 ## Tokenization Settings
-
-*   **Estimation Method:** Character-based
-*   **Characters Per Token (Estimate):** 4
+- Estimated chars-per-token: 3.5  
+- Max tokens per message: 8 000
+- Plan for summary when **workflow_state.md** exceeds ~12 K chars.
 
 ---
 
 ## Changelog
-
-| Date | One-sentence summary |
-|------|----------------------|
-| *empty* | *The agent appends here automatically after each **VALIDATE** phase* |
+<!-- The agent prepends the latest summary here as a new list item after each VALIDATE phase -->
