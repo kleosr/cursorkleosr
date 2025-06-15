@@ -16,6 +16,9 @@ This setup is inspired by the ideas in the original `kleosr/cursorkleosr` reposi
 *   @atalas [Atalas Cursor IDE Profile](https://forum.cursor.com/u/atalas) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
 *   @Guayusa [Guayusa Cursor IDE Profile](https://forum.cursor.com/u/Guayusa) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
 *   @stevejb [Stevejb Cursor IDE Profile](https://forum.cursor.com/u/stevejb) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
+*   @AaronAgility [AaronAgility Cursor IDE Profile](https://forum.cursor.com/u/AaronAgility/summary) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
+*   @davesienk [davesienk Cursor IDE Profile](https://forum.cursor.com/u/davesienk/profile-hidden) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
+*   @Marlon [Marlon Cursor IDE Profile](https://forum.cursor.com/u/Marlon) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
 *   Contributors to the original `kleosr/cursorkleosr` concepts.
 
 ## How it Works: The Two-File System
@@ -95,3 +98,6 @@ This project concept is licensed under the MIT License - see the LICENSE file fo
 ## Contributing
 
 Feel free to adapt and improve this system. Share your experiences and refinements!
+
+## Git Workflow Integration
+This workflow now includes a simple, AI-assisted Git integration to encourage consistent version control. After a successful task, the AI will prompt to commit the changes, log the commit SHA to `workflow_state.md`, and allow for simple rollbacks or diffs using natural language.

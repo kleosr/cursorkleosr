@@ -166,3 +166,18 @@ Stay disciplined: plan → seek approval → implement → validate → summaris
 *   **Lost insights** → Auto-summary middleware appends one-sentence summaries to `project_config.md`'s Changelog after every VALIDATE, so long-term insights persist.
 
 This system aims for significant autonomy with robust memory management, but clear initial instruction via the system prompt and occasional guidance when the AI encounters complex blocks are key to success.
+
+---
+
+## Simple Git Workflow Integration
+
+To streamline version control, a simple Git-based workflow is integrated, allowing for easy state saving, rollbacks, and comparisons directly through natural language commands.
+
+### How It Works
+- **Automated Commits:** After a task is successfully completed (i.e., passes the `VALIDATE` phase), the system will automatically prompt you to save the state. It will suggest a commit message and, for larger tasks, recommend creating a new feature branch.
+- **History Tracking:** All commits made through this workflow are logged in `workflow_state.md` under `## Workflow History`. Each entry includes the commit SHA and a brief description, creating a clear audit trail.
+- **Simple Rollbacks:** To revert to a previous state, you can use a command like: `"Roll back to the state before [description]"`. The system will find the corresponding SHA from the history and check out that version.
+- **Version Comparison:** To see what changed between two points in time, use a command like: `"Compare the changes between [description 1] and [description 2]"`. The system will run a `git diff` between the two corresponding SHAs.
+- **On-Demand Help:** If you're unsure about Git commands, just ask. The AI can provide a quick summary of the basics.
+
+This integration encourages consistent version control without requiring you to manually run Git commands for every small change.

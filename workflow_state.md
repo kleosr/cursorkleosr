@@ -2,8 +2,8 @@
 _Last updated: 2025-01-16_
 
 ## State
-Phase: INIT  
-Status: READY  
+Phase: CONSTRUCT  
+Status: RUNNING
 CurrentItem: null  
 
 ## Plan
@@ -32,6 +32,7 @@ CurrentItem: null
 1. Rerun full test suite & any E2E checks.  
 2. If clean, set `Status = COMPLETED`.  
 3. Trigger **RULE_ITERATE_01** when applicable.
+4. Trigger **RULE_GIT_COMMIT_01** to prompt for version control.
 
 ---
 
@@ -59,12 +60,47 @@ Action ▶
 
 ---
 
+### Git Workflow
+> Rules for interacting with the Git version control system.
+
+#### RULE_GIT_COMMIT_01
+Trigger ▶ `Phase == VALIDATE && Status == COMPLETED`  
+Action ▶ 
+1. Prompt user to commit changes with a generated message (e.g., `Phase X: [brief description]`).
+2. Suggest creating a new branch for significant changes (e.g., `git checkout -b feature/new-thing`).
+3. Upon user confirmation, execute the `git add .` and `git commit` commands.
+4. Retrieve the new commit SHA using `git rev-parse HEAD`.
+5. Prepend the SHA and commit message to `## Workflow History`.
+
+#### RULE_GIT_ROLLBACK_01
+Trigger ▶ User command like "revert to..." or "rollback to..." followed by a description.
+Action ▶ 
+1. Search `## Workflow History` for the SHA corresponding to the description.
+2. If found, execute `git checkout <SHA>`.
+3. If not found, inform the user.
+
+#### RULE_GIT_DIFF_01
+Trigger ▶ User command like "diff..." or "compare..." with two descriptions.
+Action ▶ 
+1. Find the two SHAs from `## Workflow History` based on the descriptions.
+2. If found, execute `git diff <SHA1> <SHA2>`.
+3. If not found, inform the user.
+
+#### RULE_GIT_GUIDANCE_01
+Trigger ▶ User asks for help with Git (e.g., "how do I use git?").
+Action ▶ Provide a brief list of common Git commands (`commit`, `branch`, `checkout`, `diff`).
+
+---
+
 ## Items
 | id | description | status |
 |----|-------------|--------|
 
 ## Log
 <!-- AI appends detailed reasoning, tool output, and errors here -->
+
+## Workflow History
+<!-- RULE_GIT_COMMIT_01 stores commit SHAs and messages here -->
 
 ## ArchiveLog
 <!-- RULE_LOG_ROTATE_01 stores condensed summaries here -->
