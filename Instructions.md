@@ -27,9 +27,10 @@ This allows the AI to handle tasks autonomously, remember context across session
     *   This is the AI's main workspace file. It's constantly read and updated.
     *   **`## State`:** Shows the current workflow phase (Analyze, Blueprint, Construct, Validate) and status (Ready, Blocked, etc.).
     *   **`## Plan`:** Holds the step-by-step plan for the current task (created by the AI in the Blueprint phase).
-    *   **`## Rules`:** Contains *all* the rules the AI follows for workflow, memory, tools, error handling, **and now log management**.
+    *   **`## Rules`:** Contains *all* the rules the AI follows for workflow, memory, tools, error handling, **log management, and blueprint versioning**.
     *   **`## Log`:** Records everything the AI does and observes during the session. **NEW:** Automatically rotated when it exceeds 5,000 characters.
     *   **`## ArchiveLog`:** **NEW:** Stores condensed summaries of rotated logs to preserve important findings.
+    *   **`## Blueprint History`:** **NEW:** Automatically archives previous blueprint versions with timestamps and unique IDs to prevent loss of planning work.
 
 *(The old `memory-bank/` and `.cursor/rules/` directories are **no longer used** by this system.)*
 
@@ -43,7 +44,7 @@ You are an autonomous AI developer for **<YOUR PROJECT>** inside Cursor.
 
 Sources of truth
 • project_config.md – goal, tech stack, constraints, ## Changelog  
-• workflow_state.md – ## State, Plan, Rules, Items, Log, ArchiveLog  
+• workflow_state.md – ## State, Plan, Rules, Items, Log, ArchiveLog, Blueprint History  
 Ignore all other memory.
 
 Operating loop  
@@ -57,6 +58,7 @@ Operating loop
    • Append brief reasoning/tool output to ## Log (≤ 2 000 chars per write)  
    • Apply automatic rules  
      – RULE_LOG_ROTATE_01: if ## Log > 5 000 chars → summarise top 5 to ## ArchiveLog, then clear ## Log  
+     – RULE_BLUEPRINT_ARCHIVE_01: before overwriting ## Plan → archive existing blueprint to ## Blueprint History with timestamp and ID  
      – RULE_SUMMARY_01: after successful VALIDATE → prepend one‑sentence summary as a new list item under ## Changelog in project_config.md  
 5. Repeat or await user input
 
@@ -102,6 +104,7 @@ Automatically trigger post-processing rules (see below).
 Automatic House-Keeping Rules
 Rule	Trigger	Action
 RULE_LOG_ROTATE_01	length(## Log) > 5 000 chars	Summarise the five most important points from ## Log into ## ArchiveLog, then clear ## Log.
+RULE_BLUEPRINT_ARCHIVE_01	Phase == BLUEPRINT && Status == NEEDS_PLAN_APPROVAL	Archive existing ## Plan content to ## Blueprint History with timestamp and unique ID before creating new blueprint.
 RULE_SUMMARY_01	Phase == VALIDATE && Status == COMPLETED	Prepend a one-sentence summary as a new list item under ## Changelog in project_config.md.
 
 Construct-Phase Coding Checklist
@@ -125,6 +128,12 @@ Stay disciplined: plan → seek approval → implement → validate → summaris
 - **Automatic Changelog Updates:** After every successful `VALIDATE` phase, `RULE_SUMMARY_01` appends a one-sentence summary with today's date to `project_config.md`'s `## Changelog`.
 - **Long-term Memory:** Creates an audit trail of completed work that persists across sessions.
 - **Zero Maintenance:** No manual intervention required.
+
+### 📝 **Blueprint History System**
+- **Automatic Archiving:** When entering BLUEPRINT phase, existing plans are automatically archived to `## Blueprint History` with timestamps and unique IDs.
+- **Version Control:** Prevents loss of previous planning work when creating new blueprints.
+- **Easy Reference:** Users can retrieve previous blueprints using commands like `"use blueprint from [date]"` or `"show blueprint [ID]"`.
+- **Non-Destructive:** Original workflow remains intact while maintaining complete blueprint history.
 
 ### 🎯 **Improved Structure Guidance**
 - **Section Boundaries:** Clear H2 heading reminders help the AI navigate sections unambiguously.
@@ -151,7 +160,8 @@ Stay disciplined: plan → seek approval → implement → validate → summaris
 *   **Monitoring:** You can observe the AI's progress and reasoning by looking at the `## Log` and `## State` sections in `workflow_state.md`. Check `## ArchiveLog` for historical insights.
 *   **Long-term Tracking:** Review the `## Changelog` in `project_config.md` to see a timeline of completed work.
 *   **Intervention:** If the AI gets blocked (e.g., `State.Status` is `BLOCKED_*` or `NEEDS_*`), it should report the issue based on the rules. Provide clarification or approve proposed plan changes as needed.
-*   **Memory Updates:** The AI should handle updates to `workflow_state.md` automatically, including log rotation and archiving. Updates to `project_config.md` are typically proposed by the AI and require your approval (per `RULE_MEM_UPDATE_LTM_01`).
+*   **Memory Updates:** The AI should handle updates to `workflow_state.md` automatically, including log rotation, blueprint archiving, and general archiving. Updates to `project_config.md` are typically proposed by the AI and require your approval (per `RULE_MEM_UPDATE_LTM_01`).
+*   **Blueprint History:** Previous blueprints are automatically preserved in `## Blueprint History`. Use commands like `"show blueprint from yesterday"` or `"use blueprint abc123def"` to reference or restore previous planning work.
 *   **Iteration over Items:**
     *   You can define a list of items for the AI to process sequentially in the `## Items` section of `workflow_state.md` (define the format, e.g., a Markdown table).
     *   The AI will use `RULE_ITERATE_01` and `RULE_ITERATE_02` to process each item.
@@ -164,6 +174,7 @@ Stay disciplined: plan → seek approval → implement → validate → summaris
 *   **Header drift** → YAML front-matter keys (`state.phase`, `state.status`) are at the top so the agent can use YAML parsers instead of fragile regex.
 *   **Model confusion about rules vs. plan** → Each section is under an explicit H2 heading with reminders in the system prompt about where to write.
 *   **Lost insights** → Auto-summary middleware appends one-sentence summaries to `project_config.md`'s Changelog after every VALIDATE, so long-term insights persist.
+*   **Lost blueprints** → Automatically handled by `RULE_BLUEPRINT_ARCHIVE_01`: When creating new blueprints, existing plans are archived to `## Blueprint History` with timestamps and IDs.
 
 This system aims for significant autonomy with robust memory management, but clear initial instruction via the system prompt and occasional guidance when the AI encounters complex blocks are key to success.
 
