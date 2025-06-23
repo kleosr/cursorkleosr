@@ -17,9 +17,10 @@ CurrentItem: null
 2. Summarize requirements. *No code or planning.*
 
 ### [PHASE: BLUEPRINT]
-1. Decompose task into ordered steps.  
-2. Write pseudocode or file-level diff outline under **## Plan**.  
-3. Set `Status = NEEDS_PLAN_APPROVAL` and await user confirmation.
+1. Trigger **RULE_BLUEPRINT_ARCHIVE_01** to preserve existing plan if present.
+2. Decompose task into ordered steps.  
+3. Write pseudocode or file-level diff outline under **## Plan**.  
+4. Set `Status = NEEDS_PLAN_APPROVAL` and await user confirmation.
 
 ### [PHASE: CONSTRUCT]
 1. Follow the approved **## Plan** exactly.  
@@ -90,6 +91,22 @@ Action ▶
 Trigger ▶ User asks for help with Git (e.g., "how do I use git?").
 Action ▶ Provide a brief list of common Git commands (`commit`, `branch`, `checkout`, `diff`).
 
+### RULE_BLUEPRINT_ARCHIVE_01
+Trigger ▶ `Phase == BLUEPRINT && Status == NEEDS_PLAN_APPROVAL`  
+Action ▶ 
+1. Before overwriting **## Plan**, check if it contains existing content.
+2. If **## Plan** has content, archive it to **## Blueprint History** with timestamp and unique ID.
+3. Format: `### Blueprint [YYYY-MM-DD HH:MM:SS] - ID: [UUID-short]`
+4. Append the archived blueprint content under the timestamped heading.
+5. Then proceed with updating **## Plan** with new blueprint.
+
+### RULE_BLUEPRINT_REFERENCE_01
+Trigger ▶ User requests to reference previous blueprint (e.g., "use blueprint from [date]" or "show blueprint [ID]")
+Action ▶ 
+1. Search **## Blueprint History** for the specified date or ID.
+2. If found, display the blueprint content or copy it to **## Plan** as requested.
+3. If not found, list available blueprint IDs and dates.
+
 ---
 
 ## Items
@@ -104,3 +121,8 @@ Action ▶ Provide a brief list of common Git commands (`commit`, `branch`, `che
 
 ## ArchiveLog
 <!-- RULE_LOG_ROTATE_01 stores condensed summaries here -->
+
+## Blueprint History
+<!-- RULE_BLUEPRINT_ARCHIVE_01 stores previous blueprint versions here -->
+<!-- Format: ### Blueprint [YYYY-MM-DD HH:MM:SS] - ID: [UUID-short] -->
+<!-- Each archived blueprint is stored under its timestamped heading -->

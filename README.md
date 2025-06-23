@@ -35,10 +35,11 @@ Instead of many complex rule files, this system uses just two core Markdown file
     *   **Content:**
         *   `## State`: Current phase (Analyze, Blueprint, etc.), status (Ready, Blocked, etc.), `CurrentItem` (for iteration).
         *   `## Plan`: The step-by-step plan for the current task (created in Blueprint phase).
-        *   `## Rules`: **All the operational rules** defining the workflow phases, memory updates, tool use, error handling, and now, iteration logic.
+        *   `## Rules`: **All the operational rules** defining the workflow phases, memory updates, tool use, error handling, iteration logic, and blueprint versioning.
         *   `## Log`: A running log of actions, tool outputs, and decisions made during the session.
         *   `## Items`: A list of items to be processed iteratively (table format).
         *   `## TokenizationResults`: Stores results (summary, token count) for each processed item.
+        *   `## Blueprint History`: **NEW:** Automatically archives previous blueprint versions with timestamps and unique IDs to prevent loss of planning work.
     *   **Usage:** The AI reads this file **constantly** before acting and updates it **immediately** after acting. This is how it maintains context and follows the process.
 
 
@@ -98,6 +99,19 @@ This project concept is licensed under the MIT License - see the LICENSE file fo
 ## Contributing
 
 Feel free to adapt and improve this system. Share your experiences and refinements!
+
+## Blueprint History System
+The workflow now includes automatic blueprint versioning to prevent loss of planning work:
+
+- **Automatic Archiving:** When creating new blueprints, existing plans are automatically archived to `## Blueprint History` with timestamps and unique IDs
+- **Version Control:** Maintains complete history of all blueprint iterations without overwriting previous work
+- **Easy Reference:** Use natural language commands like `"use blueprint from [date]"` or `"show blueprint [ID]"` to retrieve previous planning work
+- **Non-Destructive:** Original workflow structure remains intact while providing comprehensive blueprint history
+
+### Blueprint History Commands
+- `"Show blueprint from yesterday"` - Retrieve blueprint by date
+- `"Use blueprint abc123def"` - Restore specific blueprint by ID
+- `"List all previous blueprints"` - Display available blueprint history
 
 ## Git Workflow Integration
 This workflow now includes a simple, AI-assisted Git integration to encourage consistent version control. After a successful task, the AI will prompt to commit the changes, log the commit SHA to `workflow_state.md`, and allow for simple rollbacks or diffs using natural language.
