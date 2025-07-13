@@ -1,21 +1,14 @@
-# Instructions: Autonomous AI Workflow for Cursor
+# Cursor Autonomous Workflow – Minimal Docs
 
-## Overview
+## Files
+- `project_config.md` – long-term memory (goal, stack, rules).  
+- `workflow_state.md` – dynamic state + log + rules engine.
 
-This workflow uses two files for robust, scalable, and automated project management:
-- **project_config.md**: Project goals, tech stack, constraints, and `## Changelog`.
-- **workflow_state.md**: Dynamic state, plan, rules, items, logs, and blueprint history.
+## Loop
+1. Agent reads `workflow_state.md` → `Phase` & `Status`.  
+2. Reads `project_config.md` → constraints.  
+3. Acts by phase: ANALYZE → BLUEPRINT → CONSTRUCT → VALIDATE.  
+4. Writes back; auto-rotates log & archives blueprints.
 
-## How It Works
-
-1. AI reads `workflow_state.md` (phase/status) and `project_config.md` (standards/constraints).
-2. Acts according to phase:
-   - **ANALYZE/BLUEPRINT:** Draft/refine plan.
-   - **CONSTRUCT:** Implement approved plan.
-   - **VALIDATE:** Run tests; on success, set `Status = COMPLETED`.
-3. Writes back to `workflow_state.md` (logs, status, etc.).
-4. Applies automatic housekeeping rules:
-   - **Log rotation:** Summarize and archive logs >5,000 chars.
-   - **Blueprint archiving:** Archive old plans on new blueprint.
-   - **Changelog update:** Prepend summary to `## Changelog` after VALIDATE.
-5. Repeats or waits for user input.
+## Setup
+System prompt:
