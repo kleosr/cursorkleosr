@@ -1,28 +1,28 @@
 # project_config.md
-Last-Updated: 2025-01-16
+_Last updated: 2025-07-13_
 
-## Project Goal
-Describe the primary objective of your project in 1-2 sentences.
+## Goal  
+Enter your goal here.
 
-## Tech Stack
-- **Language(s):** e.g. TypeScript 5, Python 3.12
-- **Framework(s):** e.g. Next.js 14, FastAPI 0.111
-- **Build / Tooling:** esbuild, Poetry, Docker, etc.
+## Tech Stack  
+- Language: TypeScript 5  
+- Framework: Next.js 14  
+- Tooling: esbuild, Docker, Vitest
 
-## Critical Patterns & Conventions
-List coding standards, architectural patterns, naming conventions, and style guides that must be followed.
+## Patterns  
+- Functional core, imperative shell.  
+- kebab-case files; camelCase variables.  
+- No `any`; strict null checks on.  
+- Secrets via env vars only.
 
-## Constraints
-- Performance / latency budgets  
-- Security or compliance requirements  
-- External APIs with rate limits or cost ceilings  
+## Constraints  
+- Bundle ≤ 250 KB.  
+- SSR TTFB < 150 ms.  
+- Rate-limit GitHub API: 500 req/hr.
 
-## Tokenization Settings
-- Estimated chars-per-token: 3.5  
-- Max tokens per message: 8 000
-- Plan for summary when **workflow_state.md** exceeds ~12 K chars.
-
----
+## Tokenization  
+- 3.5 ch/token, 8 K cap.  
+- Summarize when `workflow_state.md` > 12 K.
 
 ## Changelog
-<!-- The agent prepends the latest summary here as a new list item after each VALIDATE phase -->
+- 2025-07-13: Cleansed out.
