@@ -1,6 +1,5 @@
 # README.md
 
-```markdown
 # AI Development with Cursor: Enhanced Memory & Workflow
 
 <div align="center">
