@@ -1,6 +1,7 @@
 # workflow_state.md
 _Last updated: 2025-01-13_
 
+<!-- DYNAMIC:STATE:START -->
 ## State
 Phase: INIT  
 Status: READY  
@@ -10,10 +11,14 @@ Context: []
 RiskLevel: null  
 PatternMatch: null  
 SafeMode: false  
+<!-- DYNAMIC:STATE:END -->
 
+<!-- DYNAMIC:PLAN:START -->
 ## Plan
 <!-- AI populates -->
+<!-- DYNAMIC:PLAN:END -->
 
+<!-- STATIC:RULES:START -->
 ## Rules
 ### [PHASE: ANALYZE]  
 Read project_config.md & context; write summary.  
@@ -115,23 +120,33 @@ If rule unused for 30 days → flag for review.
 - RULE_GIT_ROLLBACK_01: checkout SHA by description.  
 - RULE_GIT_DIFF_01: diff two SHAs.  
 - RULE_GIT_GUIDANCE_01: help on request.  
+<!-- STATIC:RULES:END -->
 
+<!-- DYNAMIC:ITEMS:START -->
 ## Items
 | id | description | status | complexity | confidence | pattern_match |
+<!-- DYNAMIC:ITEMS:END -->
 
+<!-- DYNAMIC:METRICS:START -->
 ## Metrics
 Tasks: 0/0  
 Success: 100%  
 **Prediction**: Next task success likelihood: 92%  
 **Bottlenecks**: Avg. time in BLUEPRINT: 12min (↑ 20%)  
 Patterns: []  
+<!-- DYNAMIC:METRICS:END -->
 
+<!-- DYNAMIC:CHECKPOINTS:START -->
 ## Checkpoints
 | time | phase | confidence | safe | rollback_script |
+<!-- DYNAMIC:CHECKPOINTS:END -->
 
+<!-- DYNAMIC:LOG:START -->
 ## Log
 <!-- tool output (JSON format) -->
+<!-- DYNAMIC:LOG:END -->
 
+<!-- STATIC:VISUALIZER:START -->
 ## Visualizer
 ```mermaid
 graph LR
@@ -141,12 +156,19 @@ graph LR
     CONSTRUCT -.->|file save| CURSOR_INTEGRATION
     CURSOR_INTEGRATION -->|update| CONFIDENCE
 ```
+<!-- STATIC:VISUALIZER:END -->
 
+<!-- DYNAMIC:WORKFLOW_HISTORY:START -->
 ## Workflow History
 <!-- commit SHA & msg -->
+<!-- DYNAMIC:WORKFLOW_HISTORY:END -->
 
+<!-- DYNAMIC:ARCHIVE_LOG:START -->
 ## ArchiveLog
 <!-- rotated log summaries -->
+<!-- DYNAMIC:ARCHIVE_LOG:END -->
 
+<!-- DYNAMIC:BLUEPRINT_HISTORY:START -->
 ## Blueprint History
 <!-- archived plans -->
+<!-- DYNAMIC:BLUEPRINT_HISTORY:END -->
