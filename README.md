@@ -1,6 +1,6 @@
 # README.md
 
-# AI Development with Cursor: Enhanced Memory & Workflow
+# Cursor Natural AI Workflow 
 
 <div align="center">
   <img src="https://i.ibb.co/tMy2cRkC/image-fx.png" alt="Project Rules Logo" width="400"/>
@@ -99,12 +99,14 @@ While `.cursorrules` can still manage global preferences, the workflow intellige
 ## Acknowledgments
 
 Special thanks to:
-- @atalas for the Cursor IDE Profile
-- @Guayusa for the Cursor IDE Profile
-- @stevejb for the Cursor IDE Profile
-- @AaronAgility for the Cursor IDE Profile
-- @davesienk for the Cursor IDE Profile
-- @Marlon for the Cursor IDE Profile
+- @atalas for the Cursor IDE Community User
+- @Guayusa for the Cursor IDE Community User
+- @stevejb for the Cursor IDE Community User
+- @AaronAgility for the Cursor IDE Community User
+- @davesienk for the Cursor IDE Community User
+- @Marlon for the Cursor IDE Community User
+- @DiGI for the Cursor IDE Discord Server
+- @ZaZ fopr the Cursor IDE Discord Server
 - Contributors to the original `kleosr/cursorkleosr` concepts
 
 ## License
