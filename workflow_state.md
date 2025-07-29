@@ -1,22 +1,8 @@
 # workflow_state.md
 _Last updated: 2025-01-13_
 
-<!-- DYNAMIC:STATE:START -->
-## State
-Phase: INIT  
-Status: READY  
-CurrentItem: null  
-Confidence: null  
-Context: []  
-RiskLevel: null  
-PatternMatch: null  
-SafeMode: false  
-<!-- DYNAMIC:STATE:END -->
-
-<!-- DYNAMIC:PLAN:START -->
-## Plan
-<!-- AI populates -->
-<!-- DYNAMIC:PLAN:END -->
+<!-- ==================== STATIC SECTIONS ==================== -->
+<!-- These sections contain configuration that can be replaced wholesale -->
 
 <!-- STATIC:RULES:START -->
 ## Rules
@@ -122,6 +108,38 @@ If rule unused for 30 days → flag for review.
 - RULE_GIT_GUIDANCE_01: help on request.  
 <!-- STATIC:RULES:END -->
 
+<!-- STATIC:VISUALIZER:START -->
+## Visualizer
+```mermaid
+graph LR
+    INIT --> ANALYZE --> BLUEPRINT --> CONSTRUCT --> VALIDATE
+    VALIDATE -->|success| COMPLETED
+    VALIDATE -->|failure| ROLLBACK
+    CONSTRUCT -.->|file save| CURSOR_INTEGRATION
+    CURSOR_INTEGRATION -->|update| CONFIDENCE
+```
+<!-- STATIC:VISUALIZER:END -->
+
+<!-- ==================== DYNAMIC SECTIONS ==================== -->
+<!-- These sections are managed by the AI during workflow execution -->
+
+<!-- DYNAMIC:STATE:START -->
+## State
+Phase: INIT  
+Status: READY  
+CurrentItem: null  
+Confidence: null  
+Context: []  
+RiskLevel: null  
+PatternMatch: null  
+SafeMode: false  
+<!-- DYNAMIC:STATE:END -->
+
+<!-- DYNAMIC:PLAN:START -->
+## Plan
+<!-- AI populates -->
+<!-- DYNAMIC:PLAN:END -->
+
 <!-- DYNAMIC:ITEMS:START -->
 ## Items
 | id | description | status | complexity | confidence | pattern_match |
@@ -145,18 +163,6 @@ Patterns: []
 ## Log
 <!-- tool output (JSON format) -->
 <!-- DYNAMIC:LOG:END -->
-
-<!-- STATIC:VISUALIZER:START -->
-## Visualizer
-```mermaid
-graph LR
-    INIT --> ANALYZE --> BLUEPRINT --> CONSTRUCT --> VALIDATE
-    VALIDATE -->|success| COMPLETED
-    VALIDATE -->|failure| ROLLBACK
-    CONSTRUCT -.->|file save| CURSOR_INTEGRATION
-    CURSOR_INTEGRATION -->|update| CONFIDENCE
-```
-<!-- STATIC:VISUALIZER:END -->
 
 <!-- DYNAMIC:WORKFLOW_HISTORY:START -->
 ## Workflow History
