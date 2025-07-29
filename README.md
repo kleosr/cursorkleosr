@@ -1,134 +1,122 @@
-# Making AI Development Feel Natural in Cursor
+# README.md
+
+```markdown
+# AI Development with Cursor: Enhanced Memory & Workflow
 
 <div align="center">
   <img src="https://i.ibb.co/tMy2cRkC/image-fx.png" alt="Project Rules Logo" width="400"/>
-  <p><em>Your AI coding companion just got a memory upgrade and a clear playbook</em></p>
+  <p><em>Upgrade your AI coding companion with memory and structured workflows</em></p>
 </div>
 
-## What's This All About?
+## Overview
 
-Ever wished your AI assistant in Cursor could remember what you're working on and stay focused on the task at hand? That's exactly what this project does. Instead of starting from scratch every conversation, your AI gets a reliable memory system and follows a structured workflow that actually makes sense.
+Transform your Cursor AI assistant into a true development partner with persistent memory and structured workflows. This system eliminates repetitive explanations and provides consistent, focused assistance by maintaining context throughout your development process.
 
-Think of it like giving your AI assistant a notebook to jot down important project details and a step-by-step guide for tackling development tasks. The result? More consistent help, fewer repeated explanations, and development that feels surprisingly smooth.
+### Key Benefits
 
-The best part? This system can now handle lists of items one by one, making it perfect for those times when you need to process multiple similar tasks without losing your mind.
+- **Persistent Memory**: Your AI remembers project context and coding preferences
+- **Structured Workflows**: Follows a logical progression from analysis to validation
+- **Batch Processing**: Handles multiple tasks systematically without losing context
+- **Plan Archiving**: Never lose track of your development plans and decisions
+- **Git Integration**: Built-in version control support for better collaboration
 
-This approach takes inspiration from the original `kleosr/cursorkleosr` repository but cuts out the complexity, focusing on what actually works in day-to-day development.
+## How It Works
 
-## Thanks to
+The system utilizes just two configuration files to manage your AI's behavior:
 
-*   @atalas [Atalas Cursor IDE Profile](https://forum.cursor.com/u/atalas) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
-*   @Guayusa [Guayusa Cursor IDE Profile](https://forum.cursor.com/u/Guayusa) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
-*   @stevejb [Stevejb Cursor IDE Profile](https://forum.cursor.com/u/stevejb) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
-*   @AaronAgility [AaronAgility Cursor IDE Profile](https://forum.cursor.com/u/AaronAgility/summary) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
-*   @davesienk [davesienk Cursor IDE Profile](https://forum.cursor.com/u/davesienk/profile-hidden) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
-*   @Marlon [Marlon Cursor IDE Profile](https://forum.cursor.com/u/Marlon) <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/cursor.png" width="16" height="16" alt="Cursor Icon" style="vertical-align: middle; margin-left: 5px;" />
-*   Contributors to the original `kleosr/cursorkleosr` concepts.
+### `project_config.md`
+Your project's long-term memory containing:
+- Project goals and requirements
+- Technology stack and tool preferences
+- Coding standards and patterns
+- Performance constraints
+- Token management settings
 
-## The Magic Behind the Curtain: Two Simple Files
+### `workflow_state.md`
+The dynamic workspace that tracks:
+- Current workflow phase
+- Implementation plans and rules
+- Activity logs and tool usage
+- Task queues and results
+- Historical blueprints for reference
 
-Instead of juggling tons of configuration files, this system keeps things refreshingly simple with just two key files:
-
-### `project_config.md` - Your Project's Long-Term Memory
-This is where you store the stuff that doesn't change much:
-- What you're trying to build and why
-- Your tech stack and favorite tools
-- The coding patterns you love (or hate)
-- Performance budgets and constraints
-- Token counting settings for keeping conversations manageable
-
-The AI checks this when starting big tasks to understand your project's DNA. You'll update it occasionally, but it's mostly set-and-forget.
-
-### `workflow_state.md` - The Dynamic Brain
-This is where the real action happens. It's like your AI's working notebook that gets updated constantly:
-
-- **Current State**: Where you are in the workflow (Analyzing? Building? Testing?)
-- **The Plan**: Step-by-step breakdown of what needs to happen next
-- **The Rules**: How the AI should behave in different situations
-- **Activity Log**: What just happened and what tools were used
-- **Item Queue**: Lists of things to process one by one
-- **Results Archive**: Summaries and outcomes from completed work
-- **Blueprint History**: A clever system that saves all your planning work so nothing gets lost
-
-The AI reads this file before doing anything and updates it immediately after taking action. It's like having a conversation partner who actually remembers the context.
-
-## How Your AI Actually Works
-
-Once you get this running, your AI follows a surprisingly natural rhythm:
+## Workflow Process
 
 ```mermaid
 graph LR
-    A[AI Wakes Up] --> B[Checks workflow_state.md];
-    B --> C{Ready for next item?};
-    C -- Yes --> D[Grabs next task];
-    C -- No --> E[Continues current work];
-    E --> F[Does the work];
-    F --> G[Updates the notes];
-    G --> H{Time to test?};
-    H -- Yes --> I[Runs validation];
+    A[AI Initialization] --> B[Read workflow_state.md];
+    B --> C{Task Available?};
+    C -- Yes --> D[Process Next Task];
+    C -- No --> E[Continue Current Work];
+    E --> F[Execute Task];
+    F --> G[Update workflow_state.md];
+    G --> H{Validation Required?};
+    H -- Yes --> I[Run Tests];
     H -- No --> E;
-    D --> J{More items to handle?};
-    J -- Yes --> K[Moves to next item];
-    K --> L[Clears the workspace];
-    L --> M[Starts fresh];
-    M --> B;
-    J -- No --> N[Marks everything complete];
-    N --> O[Takes a well-deserved break];
+    D --> J{More Tasks?};
+    J -- Yes --> K[Reset Workspace];
+    K --> L[Start Fresh];
+    L --> B;
+    J -- No --> M[Mark Complete];
+    M --> N[Idle State];
 ```
 
-In plain English: Your AI reads its notes, figures out what to do next, does it using Cursor's tools, writes down what happened, and repeats. When working through lists, it tackles one item at a time with a clean slate for each.
+## Development Phases
 
-## The Four Phases That Keep Things Organized
+1. **Understanding**: Requirements analysis without premature solutioning
+2. **Planning**: Detailed step-by-step implementation with blueprint archiving
+3. **Building**: Precise execution with error handling and systematic processing
+4. **Validation**: Testing and verification against requirements
 
-The workflow follows a logical progression that matches how you'd naturally approach development:
+## Getting Started
 
-1. **Understanding Phase**: "What exactly am I supposed to build here?" The AI digs into requirements without jumping into solutions.
+1. **Locate Configuration Files**: Find `project_config.md` and `workflow_state.md` in the `cursorkleosr/` directory
+2. **Configure Project**: Customize `project_config.md` with your project specifics
+3. **Initialize AI**: Use this system prompt in Cursor:
+   ```
+   You're an autonomous AI developer. Work exclusively with project_config.md and workflow_state.md. 
+   Before each action, read workflow_state.md to understand context, follow the rules, 
+   then immediately update workflow_state.md with your actions and results.
+   ```
+4. **Begin Development**: The AI will initialize and request your first task
 
-2. **Planning Phase**: "Okay, here's exactly how I'll tackle this." Creates detailed, step-by-step implementation plans while safely archiving previous plans.
+## Key Features
 
-3. **Building Phase**: "Time to make it happen." Follows the plan precisely, handles errors gracefully, and processes multiple items systematically.
+### Blueprint Archiving
+Every plan is automatically archived with timestamps and unique IDs. Retrieve previous plans with natural language:
+- "Show me last Tuesday's blueprint"
+- "Use blueprint abc123def"
+- "Display this week's plans"
 
-4. **Validation Phase**: "Does this actually work?" Runs tests and checks to make sure everything meets the requirements.
+### Git Integration
+Seamless version control support with:
+- Automated commit suggestions
+- Progress tracking through commit logs
+- Plain English rollback and comparison commands
 
-Each phase has its own focus and constraints, preventing the AI from getting ahead of itself or missing important steps.
+### Cursor Rules Integration
+While `.cursorrules` can still manage global preferences, the workflow intelligence now resides in your configuration files for more context-aware behavior.
 
-## Getting Up and Running
+## Acknowledgments
 
-Ready to give your AI assistant this memory upgrade? Here's how:
-
-1. **Find Your Files**: Look for `project_config.md` and `workflow_state.md` in the `cursorkleosr/` directory.
-
-2. **Customize Your Project**: Open `project_config.md` and fill in your project's details - goals, tech stack, coding preferences, and any constraints you care about.
-
-3. **Set Up Your AI**: Start a Cursor chat with a system prompt that tells the AI to work exclusively with these files. Something like:
-   
-   *"You're an autonomous AI developer. Work solely based on `project_config.md` and `workflow_state.md`. Before every action, read `workflow_state.md` to understand the current state, check the rules, act accordingly, then immediately update `workflow_state.md` with what happened."*
-
-4. **Give It Something to Do**: The AI will initialize itself based on the rules and ask what you'd like to work on first.
-
-## What About That `.cursorrules` File?
-
-Good question! Since the workflow logic now lives in `workflow_state.md`, your main `.cursorrules` file becomes less critical for the day-to-day workflow. You might still use it for global Cursor preferences (like which AI model to use or files to ignore), but the real intelligence lives in the workflow files now.
-
-## Never Lose a Good Plan Again
-
-One of the coolest features is the automatic blueprint history system. Every time you create a new plan, the old one gets safely archived with a timestamp and unique ID. No more "wait, what was that brilliant idea I had yesterday?"
-
-You can easily retrieve old plans with natural commands:
-- *"Show me the blueprint from last Tuesday"*
-- *"Use blueprint abc123def"*  
-- *"What plans do we have from this week?"*
-
-It's like version control for your thinking process.
-
-## Git Integration That Actually Helps
-
-The system includes simple, AI-assisted Git integration that encourages good version control habits. After completing tasks successfully, the AI will suggest committing changes, log commit details to track progress, and help with rollbacks or comparisons using plain English commands.
+Special thanks to:
+- @atalas for the Cursor IDE Profile
+- @Guayusa for the Cursor IDE Profile
+- @stevejb for the Cursor IDE Profile
+- @AaronAgility for the Cursor IDE Profile
+- @davesienk for the Cursor IDE Profile
+- @Marlon for the Cursor IDE Profile
+- Contributors to the original `kleosr/cursorkleosr` concepts
 
 ## License
 
-This project concept is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contributing
 
-Found ways to make this system even better? We'd love to hear about it! Share your experiences, refinements, and creative adaptations.
+We welcome contributions and improvements to this system. Please share your experiences, refinements, and creative adaptations to help enhance the development workflow for everyone.
+
+---
+
+**Note**: This project builds upon the concepts from `kleosr/cursorkleosr` while focusing on simplicity and practicality for everyday development.
+```
