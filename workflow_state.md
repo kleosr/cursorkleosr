@@ -98,7 +98,21 @@ Weekly:
 - Simulate task → measure phase durations → alert on regressions.  
 
 ### RULE_DEPRECATE_01  
-If rule unused for 30 days → flag for review.  
+If rule unused for 30 days → flag for review.
+
+### RULE_NO_README_01  
+NEVER create README.md files in project root or any directory.
+Documentation creation requires explicit user request.
+
+### RULE_DOCS_DIRECTORY_01  
+All documentation files (.md) must be created in ./docs/ directory.
+Auto-create ./docs/ directory if documentation is explicitly requested.
+
+### RULE_NO_AUTO_DOCS_01  
+Prevent automatic creation of:
+- README.md files
+- CHANGELOG.md files  
+- Any .md files unless explicitly requested by user
 
 ## Git Rules
 - RULE_GIT_COMMIT_01: prompt commit on VALIDATE pass.  
