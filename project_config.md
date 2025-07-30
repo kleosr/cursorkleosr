@@ -19,6 +19,9 @@ Enter your goal here.
 - kebab-case files; camelCase variables.  
 - No `any`; strict null checks on.  
 - Secrets via env vars only.
+- NEVER create README.md files automatically
+- All documentation files (.md) go to ./docs/ directory only
+- Documentation creation requires explicit user request
 <!-- STATIC:PATTERNS:END -->
 
 <!-- STATIC:CONSTRAINTS:START -->
