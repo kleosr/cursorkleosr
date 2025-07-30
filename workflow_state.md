@@ -7,130 +7,60 @@ _Last updated: 2025-01-13_
 <!-- STATIC:RULES:START -->
 ## Rules
 ### [PHASE: ANALYZE]  
-Read project_config.md & context; write summary.  
-Set scope, complexity (1-5), risk level.  
-Embedding-based pattern matching → update PatternMatch.  
+Read project_config.md & context; assess data requirements & model scope
+Set complexity (1-5): 1=simple sklearn, 5=custom architecture
+Estimate: dataset size, compute needs, timeline
 
-### [PHASE: BLUEPRINT]  
-Archive current plan; draft new steps; set `NEEDS_PLAN_APPROVAL`.  
-Assign confidence (1-10). If <7 → request clarification.  
-RiskLevel ≥4 → generate rollback script.  
+### [PHASE: DATA]  
+Prepare datasets: collection, cleaning, splitting
+Create data loaders and preprocessing pipelines  
+Validate data quality and distribution
+Generate data summary statistics
 
-### [PHASE: CONSTRUCT]  
-Follow approved plan; run tests; log; set `VALIDATE`.  
-Create checkpoint before major changes.  
-Micro-phases: CODE → TEST → REVIEW (parallelize if complexity ≥4).  
-Auto-integrate with Cursor on file save/test run.  
+### [PHASE: MODEL]  
+Define model architecture and hyperparameters
+Implement training loop with proper logging
+Run initial training with baseline metrics
+Save model checkpoints with metadata
 
 ### [PHASE: VALIDATE]  
-Full test pass → `COMPLETED`; trigger `RULE_ITERATE_01`, `RULE_GIT_COMMIT_01`.  
-Update metrics and patterns.  
-Root-cause analysis if failure → auto-suggest fixes.  
+Test model performance on validation set
+Run inference speed benchmarks  
+Generate prediction examples and error analysis
+Compare against baseline requirements  
 
-### RULE_INIT_01  
-Phase == INIT → ask task → `ANALYZE, RUNNING`.  
+### RULE_FLOW: INIT→ask task→ANALYZE,RUNNING; COMPLETED+items→next,reset  
 
-### RULE_ITERATE_01  
-Status == COMPLETED && Items left → next item, reset.  
+### RULE_ADAPTIVE: C≤2→skip DATA (use existing); C≥4→extra validation epochs; small dataset→skip DATA phase  
 
-### RULE_ADAPTIVE_01  
-Simple tasks (complexity 1-2) → skip BLUEPRINT.  
-Complex tasks (4-5) → add pre-validation.  
+### RULE_PATTERN: Check similar→reuse; >85%→inject; <40%→review; <70%→deprioritize
 
-### RULE_ADAPTIVE_02  
-If Context contains "quick_fix" OR user history shows high confidence → skip ANALYZE/BLUEPRINT.  
-If confidence drops by >30% during phase → auto-trigger PRE_VALIDATION.  
+### RULE_ROLLBACK: MODEL fail→load last checkpoint; DATA fail→clean raw data; 2 fails→reduce complexity  
 
-### RULE_PATTERN_01  
-Check similar tasks → reuse successful approaches.  
+### RULE_LOG: >3000 chars→archive top 5,clear; VALIDATE+COMPLETED→changelog  
 
-### RULE_PATTERN_02  
-If PatternMatch > 85% → auto-inject successful code snippets.  
-If PatternMatch < 40% → flag for human review.  
+### RULE_RISK: BLUEPRINT+C≥4→static analysis; HIGH→rollback script; confidence drop>30%→pause  
 
-### RULE_ROLLBACK_01  
-CONSTRUCT fails → rollback to checkpoint, re-plan with constraints.  
+### RULE_CURSOR: file save→syntax check→confidence; test→log→VALIDATE; confidence<7→suggest  
 
-### RULE_ROLLBACK_02  
-On failure:  
-1. Scan logs for error patterns.  
-2. Suggest context-aware fixes.  
-After 2 failures → enable SafeMode.  
+### RULE_BLUEPRINT: Archive before overwrite; restore on request; branch on request; diff visualize  
 
-### RULE_LOG_ROTATE_01  
-Log > 3000 chars → archive top 5 lines to ArchiveLog, clear.  
+### RULE_MAINT: Weekly→simulate,measure,alert; unused 30d→flag review
 
-### RULE_SUMMARY_01  
-VALIDATE && COMPLETED → prepend one-liner to Changelog.  
+### RULE_DOCS: NEVER auto-create .md files; explicit request only→./docs/
 
-### RULE_RISK_01  
-In BLUEPRINT:  
-- If complexity ≥4 → run dependency static analysis.  
-- If risk level = HIGH → generate rollback script.  
-
-### RULE_CONFIDENCE_01  
-If confidence drops by >30% during CONSTRUCT → pause and notify user.  
-
-### RULE_PATTERN_03  
-Track pattern reuse success rate → deprioritize patterns with <70% success.  
-
-### RULE_CURSOR_INTEGRATION_01  
-- On file save → auto-run syntax check → update confidence.  
-- On test run → log results → auto-advance to VALIDATE if all pass.  
-- If confidence < 7 → show inline pattern suggestion.  
-
-### RULE_BLUEPRINT_ARCHIVE_01  
-Before overwrite → save to Blueprint History with time+ID.  
-
-### RULE_BLUEPRINT_REFERENCE_01  
-User request → restore/show blueprint.  
-
-### RULE_BLUEPRINT_BRANCH_01  
-On request:  
-- Create blueprint branch (e.g., `blueprint/feature_x`).  
-- Merge to main after approval.  
-
-### RULE_BLUEPRINT_DIFF_01  
-Compare blueprints with diff visualization.  
-
-### RULE_SELF_TEST_01  
-Weekly:  
-- Simulate task → measure phase durations → alert on regressions.  
-
-### RULE_DEPRECATE_01  
-If rule unused for 30 days → flag for review.
-
-### RULE_NO_README_01  
-NEVER create README.md files in project root or any directory.
-Documentation creation requires explicit user request.
-
-### RULE_DOCS_DIRECTORY_01  
-All documentation files (.md) must be created in ./docs/ directory.
-Auto-create ./docs/ directory if documentation is explicitly requested.
-
-### RULE_NO_AUTO_DOCS_01  
-Prevent automatic creation of:
-- README.md files
-- CHANGELOG.md files  
-- Any .md files unless explicitly requested by user
-
-## Git Rules
-- RULE_GIT_COMMIT_01: prompt commit on VALIDATE pass.  
-- RULE_GIT_COMMIT_02: auto-commit with structured message on VALIDATE pass.  
-- RULE_GIT_ROLLBACK_01: checkout SHA by description.  
-- RULE_GIT_DIFF_01: diff two SHAs.  
-- RULE_GIT_GUIDANCE_01: help on request.  
+### RULE_GIT: VALIDATE pass→prompt|auto-commit; rollback by description; diff SHAs; help on request  
 <!-- STATIC:RULES:END -->
 
 <!-- STATIC:VISUALIZER:START -->
 ## Visualizer
 ```mermaid
 graph LR
-    INIT --> ANALYZE --> BLUEPRINT --> CONSTRUCT --> VALIDATE
+    INIT --> ANALYZE --> DATA --> MODEL --> VALIDATE
     VALIDATE -->|success| COMPLETED
     VALIDATE -->|failure| ROLLBACK
-    CONSTRUCT -.->|file save| CURSOR_INTEGRATION
-    CURSOR_INTEGRATION -->|update| CONFIDENCE
+    DATA -.->|small dataset| MODEL
+    MODEL -.->|checkpoint| VALIDATE
 ```
 <!-- STATIC:VISUALIZER:END -->
 
@@ -139,14 +69,7 @@ graph LR
 
 <!-- DYNAMIC:STATE:START -->
 ## State
-Phase: INIT  
-Status: READY  
-CurrentItem: null  
-Confidence: null  
-Context: []  
-RiskLevel: null  
-PatternMatch: null  
-SafeMode: false  
+Phase:INIT Status:READY Item:null Confidence:null Dataset:null Model:null Checkpoint:null  
 <!-- DYNAMIC:STATE:END -->
 
 <!-- DYNAMIC:PLAN:START -->
@@ -163,9 +86,10 @@ SafeMode: false
 ## Metrics
 Tasks: 0/0  
 Success: 100%  
-**Prediction**: Next task success likelihood: 92%  
-**Bottlenecks**: Avg. time in BLUEPRINT: 12min (↑ 20%)  
-Patterns: []  
+**Model Performance**: accuracy:null loss:null f1:null
+**Data Quality**: missing:null% outliers:null% balance:null
+**Training**: epochs:null time:null GPU_util:null%
+**Inference**: latency:null ms throughput:null/s
 <!-- DYNAMIC:METRICS:END -->
 
 <!-- DYNAMIC:CHECKPOINTS:START -->
