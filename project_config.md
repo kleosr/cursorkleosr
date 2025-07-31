@@ -1,5 +1,5 @@
 # project_config.md
-_Last updated: 2025-07-13_
+_Template for AI Model Development Projects_
 
 <!-- STATIC:GOAL:START -->
 ## Goal  
@@ -54,5 +54,5 @@ Features: [feature_count] features, [categorical|numerical|text|image]
 
 <!-- DYNAMIC:CHANGELOG:START -->
 ## Changelog
-- 2025-07-13: Cleansed out.
+<!-- AI populates project changes -->
 <!-- DYNAMIC:CHANGELOG:END -->
