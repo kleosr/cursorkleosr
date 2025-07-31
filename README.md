@@ -2,10 +2,7 @@
 
 # Cursor Natural AI Workflow 
 
-<div align="center">
-  <img src="https://i.ibb.co/tMy2cRkC/image-fx.png" alt="Project Rules Logo" width="400"/>
-  <p><em>Upgrade your AI coding companion with memory and structured workflows</em></p>
-</div>
+
 
 ## Overview
 
