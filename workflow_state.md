@@ -1,5 +1,10 @@
 # workflow_state.md
-_Last updated: 2025-01-13_
+<!-- STATIC:VERSION_INFO:START -->
+**Build Version**: v1.0.0  
+**Build Timestamp**: <!-- AI updates with current timestamp -->  
+**Schema Version**: 1.0  
+**Static Content Hash**: <!-- AI calculates hash -->  
+<!-- STATIC:VERSION_INFO:END -->
 
 <!-- ==================== STATIC SECTIONS ==================== -->
 <!-- These sections contain configuration that can be replaced wholesale -->
@@ -49,6 +54,8 @@ Compare against baseline requirements
 
 ### RULE_DOCS: NEVER auto-create .md files; explicit request only→./docs/
 
+### RULE_VERSION: Update build timestamp on static changes; increment version on breaking changes; log all modifications in changelog; verify hash integrity
+
 ### RULE_GIT: VALIDATE pass→prompt|auto-commit; rollback by description; diff SHAs; help on request  
 <!-- STATIC:RULES:END -->
 
@@ -61,6 +68,9 @@ graph LR
     VALIDATE -->|failure| ROLLBACK
     DATA -.->|small dataset| MODEL
     MODEL -.->|checkpoint| VALIDATE
+    COMPLETED --> VERSION_LOG
+    ROLLBACK --> VERSION_LOG
+    VERSION_LOG -->|timestamp + hash| CHANGELOG
 ```
 <!-- STATIC:VISUALIZER:END -->
 
@@ -116,3 +126,15 @@ Success: 100%
 ## Blueprint History
 <!-- archived plans -->
 <!-- DYNAMIC:BLUEPRINT_HISTORY:END -->
+
+<!-- DYNAMIC:VERSION_CHANGELOG:START -->
+## Version Changelog
+| version | timestamp | changes | static_hash | dynamic_changes |
+|---------|-----------|---------|-------------|-----------------|
+
+<!-- DYNAMIC:VERSION_CHANGELOG:END -->
+
+<!-- DYNAMIC:DIFF_TRACKING:START -->
+## Diff Tracking
+<!-- AI populates with build differences -->
+<!-- DYNAMIC:DIFF_TRACKING:END -->
