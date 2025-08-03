@@ -1,8 +1,8 @@
 # workflow_state.md
 <!-- STATIC:VERSION_INFO:START -->
-**Build Version**: v1.0.0  
+**Build Version**: v1.1.0  
 **Build Timestamp**: <!-- AI updates with current timestamp -->  
-**Schema Version**: 1.0  
+**Schema Version**: 1.1  
 **Static Content Hash**: <!-- AI calculates hash -->  
 <!-- STATIC:VERSION_INFO:END -->
 
@@ -12,39 +12,40 @@
 <!-- STATIC:RULES:START -->
 ## Rules
 ### [PHASE: ANALYZE]  
-Read project_config.md & context; assess data requirements & model scope
-Set complexity (1-5): 1=simple sklearn, 5=custom architecture
-Estimate: dataset size, compute needs, timeline
+Load project_config.md and repo context
+Infer task type from Model Config Type
+Set complexity (1-5): 1=trivial change, 5=cross-module refactor
+Estimate: files touched, LOC change, risk, CI time
 
-### [PHASE: DATA]  
-Prepare datasets: collection, cleaning, splitting
-Create data loaders and preprocessing pipelines  
-Validate data quality and distribution
-Generate data summary statistics
+### [PHASE: PREPARE]  
+Resolve dependencies using repo scripts only
+Generate plan items from Items table schema
+Locate entrypoints, interfaces, and affected modules
+Map tests to code paths
 
-### [PHASE: MODEL]  
-Define model architecture and hyperparameters
-Implement training loop with proper logging
-Run initial training with baseline metrics
-Save model checkpoints with metadata
+### [PHASE: IMPLEMENT]  
+Apply minimal diff, maintain contracts and boundaries
+Add/modify code with strict typing and tests when required
+Reuse utilities; avoid new dependencies unless present in repo
+Stage safe checkpoints after each logical unit
 
 ### [PHASE: VALIDATE]  
-Test model performance on validation set
-Run inference speed benchmarks  
-Generate prediction examples and error analysis
-Compare against baseline requirements  
+Run lint, typecheck, and tests via repo scripts
+Measure coverage and ensure thresholds in project_config.md
+Produce diff summary and risk notes
+If failures, rollback to last checkpoint and reduce complexity
 
-### RULE_FLOW: INIT→ask task→ANALYZE,RUNNING; COMPLETED+items→next,reset  
+### RULE_FLOW: INIT→ANALYZE→PREPARE→IMPLEMENT→VALIDATE→COMPLETED|ROLLBACK  
 
-### RULE_ADAPTIVE: C≤2→skip DATA (use existing); C≥4→extra validation epochs; small dataset→skip DATA phase  
+### RULE_ADAPTIVE: C≤2→fast path (skip deep PREPARE); C≥4→extra validation; tests flaky→rerun with seed  
 
-### RULE_PATTERN: Check similar→reuse; >85%→inject; <40%→review; <70%→deprioritize
+### RULE_PATTERN: Check similar→reuse; >85%→apply; <40%→manual review; <70%→deprioritize
 
-### RULE_ROLLBACK: MODEL fail→load last checkpoint; DATA fail→clean raw data; 2 fails→reduce complexity  
+### RULE_ROLLBACK: IMPLEMENT fail→restore last checkpoint; PREPARE fail→use cached state; 2 fails→reduce complexity  
 
 ### RULE_LOG: >3000 chars→archive top 5,clear; VALIDATE+COMPLETED→changelog  
 
-### RULE_RISK: BLUEPRINT+C≥4→static analysis; HIGH→rollback script; confidence drop>30%→pause  
+### RULE_RISK: PLAN+C≥4→static analysis; HIGH→rollback script; confidence drop>30%→pause  
 
 ### RULE_CURSOR: file save→syntax check→confidence; test→log→VALIDATE; confidence<7→suggest  
 
@@ -63,11 +64,11 @@ Compare against baseline requirements
 ## Visualizer
 ```mermaid
 graph LR
-    INIT --> ANALYZE --> DATA --> MODEL --> VALIDATE
+    INIT --> ANALYZE --> PREPARE --> IMPLEMENT --> VALIDATE
     VALIDATE -->|success| COMPLETED
     VALIDATE -->|failure| ROLLBACK
-    DATA -.->|small dataset| MODEL
-    MODEL -.->|checkpoint| VALIDATE
+    PREPARE -.->|fast path| IMPLEMENT
+    IMPLEMENT -.->|checkpoint| VALIDATE
     COMPLETED --> VERSION_LOG
     ROLLBACK --> VERSION_LOG
     VERSION_LOG -->|timestamp + hash| CHANGELOG
@@ -79,27 +80,26 @@ graph LR
 
 <!-- DYNAMIC:STATE:START -->
 ## State
-Phase:INIT Status:READY Item:null Confidence:null Dataset:null Model:null Checkpoint:null  
+Phase:INIT Status:READY Item:null Confidence:null Files:null Modules:null Checkpoint:null  
 <!-- DYNAMIC:STATE:END -->
 
 <!-- DYNAMIC:PLAN:START -->
 ## Plan
-<!-- AI populates -->
+<!-- AI populates with ordered actionable steps -->
 <!-- DYNAMIC:PLAN:END -->
 
 <!-- DYNAMIC:ITEMS:START -->
 ## Items
-| id | description | status | complexity | confidence | pattern_match |
+| id | description | status | complexity | confidence | pattern_match | files | modules |
 <!-- DYNAMIC:ITEMS:END -->
 
 <!-- DYNAMIC:METRICS:START -->
 ## Metrics
 Tasks: 0/0  
 Success: 100%  
-**Model Performance**: accuracy:null loss:null f1:null
-**Data Quality**: missing:null% outliers:null% balance:null
-**Training**: epochs:null time:null GPU_util:null%
-**Inference**: latency:null ms throughput:null/s
+**Quality**: lint_errors:0 type_errors:0 test_failures:0 coverage:null%
+**Performance**: build_time_ms:null test_time_ms:null
+**Diff**: files_changed:0 loc_added:0 loc_removed:0
 <!-- DYNAMIC:METRICS:END -->
 
 <!-- DYNAMIC:CHECKPOINTS:START -->
