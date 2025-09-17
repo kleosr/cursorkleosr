@@ -116,6 +116,8 @@ We welcome contributions and improvements to this system. Please share your expe
 
 ---
 
-<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://www.star-history.com/embed#kleosr/cursorkleosr&Date" frameBorder="0"></iframe>
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=kleosr/cursorkleosr&type=Date)](https://www.star-history.com/#kleosr/cursorkleosr&Date)
 
 **Note**: This project builds upon the concepts from `kleosr/cursorkleosr` while focusing on simplicity and practicality for everyday development.
