@@ -1,8 +1,8 @@
 # workflow_state.md
 <!-- STATIC:VERSION_INFO:START -->
-**Build Version**: v1.1.0  
+**Build Version**: v1.2.0  
 **Build Timestamp**: <!-- AI updates with current timestamp -->  
-**Schema Version**: 1.1  
+**Schema Version**: 1.2  
 **Static Content Hash**: <!-- AI calculates hash -->  
 <!-- STATIC:VERSION_INFO:END -->
 
@@ -27,7 +27,8 @@ Map tests to code paths
 Apply minimal diff, maintain contracts and boundaries
 Add/modify code with strict typing and tests when required
 Reuse utilities; avoid new dependencies unless present in repo
-Stage safe checkpoints after each logical unit
+Auto-checkpoint before major changes (complexity≥3) or after each logical unit
+Include checkpoint metadata: timestamp, phase, confidence, files_changed hash, git_branch
 
 ### [PHASE: VALIDATE]  
 Run lint, typecheck, and tests via repo scripts
@@ -42,6 +43,8 @@ If failures, rollback to last checkpoint and reduce complexity
 ### RULE_PATTERN: Check similar→reuse; >85%→apply; <40%→manual review; <70%→deprioritize
 
 ### RULE_ROLLBACK: IMPLEMENT fail→restore last checkpoint; PREPARE fail→use cached state; 2 fails→reduce complexity  
+
+### RULE_CHECKPOINT: Auto-create before major changes (C≥3); include metadata (timestamp, phase, confidence, files_hash, branch); restore selectively by phase or timestamp; track checkpoint chain for rollback path
 
 ### RULE_LOG: >3000 chars→archive top 5,clear; VALIDATE+COMPLETED→changelog  
 
@@ -68,7 +71,9 @@ graph LR
     VALIDATE -->|success| COMPLETED
     VALIDATE -->|failure| ROLLBACK
     PREPARE -.->|fast path| IMPLEMENT
+    IMPLEMENT -.->|auto-checkpoint C≥3| CHECKPOINT
     IMPLEMENT -.->|checkpoint| VALIDATE
+    CHECKPOINT -.->|restore| ROLLBACK
     COMPLETED --> VERSION_LOG
     ROLLBACK --> VERSION_LOG
     VERSION_LOG -->|timestamp + hash| CHANGELOG
@@ -104,7 +109,8 @@ Success: 100%
 
 <!-- DYNAMIC:CHECKPOINTS:START -->
 ## Checkpoints
-| time | phase | confidence | safe | rollback_script |
+| time | phase | confidence | safe | files_hash | git_branch | files_changed | rollback_script |
+|------|-------|------------|------|------------|------------|---------------|----------------|
 <!-- DYNAMIC:CHECKPOINTS:END -->
 
 <!-- DYNAMIC:LOG:START -->
