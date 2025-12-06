@@ -1,146 +1,76 @@
-# workflow_state.md
+# Workflow State
 <!-- STATIC:VERSION_INFO:START -->
-**Build Version**: v1.2.0  
-**Build Timestamp**: <!-- AI updates with current timestamp -->  
-**Schema Version**: 1.2  
-**Static Content Hash**: <!-- AI calculates hash -->  
+v1.2.0 | Schema 1.2
 <!-- STATIC:VERSION_INFO:END -->
-
-<!-- ==================== STATIC SECTIONS ==================== -->
-<!-- These sections contain configuration that can be replaced wholesale -->
 
 <!-- STATIC:RULES:START -->
 ## Rules
-### [PHASE: ANALYZE]  
-Load project_config.md and repo context
-Infer task type from Model Config Type
-Set complexity (1-5): 1=trivial change, 5=cross-module refactor
-Estimate: files touched, LOC change, risk, CI time
+### ANALYZE
+Load config+context → infer type → set complexity(1-5) → estimate impact
 
-### [PHASE: PREPARE]  
-Resolve dependencies using repo scripts only
-Generate plan items from Items table schema
-Locate entrypoints, interfaces, and affected modules
-Map tests to code paths
+### PREPARE
+Resolve deps → generate plan → locate entrypoints → map tests
 
-### [PHASE: IMPLEMENT]  
-Apply minimal diff, maintain contracts and boundaries
-Add/modify code with strict typing and tests when required
-Reuse utilities; avoid new dependencies unless present in repo
-Auto-checkpoint before major changes (complexity≥3) or after each logical unit
-Include checkpoint metadata: timestamp, phase, confidence, files_changed hash, git_branch
+### IMPLEMENT
+Minimal diff → strict typing → reuse utils → checkpoint C≥3
 
-### [PHASE: VALIDATE]  
-Run lint, typecheck, and tests via repo scripts
-Measure coverage and ensure thresholds in project_config.md
-Produce diff summary and risk notes
-If failures, rollback to last checkpoint and reduce complexity
+### VALIDATE
+Run lint/typecheck/tests → check coverage → diff summary → rollback on fail
 
-### RULE_FLOW: INIT→ANALYZE→PREPARE→IMPLEMENT→VALIDATE→COMPLETED|ROLLBACK  
+### Flow
+INIT→ANALYZE→PREPARE→IMPLEMENT→VALIDATE→COMPLETED|ROLLBACK
 
-### RULE_ADAPTIVE: C≤2→fast path (skip deep PREPARE); C≥4→extra validation; tests flaky→rerun with seed  
+### Adaptive
+C≤2: fast path | C≥4: extra validation | flaky: rerun
 
-### RULE_PATTERN: Check similar→reuse; >85%→apply; <40%→manual review; <70%→deprioritize
+### Rollback
+IMPLEMENT fail→restore checkpoint | 2 fails→reduce complexity
 
-### RULE_ROLLBACK: IMPLEMENT fail→restore last checkpoint; PREPARE fail→use cached state; 2 fails→reduce complexity  
+### Checkpoint
+C≥3: auto-create | metadata: time,phase,confidence,hash,branch
 
-### RULE_CHECKPOINT: Auto-create before major changes (C≥3); include metadata (timestamp, phase, confidence, files_hash, branch); restore selectively by phase or timestamp; track checkpoint chain for rollback path
-
-### RULE_LOG: >3000 chars→archive top 5,clear; VALIDATE+COMPLETED→changelog  
-
-### RULE_RISK: PLAN+C≥4→static analysis; HIGH→rollback script; confidence drop>30%→pause  
-
-### RULE_CURSOR: file save→syntax check→confidence; test→log→VALIDATE; confidence<7→suggest  
-
-### RULE_BLUEPRINT: Archive before overwrite; restore on request; branch on request; diff visualize  
-
-### RULE_MAINT: Weekly→simulate,measure,alert; unused 30d→flag review
-
-### RULE_DOCS: NEVER auto-create .md files; explicit request only→./docs/
-
-### RULE_VERSION: Update build timestamp on static changes; increment version on breaking changes; log all modifications in changelog; verify hash integrity
-
-### RULE_GIT: VALIDATE pass→prompt|auto-commit; rollback by description; diff SHAs; help on request  
+### Misc
+LOG: >3K chars→archive | RISK: C≥4→static analysis | GIT: pass→commit
 <!-- STATIC:RULES:END -->
 
 <!-- STATIC:VISUALIZER:START -->
 ## Visualizer
 ```mermaid
 graph LR
-    INIT --> ANALYZE --> PREPARE --> IMPLEMENT --> VALIDATE
-    VALIDATE -->|success| COMPLETED
-    VALIDATE -->|failure| ROLLBACK
-    PREPARE -.->|fast path| IMPLEMENT
-    IMPLEMENT -.->|auto-checkpoint C≥3| CHECKPOINT
-    IMPLEMENT -.->|checkpoint| VALIDATE
-    CHECKPOINT -.->|restore| ROLLBACK
-    COMPLETED --> VERSION_LOG
-    ROLLBACK --> VERSION_LOG
-    VERSION_LOG -->|timestamp + hash| CHANGELOG
+    INIT-->ANALYZE-->PREPARE-->IMPLEMENT-->VALIDATE
+    VALIDATE-->|ok|COMPLETED
+    VALIDATE-->|fail|ROLLBACK
 ```
 <!-- STATIC:VISUALIZER:END -->
 
-<!-- ==================== DYNAMIC SECTIONS ==================== -->
-<!-- These sections are managed by the AI during workflow execution -->
-
 <!-- DYNAMIC:STATE:START -->
 ## State
-Phase:INIT Status:READY Item:null Confidence:null Files:null Modules:null Checkpoint:null  
+Phase:INIT Status:READY
 <!-- DYNAMIC:STATE:END -->
 
 <!-- DYNAMIC:PLAN:START -->
 ## Plan
-<!-- AI populates with ordered actionable steps -->
 <!-- DYNAMIC:PLAN:END -->
 
 <!-- DYNAMIC:ITEMS:START -->
 ## Items
-| id | description | status | complexity | confidence | pattern_match | files | modules |
+|id|desc|status|complexity|confidence|files|
 <!-- DYNAMIC:ITEMS:END -->
 
 <!-- DYNAMIC:METRICS:START -->
 ## Metrics
-Tasks: 0/0  
-Success: 100%  
-**Quality**: lint_errors:0 type_errors:0 test_failures:0 coverage:null%
-**Performance**: build_time_ms:null test_time_ms:null
-**Diff**: files_changed:0 loc_added:0 loc_removed:0
+Tasks:0/0 | Quality:0 errors | Diff:0 files
 <!-- DYNAMIC:METRICS:END -->
 
 <!-- DYNAMIC:CHECKPOINTS:START -->
 ## Checkpoints
-| time | phase | confidence | safe | files_hash | git_branch | files_changed | rollback_script |
-|------|-------|------------|------|------------|------------|---------------|----------------|
+|time|phase|confidence|hash|branch|
 <!-- DYNAMIC:CHECKPOINTS:END -->
 
 <!-- DYNAMIC:LOG:START -->
 ## Log
-<!-- tool output (JSON format) -->
 <!-- DYNAMIC:LOG:END -->
 
-<!-- DYNAMIC:WORKFLOW_HISTORY:START -->
-## Workflow History
-<!-- commit SHA & msg -->
-<!-- DYNAMIC:WORKFLOW_HISTORY:END -->
-
-<!-- DYNAMIC:ARCHIVE_LOG:START -->
-## ArchiveLog
-<!-- rotated log summaries -->
-<!-- DYNAMIC:ARCHIVE_LOG:END -->
-
-<!-- DYNAMIC:BLUEPRINT_HISTORY:START -->
-## Blueprint History
-<!-- archived plans -->
-<!-- DYNAMIC:BLUEPRINT_HISTORY:END -->
-
-<!-- DYNAMIC:VERSION_CHANGELOG:START -->
-## Version Changelog
-| version | timestamp | changes | static_hash | dynamic_changes |
-|---------|-----------|---------|-------------|-----------------|
-
-<!-- DYNAMIC:VERSION_CHANGELOG:END -->
-
-<!-- DYNAMIC:DIFF_TRACKING:START -->
-## Diff Tracking
-<!-- AI populates with build differences -->
-<!-- DYNAMIC:DIFF_TRACKING:END -->
+<!-- DYNAMIC:HISTORY:START -->
+## History
+<!-- DYNAMIC:HISTORY:END -->
