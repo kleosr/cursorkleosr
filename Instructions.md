@@ -1,7 +1,7 @@
-# Cursor Workflow
+# Cursor workflow
 
-`project_config.md` – config | `workflow_state.md` – state
+`project_config.md` is configuration. `workflow_state.md` is live state.
 
-**Loop:** Read state → Read config → Act (ANALYZE→PREPARE→IMPLEMENT→VALIDATE) → Write back
+Loop: read state, read config, act (ANALYZE → PREPARE → IMPLEMENT → VALIDATE), write state back.
 
-**Markers:** `STATIC:*` replaceable | `DYNAMIC:*` AI-managed
+Markers: `STATIC:*` blocks are yours to edit; `DYNAMIC:*` blocks are for the assistant to maintain.
