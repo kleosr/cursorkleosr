@@ -1,25 +1,32 @@
-# Cursor Natural AI Workflow
+# cursorkleosr
 
-## Overview
-Turn Cursor into a context-aware assistant using two files. This system persists memory and structures workflows, preventing repetitive prompting and context loss.
+Two markdown files at the repo root carry project memory and live task state for Cursor. The idea is to give the assistant something stable to read on startup instead of re-deriving goals and stack from chat each time.
 
-## Key Benefits
-- **Persistent Memory**: AI retains context across sessions.
-- **Structured Workflows**: Enforces Analyze → Validate steps.
-- **Batch Processing**: Handles multiple tasks without context loss.
-- **Plan Archiving**: Logs decisions and blueprints for retrieval.
-- **Git Integration**: Suggests commits and tracks progress.
+## Files
 
-## How It Works
-Two files control AI behavior:
+`project_config.md` holds slow-changing facts: goals, stack, patterns, constraints, token notes.
 
-### `project_config.md` (Long-term Memory)
-Stores goals, stack, patterns, constraints, and token limits.
+`workflow_state.md` holds the moving parts: current phase, plan, task table, metrics, checkpoints, log. The model (or you) is expected to update this as work moves.
 
-### `workflow_state.md` (Dynamic Workspace)
-Tracks current phase, active plan, logs, and tasks.
+`Instructions.md` is a short reminder of the read-act-write loop and which markers are static versus AI-managed.
 
-## Workflow Process
+## Setup
+
+1. Edit `project_config.md` for your project.
+2. Set phase and status under the dynamic block in `workflow_state.md` if you are starting from scratch.
+3. In Cursor, ask the assistant to read both files before acting and to write results back to `workflow_state.md`.
+
+Example prompt:
+
+```
+Use project_config.md and workflow_state.md as the source of truth for workflow memory. Before you act, read workflow_state.md and the rules embedded there. After meaningful steps, update workflow_state.md with what changed and what is next.
+```
+
+## Phases
+
+`workflow_state.md` defines INIT → ANALYZE → PREPARE → IMPLEMENT → VALIDATE → COMPLETED or ROLLBACK. Complexity and checkpoint rules live in the same file under the static rules block. None of that runs by itself; it is documentation the assistant is meant to follow when you point it at these files.
+
+## Diagram
 
 ```mermaid
 graph LR
@@ -40,45 +47,18 @@ graph LR
     M --> N[Idle State];
 ```
 
-## Development Phases
-1. **Understanding**: Analyze requirements.
-2. **Planning**: Create step-by-step blueprints.
-3. **Building**: Execute code changes.
-4. **Validation**: Verify against requirements.
+## Blueprints and git
 
-## Getting Started
-1. **Locate Files**: Find `project_config.md` and `workflow_state.md` in the root.
-2. **Configure**: Update `project_config.md` with your stack/goals.
-3. **Initialize**: Paste this prompt into Cursor:
-   ```
-   You're an autonomous AI developer. Work exclusively with project_config.md and workflow_state.md. 
-   Before each action, read workflow_state.md to understand context, follow the rules, 
-   then immediately update workflow_state.md with your actions and results.
-   ```
-4. **Begin**: The AI will request your first task.
-
-## Key Features
-
-### Blueprint Archiving
-Plans are archived with timestamps. Retrieve them with natural language:
-- "Show me last Tuesday's blueprint"
-- "Use blueprint abc123def"
-
-### Git Integration
-- Automated commit suggestions.
-- Progress tracking.
-- Rollback commands.
-
-### Cursor Rules Integration
-Logic resides in configuration files for context-aware behavior, replacing static `.cursorrules` for workflow logic.
+If you archive plans in the log section with a timestamp or id, you can refer back in later chats (“use blueprint abc123”). Git lines in the template mean optional commit suggestions and rollback notes, not hooks or scripts shipped here.
 
 ## License
-MIT License - see [LICENSE](LICENSE).
+
+MIT. See [LICENSE](LICENSE).
 
 ## Contributing
-Submit PRs to improve the workflow.
 
----
+Pull requests are welcome. For doc tone, use `.cursor/skills/avoid-ai-writing/SKILL.md` as the checklist.
 
-## Star History
+## Star history
+
 [![Star History Chart](https://api.star-history.com/svg?repos=kleosr/cursorkleosr&type=Date)](https://www.star-history.com/#kleosr/cursorkleosr&Date)

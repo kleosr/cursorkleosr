@@ -7,34 +7,41 @@ Green build, minimal diff, zero regressions
 
 <!-- STATIC:TECH_STACK:START -->
 ## Tech Stack
-TS5+/Node18+ | Python3.11+ | Go1.21+
-JS: pnpm eslint prettier vitest tsc
-PY: uv ruff black mypy pytest
-CI: Docker GHA Make
+TypeScript 5+ and Node 18+, Python 3.11+, Go 1.21+.
+
+JavaScript tooling: pnpm, eslint, prettier, vitest, tsc.
+
+Python tooling: uv, ruff, black, mypy, pytest.
+
+CI: Docker, GitHub Actions, Make.
 <!-- STATIC:TECH_STACK:END -->
 
 <!-- STATIC:PATTERNS:START -->
 ## Patterns
-Functional core, imperative shell | snake_case .py, camelCase .ts
-Pure functions, side effects in adapters | Reuse utils, no ad-hoc deps
-Strict types (no any) | Secrets via env only
+Functional core, imperative shell. Python: snake_case. TypeScript: camelCase.
+
+Pure functions where possible; push side effects to adapters. Reuse shared helpers; avoid one-off dependencies.
+
+Strict types (no `any`). Secrets only from environment variables.
 <!-- STATIC:PATTERNS:END -->
 
 <!-- STATIC:CONSTRAINTS:START -->
 ## Constraints
-Lint/typecheck: 0 errors | Tests: pass
-No global installs | No breaking API without version bump
+Lint and typecheck clean. Tests must pass.
+
+No global installs. No breaking API changes without a version bump.
 <!-- STATIC:CONSTRAINTS:END -->
 
 <!-- STATIC:TOKENIZATION:START -->
 ## Tokenization
-3.5ch/token | 8K cap | summarize >12K
+Roughly 3.5 characters per token, 8k cap, summarize anything over ~12k.
 <!-- STATIC:TOKENIZATION:END -->
 
 <!-- STATIC:MODEL_CONFIG:START -->
 ## Model Config
-Type: feature|bugfix|refactor|test|chore
-Arch: node|ts|py|go|frontend|backend|cli
+Task types: feature, bugfix, refactor, test, chore.
+
+Architecture tags: node, ts, py, go, frontend, backend, cli.
 <!-- STATIC:MODEL_CONFIG:END -->
 
 <!-- DYNAMIC:CHANGELOG:START -->

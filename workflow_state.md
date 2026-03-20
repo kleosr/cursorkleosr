@@ -6,31 +6,31 @@ v1.2.0 | Schema 1.2
 <!-- STATIC:RULES:START -->
 ## Rules
 ### ANALYZE
-Load config+context → infer type → set complexity(1-5) → estimate impact
+Load config and context, infer task type, set complexity (1–5), estimate impact.
 
 ### PREPARE
-Resolve deps → generate plan → locate entrypoints → map tests
+Resolve dependencies, draft a plan, find entrypoints, map tests.
 
 ### IMPLEMENT
-Minimal diff → strict typing → reuse utils → checkpoint C≥3
+Keep diffs small, keep types strict, reuse helpers, create a checkpoint when complexity is 3 or higher.
 
 ### VALIDATE
-Run lint/typecheck/tests → check coverage → diff summary → rollback on fail
+Run lint, typecheck, and tests; check coverage; summarize the diff; roll back if something fails.
 
 ### Flow
-INIT→ANALYZE→PREPARE→IMPLEMENT→VALIDATE→COMPLETED|ROLLBACK
+INIT → ANALYZE → PREPARE → IMPLEMENT → VALIDATE → COMPLETED or ROLLBACK
 
 ### Adaptive
-C≤2: fast path | C≥4: extra validation | flaky: rerun
+Complexity 2 or lower: fast path. Complexity 4 or higher: extra validation. Flaky tests: rerun.
 
 ### Rollback
-IMPLEMENT fail→restore checkpoint | 2 fails→reduce complexity
+If IMPLEMENT fails, restore the last checkpoint. After two failures, lower complexity.
 
 ### Checkpoint
-C≥3: auto-create | metadata: time,phase,confidence,hash,branch
+When complexity is 3 or higher, create one automatically. Store time, phase, confidence, hash, branch.
 
 ### Misc
-LOG: >3K chars→archive | RISK: C≥4→static analysis | GIT: pass→commit
+Log over ~3k characters: archive. Risk at complexity 4 or higher: run static analysis. Git: commit after a passing validate step.
 <!-- STATIC:RULES:END -->
 
 <!-- STATIC:VISUALIZER:START -->
