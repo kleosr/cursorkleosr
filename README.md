@@ -1,64 +1,107 @@
-# cursorkleosr
+<div align="center">
+  <img src="https://img.shields.io/badge/schema-1.2-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/license-MIT-brightgreen?style=flat-square" />
+  <img src="https://img.shields.io/badge/status-stable-2ea44f?style=flat-square" />
+  <img src="https://img.shields.io/badge/built%20with-Cursor-6c47ff?style=flat-square" />
+</div>
 
-Two markdown files at the repo root carry project memory and live task state for Cursor. The idea is to give the assistant something stable to read on startup instead of re-deriving goals and stack from chat each time.
+<br />
 
-## Files
+<div align="center">
+  <h1>cursorkleosr</h1>
+  <p><strong>Workflow memory system — two markdown files.</strong></p>
+  <p>Keep project context and live task state between Cursor sessions.<br />Read once, reference always — no more starting from zero.</p>
+</div>
 
-`project_config.md` holds slow-changing facts: goals, stack, patterns, constraints, token notes.
+<br />
 
-`workflow_state.md` holds the moving parts: current phase, plan, task table, metrics, checkpoints, log. The model (or you) is expected to update this as work moves.
+---
 
-`Instructions.md` is a short reminder of the read-act-write loop and which markers are static versus AI-managed.
+## 📦 Setup
 
-## Setup
+```bash
+git clone https://github.com/kleosr/cursorkleosr.git
+cd cursorkleosr
+```
 
-1. Edit `project_config.md` for your project.
-2. Set phase and status under the dynamic block in `workflow_state.md` if you are starting from scratch.
-3. In Cursor, ask the assistant to read both files before acting and to write results back to `workflow_state.md`.
+First time? Open `workflow_state.md`, set `Phase: INIT — Status: READY`, then edit `project_config.md` with your project's goals and stack. That's it — no dependencies, no build step, no config files to generate.
 
-Example prompt:
+## 🚀 Usage
+
+```bash
+# Before each session
+cat workflow_state.md    # Where are we?
+cat project_config.md     # What are we building?
+
+# After meaningful work — write state back
+# Edit workflow_state.md: update phase, log progress
+# Edit project_config.md: update changelog, patterns
+```
+
+The loop: **read state → read config → act → write state back**. Nothing runs automatically — the phases are a structure you follow.
+
+## 📂 Files
+
+| File | Purpose |
+|------|---------|
+| `project_config.md` | Slow-changing facts: goals, tech stack, patterns, constraints, changelog |
+| `workflow_state.md` | Moving parts: current phase, task table, metrics, log, checkpoints |
+| `Instructions.md` | Quick reminder of the read → act → write loop |
+
+## 🔄 Workflow Loop
 
 ```
-Use project_config.md and workflow_state.md as the source of truth for workflow memory. Before you act, read workflow_state.md and the rules embedded there. After meaningful steps, update workflow_state.md with what changed and what is next.
+read state → read config → act → write state back
+                     ↓
+            ANALYZE → PREPARE → IMPLEMENT → VALIDATE
 ```
-
-## Phases
-
-`workflow_state.md` defines INIT → ANALYZE → PREPARE → IMPLEMENT → VALIDATE → COMPLETED or ROLLBACK. Complexity and checkpoint rules live in the same file under the static rules block. None of that runs by itself; it is documentation the assistant is meant to follow when you point it at these files.
-
-## Diagram
 
 ```mermaid
 graph LR
-    A[AI Initialization] --> B[Read workflow_state.md];
-    B --> C{Task Available?};
-    C -- Yes --> D[Process Next Task];
-    C -- No --> E[Continue Current Work];
-    E --> F[Execute Task];
-    F --> G[Update workflow_state.md];
-    G --> H{Validation Required?};
-    H -- Yes --> I[Run Tests];
-    H -- No --> E;
-    D --> J{More Tasks?};
-    J -- Yes --> K[Reset Workspace];
-    K --> L[Start Fresh];
-    L --> B;
-    J -- No --> M[Mark Complete];
-    M --> N[Idle State];
+    S[Session Start] --> A[Read workflow_state.md];
+    A --> B{Task Ready?};
+    B -- Yes --> C[Process Next Task];
+    B -- No --> D[Continue Current Work];
+    D --> E[Execute Step];
+    E --> F[Update workflow_state.md];
+    F --> G{Validation Needed?};
+    G -- Yes --> H[Run Tests];
+    G -- No --> D;
+    C --> I{More Tasks?};
+    I -- Yes --> J[Reset Workspace];
+    J --> K[Fresh Start];
+    K --> A;
+    I -- No --> L[Mark Complete];
+    L --> M[Idle];
 ```
 
-## Blueprints and git
+## 🏗️ Architecture
 
-If you archive plans in the log section with a timestamp or id, you can refer back in later chats (“use blueprint abc123”). Git lines in the template mean optional commit suggestions and rollback notes, not hooks or scripts shipped here.
+```
+.
+├── project_config.md    — goals, stack, patterns, constraints, changelog
+├── workflow_state.md    — phase, plan, tasks, metrics, checkpoints, log
+├── Instructions.md      — loop reminder
+├── LICENSE              — MIT
+└── .gitignore
+```
 
-## License
+Zero dependencies. No build step. Two files you can edit in any editor, diff in any tool, and grep from any terminal.
+
+## 🛠️ Development
+
+This is a documentation-only project. No tests, no compilation, no CI pipeline. Contributions that improve clarity, add workflow patterns, or refine the template structure are welcome.
+
+## 🤖 Integration
+
+Designed for Cursor. On session start, the assistant reads both files to reconstruct project context, follows the phase workflow, and writes state back after each action. The schema is whatever you write — you own it.
+
+## 🦀 Why Markdown?
+
+Because plain text outlasts everything. No database, no schema migrations, no lock-in, no dependency chain. Two files you can edit in any editor, diff in any tool, and grep from any terminal.
+
+Built with [Cursor](https://cursor.com).
+
+## 📄 License
 
 MIT. See [LICENSE](LICENSE).
-
-## Contributing
-
-Pull requests are welcome. For doc tone, use `.cursor/skills/avoid-ai-writing/SKILL.md` as the checklist.
-
-## Star history
-
-[![Star History Chart](https://api.star-history.com/svg?repos=kleosr/cursorkleosr&type=Date)](https://www.star-history.com/#kleosr/cursorkleosr&Date)
