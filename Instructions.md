@@ -1,7 +1,16 @@
-# Cursor workflow
+# Workflow
 
-`project_config.md` is configuration. `workflow_state.md` is live state.
+Two files handle project memory:
 
-Loop: read state, read config, act (ANALYZE → PREPARE → IMPLEMENT → VALIDATE), write state back.
+- `project_config.md` — stable project configuration (goals, stack, patterns, constraints)
+- `workflow_state.md` — live state tracker (phase, plan, log)
 
-Markers: `STATIC:*` blocks are yours to edit; `DYNAMIC:*` blocks are for the assistant to maintain.
+## Loop
+
+Read both files at session start. Update `workflow_state.md` when something meaningful changes — a phase transition, a blocker, a completion. Otherwise leave it alone. No per-message writes.
+
+## Phases
+
+ANALYZE → PREPARE → IMPLEMENT → VALIDATE
+
+One phase at a time. Move forward when ready, roll back when stuck.
