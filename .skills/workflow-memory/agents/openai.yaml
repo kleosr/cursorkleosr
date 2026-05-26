@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workflow Memory"
+  short_description: "Ask, complete, then stop cleanly"
+  default_prompt: "Use $workflow-memory to ask what I need, complete the requested work with the root workflow files, then stop without requiring follow-up after fulfillment."
