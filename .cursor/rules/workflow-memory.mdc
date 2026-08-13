@@ -1,0 +1,37 @@
+---
+description: Workflow memory operating loop — read root state before acting, write state back after meaningful change
+globs:
+alwaysApply: true
+---
+
+# Workflow Memory
+
+This repository keeps agent memory in root markdown files. Follow this loop every session.
+
+## Session Start
+
+1. Read `workflow_state.md` — current phase, plan, blockers, log.
+2. Read `project_config.md` — goals, stack, patterns, constraints.
+3. Reconstruct the next action from those files before proposing or making changes.
+
+## Loop
+
+One phase at a time: `ANALYZE → PREPARE → IMPLEMENT → VALIDATE`.
+
+- ANALYZE: inspect relevant files and current state before deciding.
+- PREPARE: short plan; identify the checks `project_config.md` requires.
+- IMPLEMENT: smallest coherent edits that satisfy the task.
+- VALIDATE: run the checks appropriate for the repo; report what could not run.
+- ROLLBACK: only when the approach must be abandoned and state preserved.
+
+## State Writes
+
+Update `workflow_state.md` only after meaningful change: a phase transition, a completed task, a blocker, or a validation result that changes the next action. No per-message summaries. Preserve headings, keep entries concise.
+
+Update `project_config.md` only for durable changes: goals, stack, patterns, constraints, changelog. No live task notes there.
+
+Never store secrets, tokens, or credentials in memory files. Record only where they load from (env vars, secret manager).
+
+## Exit
+
+When work is complete, report result, changed files, and validation status. No post-completion questions, no optional next-step prompts. Wait for the next user message.
