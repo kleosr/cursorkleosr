@@ -25,3 +25,5 @@ INIT → ANALYZE → PREPARE → IMPLEMENT → VALIDATE → COMPLETED or ROLLBAC
 ## Log
 
 <!-- Only log what matters: decisions, blockers, completions. No automatic per-message writes. -->
+
+- 2026-08-12: Replaced opt-in vendor skill with always-on Cursor rule (`.cursor/rules/workflow-memory.mdc`, `alwaysApply: true`). Loop now loads every session; memory is a repo property, not an invocation. Legacy vendor skill tree removed. README rewritten. Validation: `git diff --check` green.
