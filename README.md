@@ -51,7 +51,8 @@ cat project_config.md   # what are we building?
 
 | File | Purpose |
 |------|---------|
-| `.cursor/rules/workflow-memory.mdc` | Always-on operating loop — injected into every agent session |
+| `AGENTS.md` | Single source of truth agent handbook: Rules, Skills, Workflows, Memory |
+| `.cursor/rules/workflow-memory.mdc` | Thin adapter importing `@AGENTS.md` for Cursor |
 | `workflow_state.md` | Moving parts: current phase, plan, blockers, log |
 | `project_config.md` | Slow-changing facts: goals, stack, patterns, constraints, changelog |
 | `Instructions.md` | Human-facing reminder of the read → act → write loop |
@@ -89,7 +90,8 @@ graph LR
 .
 ├── .cursor/
 │   └── rules/
-│       └── workflow-memory.mdc  — always-on agent operating loop
+│       └── workflow-memory.mdc  — thin adapter importing @AGENTS.md
+├── AGENTS.md                    — canonical agent handbook (Rules, Skills, Workflows, Memory)
 ├── project_config.md            — goals, stack, patterns, constraints, changelog
 ├── workflow_state.md            — phase, plan, blockers, log
 ├── Instructions.md              — human loop reminder
