@@ -19,3 +19,4 @@ No breaking API changes without a version bump.
 
 ## Changelog
 <!-- Notable changes as they happen. -->
+- Added repo-owned canonical `AGENTS.md` handbook; `.cursor/rules/workflow-memory.mdc` adapted to import `@AGENTS.md`.
