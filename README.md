@@ -8,7 +8,7 @@
 <br />
 
 <div align="center">
-  <h1>tether</h1>
+  <h1>cursorkleosr</h1>
   <p><strong>Agent memory that cannot be forgotten — one always-on Cursor rule plus root markdown state.</strong></p>
   <p>Skills wait to be invoked. Rules load every session.<br />The agent reads your project state before it thinks — no more starting from zero.</p>
 </div>
@@ -26,8 +26,8 @@ Most agent-memory setups are opt-in: a skill the agent must remember to call, a 
 ## Setup
 
 ```bash
-git clone https://github.com/kleosr/tether.git
-cd tether
+git clone https://github.com/kleosr/cursorkleosr.git
+cd cursorkleosr
 ```
 
 Open `project_config.md`, set your goals and stack. Open `workflow_state.md`, set `Phase: INIT — READY`. Done — no dependencies, no build step.
